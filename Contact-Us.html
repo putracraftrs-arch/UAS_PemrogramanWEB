@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - CineGo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <input type="checkbox" id="navToggle" class="nav-Toggle">
+      <label for="navToggle" class="navToggleMenu">
+        <span></span><span></span><span></span>
+      </label>
+      <a href="Home.html" class="logo-link">
+        <img src="Images/logo.png" alt="CineGo Logo" class="logo" />
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="Home.html">Home</a></li>
+          <li><a href="Schedule.html">Schedule</a></li>
+          <li><a href="MyTicket.html">MyTicket</a></li>
+          <li><a href="MyAccount.html">MyAccount</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="contact-section">
+
+      <h2 class="section-title">Contact Us</h2>
+      <p class="section-desc" style="margin-bottom:24px">Ada pertanyaan atau masukan? Kami senang mendengar dari Anda.</p>
+
+      <!-- Info Cards -->
+      <div class="contact-grid">
+        <div class="contact-info-card">
+          <span class="contact-icon">*</span>
+          <div>
+            <h4>Alamat</h4>
+            <p>Jl. Gatot Subroto No.212<br>Medan, Sumatera Utara</p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <span class="contact-icon">*</span>
+          <div>
+            <h4>Telepon</h4>
+            <p>+62 61 1234 5678<br>Senin-Jumat, 09:00-17:00</p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <span class="contact-icon">*</span>
+          <div>
+            <h4>Email</h4>
+            <p>support@cinego.id<br>Respon dalam 1x24 jam</p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <span class="contact-icon">*</span>
+          <div>
+            <h4>Media Sosial</h4>
+            <p>@CineGo_id<br>Instagram - Twitter - TikTok</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-card">
+
+        <div id="formView">
+          <h3>Kirim Pesan</h3>
+          <p class="sub">Isi formulir di bawah ini dan tim kami akan segera menghubungi Anda.</p>
+
+          <form id="contactForm" novalidate>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cnNama">Nama Lengkap <span class="required">*</span></label>
+                <input type="text" id="cnNama" placeholder="Nama Anda" maxlength="60" />
+                <span class="error-msg" id="err-cnNama">Nama wajib diisi.</span>
+              </div>
+              <div class="form-group">
+                <label for="cnEmail">Email <span class="required">*</span></label>
+                <input type="email" id="cnEmail" placeholder="contoh@email.com" />
+                <span class="error-msg" id="err-cnEmail">Email tidak valid.</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="cnTopik">Topik <span class="required">*</span></label>
+              <select id="cnTopik">
+                <option value="">-- Pilih Topik --</option>
+                <option value="Pemesanan Tiket">Pemesanan Tiket</option>
+                <option value="Pembayaran">Pembayaran</option>
+                <option value="Pengembalian Dana">Pengembalian Dana</option>
+                <option value="Jadwal Film">Jadwal Film</option>
+                <option value="Saran & Masukan">Saran &amp; Masukan</option>
+                <option value="Lainnya">Lainnya</option>
+              </select>
+              <span class="error-msg" id="err-cnTopik">Pilih topik terlebih dahulu.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="cnPesan">Pesan <span class="required">*</span></label>
+              <textarea id="cnPesan" rows="5" placeholder="Tulis pesan Anda di sini..." maxlength="500"></textarea>
+              <div class="char-count"><span id="charCount">0</span>/500</div>
+              <span class="error-msg" id="err-cnPesan">Pesan minimal 10 karakter.</span>
+            </div>
+
+            <button type="submit" class="btn-kirim">Kirim Pesan</button>
+
+          </form>
+        </div>
+
+        <div class="success-state" id="successView">
+          <div class="s-icon">OK</div>
+          <h3>Pesan Berhasil Terkirim!</h3>
+          <p>Terima kasih telah menghubungi kami.<br>Tim CineGo akan membalas dalam 1x24 jam.</p>
+          <button class="btn-back-form" id="btnBackForm">Kirim Pesan Lain</button>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 CineGo. All rights reserved</p>
+    <p>
+      <a href="About-Us.html">About Us</a> |
+      <a href="Contact-Us.html" class="active">Contact Us</a> |
+      <a href="Trending.html">Trending</a>
+    </p>
+    <div class="arrow"><a href="#">^</a></div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/Contact-Us.js"></script>
+</body>
+</html>
