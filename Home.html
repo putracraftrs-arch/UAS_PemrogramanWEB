@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -17,19 +17,17 @@
     <div class="container navbar-inner">
       <input type="checkbox" id="navToggle" class="nav-Toggle">
       <label for="navToggle" class="navToggleMenu">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </label>
       <a href="Home.html" class="logo-link">
-        <img src="images/logo.png" alt="CineGo Logo" class="logo" />
+        <img src="Images/logo.png" alt="CineGo Logo" class="logo" />
       </a>
       <nav>
         <ul class="nav-menu">
           <li><a href="Home.html" class="active">Home</a></li>
           <li><a href="Schedule.html">Schedule</a></li>
-          <li><a href="#" class="coming-soon">MyTicket</a></li>
-          <li><a href="#" class="coming-soon">MyAccount</a></li>
+          <li><a href="MyTicket.html">MyTicket</a></li>
+          <li><a href="MyAccount.html">MyAccount</a></li>
         </ul>
       </nav>
     </div>
@@ -39,77 +37,84 @@
 
     <section>
       <div class="hero-content">
-        <h2>Selamat Datang di CineGo 🎬</h2>
+        <h2>Selamat Datang di CineGo</h2>
         <p>Temukan film favoritmu dan pesan tiket dengan mudah!</p>
-        <a href="Schedule.html" class="btn-pesan">Pesan Sekarang</a>
+        <div class="hero-actions">
+          <a href="Schedule.html" class="btn-pesan">Pesan Sekarang</a>
+          <button id="btnOpenAuth" class="btn-auth-hero">Masuk / Daftar</button>
+        </div>
+        <p class="hero-register-hint">
+          Belum punya akun?
+          <a href="#" id="btnOpenRegister">Daftar gratis sekarang -></a>
+        </p>
       </div>
     </section>
 
     <section id="film">
-      <h2 class="section-title">🔥 Sedang Tayang</h2>
+      <h2 class="section-title">Sedang Tayang</h2>
       <div class="film-list">
 
         <div class="film-card">
-          <img src="images/jumbo-indonesian-movie-poster.jpg" alt="Jumbo"
+          <img src="Images/jumbo-indonesian-movie-poster.jpg" alt="Jumbo"
             onerror="this.src='https://placehold.co/300x400/120a02/fb923c?text=Jumbo'" />
           <h3>Jumbo</h3>
           <p>Animation / Adventure</p>
-          <p>⏱ 102 menit</p>
-          <a href="Schedule.html">Pesan Tiket</a>
+          <p>102 menit</p>
+          <a href="Booking.html?film=Jumbo">Pesan Tiket</a>
         </div>
 
         <div class="film-card">
-          <img src="images/ancika-1995.jpg" alt="Ancika: Dia yang Bersamaku 1995"
+          <img src="Images/ancika-1995.jpg" alt="Ancika: 1995"
             onerror="this.src='https://placehold.co/300x400/120a02/fb923c?text=Ancika+1995'" />
           <h3>Ancika: 1995</h3>
           <p>Romance / Drama</p>
-          <p>⏱ 100 menit</p>
-          <a href="Schedule.html">Pesan Tiket</a>
+          <p>100 menit</p>
+          <a href="Booking.html?film=Ancika%3A+1995">Pesan Tiket</a>
         </div>
 
         <div class="film-card">
-          <img src="images/a-minecraft-movie-movie-poster.jpg" alt="A Minecraft Movie"
+          <img src="Images/a-minecraft-movie-movie-poster.jpg" alt="A Minecraft Movie"
             onerror="this.src='https://placehold.co/300x400/120a02/fb923c?text=Minecraft+Movie'" />
           <h3>A Minecraft Movie</h3>
           <p>Adventure / Fantasy</p>
-          <p>⏱ 101 menit</p>
-          <a href="Schedule.html">Pesan Tiket</a>
+          <p>101 menit</p>
+          <a href="Booking.html?film=A+Minecraft+Movie">Pesan Tiket</a>
         </div>
 
         <div class="film-card">
-          <img src="images/agak-laen.jpg" alt="Agak Laen"
+          <img src="Images/agak-laen.jpg" alt="Agak Laen"
             onerror="this.src='https://placehold.co/300x400/120a02/fb923c?text=Agak+Laen'" />
           <h3>Agak Laen</h3>
           <p>Horror / Comedy</p>
-          <p>⏱ 119 menit</p>
-          <a href="Schedule.html">Pesan Tiket</a>
+          <p>119 menit</p>
+          <a href="Booking.html?film=Agak+Laen">Pesan Tiket</a>
         </div>
 
         <div class="film-card">
-          <img src="images/siksa-kubur.jpg" alt="Siksa Kubur"
+          <img src="Images/siksa-kubur.jpg" alt="Siksa Kubur"
             onerror="this.src='https://placehold.co/300x400/120a02/fb923c?text=Siksa+Kubur'" />
           <h3>Siksa Kubur</h3>
           <p>Horror / Drama</p>
-          <p>⏱ 117 menit</p>
-          <a href="Schedule.html">Pesan Tiket</a>
+          <p>117 menit</p>
+          <a href="Booking.html?film=Siksa+Kubur">Pesan Tiket</a>
         </div>
 
         <div class="film-card">
-          <img src="images/25MIFR.jpg" alt="Mission Impossible: The Final Reckoning"
+          <img src="Images/25MIFR.jpg" alt="Mission: Impossible - The Final Reckoning"
             onerror="this.src='https://placehold.co/300x400/120a02/fb923c?text=MI+Final+Reckoning'" />
-          <h3>Mission: Impossible – The Final Reckoning</h3>
+          <h3>Mission: Impossible - The Final Reckoning</h3>
           <p>Action / Thriller</p>
-          <p>⏱ 169 menit</p>
-          <a href="Schedule.html">Pesan Tiket</a>
+          <p>169 menit</p>
+          <a href="Booking.html?film=Mission%3A+Impossible+%E2%80%93+The+Final+Reckoning">Pesan Tiket</a>
         </div>
 
         <div class="film-card">
-          <img src="images/infinity.jpg" alt="Avengers: Infinity War"
+          <img src="Images/infinity.jpg" alt="Avengers: Infinity War"
             onerror="this.src='https://placehold.co/300x400/120a02/fb923c?text=Infinity+War'" />
           <h3>Avengers: Infinity War</h3>
           <p>Action / Sci-Fi</p>
-          <p>⏱ 149 menit</p>
-          <a href="Schedule.html">Pesan Tiket</a>
+          <p>149 menit</p>
+          <a href="Booking.html?film=Avengers%3A+Infinity+War">Pesan Tiket</a>
         </div>
 
       </div>
@@ -121,13 +126,97 @@
     <p>&copy; 2026 CineGo. All rights reserved</p>
     <p>
       <a href="About-Us.html">About Us</a> |
-      <a href="#" class="coming-soon">Contact Us</a> |
+      <a href="Contact-Us.html">Contact Us</a> |
       <a href="Trending.html">Trending</a>
     </p>
-    <div class="arrow">
-      <a href="#">▲</a>
-    </div>
+    <div class="arrow"><a href="#">^</a></div>
   </footer>
 
+  <div class="auth-modal-overlay" id="authOverlay"></div>
+  <div class="auth-modal" id="authModal" role="dialog" aria-modal="true" aria-label="Login atau Daftar">
+
+    <button class="auth-close" id="authClose" aria-label="Tutup">x</button>
+
+    <div class="auth-brand">
+      <span class="auth-brand-logo">C</span>
+      <span class="auth-brand-name">CineGo</span>
+    </div>
+
+    <div class="auth-tabs">
+      <button class="auth-tab-btn active" data-tab="login">Masuk</button>
+      <button class="auth-tab-btn" data-tab="daftar">Daftar</button>
+    </div>
+
+    <div class="auth-panel active" id="authPanel-login">
+      <form id="loginForm" novalidate>
+
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" placeholder="contoh@email.com" autocomplete="email" />
+          <span class="error-msg" id="err-loginEmail"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="loginPw">Password</label>
+          <div class="input-wrap">
+            <input type="password" id="loginPw" placeholder="********" autocomplete="current-password" />
+            <button type="button" class="toggle-pw" id="toggleLoginPw">Show</button>
+          </div>
+          <span class="error-msg" id="err-loginPw"></span>
+        </div>
+
+        <button type="submit" class="btn-auth-submit">Masuk</button>
+
+      </form>
+      <p class="auth-switch-text">
+        Belum punya akun?
+        <a href="#" id="linkToDaftar">Daftar sekarang</a>
+      </p>
+    </div>
+
+    <div class="auth-panel" id="authPanel-daftar">
+      <form id="registerForm" novalidate>
+
+        <div class="form-group">
+          <label for="regNama">Nama Lengkap</label>
+          <input type="text" id="regNama" placeholder="Nama lengkap Anda" maxlength="60" autocomplete="name" />
+          <span class="error-msg" id="err-regNama"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="regEmail">Email</label>
+          <input type="email" id="regEmail" placeholder="contoh@email.com" autocomplete="email" />
+          <span class="error-msg" id="err-regEmail"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="regPw">Password</label>
+          <div class="input-wrap">
+            <input type="password" id="regPw" placeholder="Min. 8 karakter" maxlength="64" autocomplete="new-password" />
+            <button type="button" class="toggle-pw" id="toggleRegPw">Show</button>
+          </div>
+          <span class="error-msg" id="err-regPw"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="regPwConfirm">Konfirmasi Password</label>
+          <input type="password" id="regPwConfirm" placeholder="Ulangi password" maxlength="64" autocomplete="new-password" />
+          <span class="error-msg" id="err-regPwConfirm"></span>
+        </div>
+
+        <button type="submit" class="btn-auth-submit">Buat Akun</button>
+
+      </form>
+      <p class="auth-switch-text">
+        Sudah punya akun?
+        <a href="#" id="linkToLogin">Masuk di sini</a>
+      </p>
+    </div>
+
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/auth.js"></script>
 </body>
 </html>
