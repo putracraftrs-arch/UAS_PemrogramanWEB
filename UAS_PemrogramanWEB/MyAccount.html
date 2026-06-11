@@ -1,0 +1,301 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyAccount - CineGo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <input type="checkbox" id="navToggle" class="nav-Toggle">
+      <label for="navToggle" class="navToggleMenu">
+        <span></span><span></span><span></span>
+      </label>
+      <a href="Home.html" class="logo-link">
+        <img src="Images/logo.png" alt="CineGo Logo" class="logo" />
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="Home.html">Home</a></li>
+          <li><a href="Schedule.html">Schedule</a></li>
+          <li><a href="MyTicket.html">MyTicket</a></li>
+          <li><a href="MyAccount.html" class="active">MyAccount</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="auth-gate-section" id="authGate" style="display:none">
+
+      <div class="auth-gate-hero">
+        <div class="auth-gate-hero-icon">C</div>
+        <h1 class="auth-gate-hero-title">Selamat Datang di CineGo</h1>
+        <p class="auth-gate-hero-sub">Masuk atau buat akun untuk menikmati fitur lengkap: riwayat tiket, profil pribadi, dan pemesanan lebih cepat.</p>
+
+        <div class="auth-gate-features">
+          <div class="agf-item">
+            <span class="agf-icon">*</span>
+            <span class="agf-text">Riwayat Tiket</span>
+          </div>
+          <div class="agf-item">
+            <span class="agf-icon">*</span>
+            <span class="agf-text">Pesan Lebih Cepat</span>
+          </div>
+          <div class="agf-item">
+            <span class="agf-icon">*</span>
+            <span class="agf-text">Profil Pribadi</span>
+          </div>
+          <div class="agf-item">
+            <span class="agf-icon">*</span>
+            <span class="agf-text">Akun Aman</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="auth-gate-card">
+
+        <!-- Tabs -->
+        <div class="auth-tabs">
+          <button class="auth-tab-btn active" data-tab="login">Masuk</button>
+          <button class="auth-tab-btn" data-tab="daftar">Daftar Gratis</button>
+        </div>
+
+        <div class="auth-panel active" id="authPanel-login">
+          <form id="gateLoginForm" novalidate>
+
+            <div class="form-group">
+              <label for="gLoginEmail">Email</label>
+              <input type="email" id="gLoginEmail" placeholder="contoh@email.com" autocomplete="email" />
+              <span class="error-msg" id="err-gLoginEmail"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="gLoginPw">Password</label>
+              <div class="input-wrap">
+                <input type="password" id="gLoginPw" placeholder="********" autocomplete="current-password" />
+                <button type="button" class="toggle-pw" id="toggleGLoginPw">Show</button>
+              </div>
+              <span class="error-msg" id="err-gLoginPw"></span>
+            </div>
+
+            <button type="submit" class="btn-auth-submit">Masuk ke Akun -></button>
+
+          </form>
+          <p class="auth-switch-text">
+            Belum punya akun? <a href="#" id="gateLinkToDaftar">Daftar gratis sekarang</a>
+          </p>
+        </div>
+
+        <div class="auth-panel" id="authPanel-daftar">
+          <form id="gateRegisterForm" novalidate>
+
+            <div class="form-group">
+              <label for="gRegNama">Nama Lengkap</label>
+              <input type="text" id="gRegNama" placeholder="Nama lengkap Anda" maxlength="60" />
+              <span class="error-msg" id="err-gRegNama"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="gRegEmail">Email</label>
+              <input type="email" id="gRegEmail" placeholder="contoh@email.com" autocomplete="email" />
+              <span class="error-msg" id="err-gRegEmail"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="gRegPw">Password</label>
+              <div class="input-wrap">
+                <input type="password" id="gRegPw" placeholder="Min. 8 karakter" maxlength="64" />
+                <button type="button" class="toggle-pw" id="toggleGRegPw">Show</button>
+              </div>
+              <span class="error-msg" id="err-gRegPw"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="gRegPwConfirm">Konfirmasi Password</label>
+              <input type="password" id="gRegPwConfirm" placeholder="Ulangi password" maxlength="64" />
+              <span class="error-msg" id="err-gRegPwConfirm"></span>
+            </div>
+
+            <button type="submit" class="btn-auth-submit">Buat Akun Gratis -></button>
+
+          </form>
+          <p class="auth-switch-text">
+            Sudah punya akun? <a href="#" id="gateLinkToLogin">Masuk di sini</a>
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="account-section" id="accountContent" style="display:none">
+
+      <div class="account-header-row">
+        <div>
+          <h2 class="section-title">My Account</h2>
+          <p class="section-desc">Kelola informasi akun dan riwayat pesanan Anda.</p>
+        </div>
+        <button class="btn-logout" id="btnLogout">Keluar</button>
+      </div>
+
+      <div class="avatar-block">
+        <div class="avatar-circle" id="avatarInitial">?</div>
+        <div class="avatar-info">
+          <h3 id="avatarName">Pengguna CineGo</h3>
+          <p id="avatarEmail">-</p>
+        </div>
+        <div class="avatar-stats">
+          <div class="av-stat">
+            <div class="av-num" id="statPesan">0</div>
+            <div class="av-label">Pesanan</div>
+          </div>
+          <div class="av-stat">
+            <div class="av-num" id="statTiket">0</div>
+            <div class="av-label">Tiket</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="profil">Profil</button>
+        <button class="tab-btn" data-tab="keamanan">Keamanan</button>
+        <button class="tab-btn" data-tab="riwayat">Riwayat</button>
+      </div>
+
+      <div class="tab-panel active" id="tab-profil">
+        <div class="form-card">
+          <h3>Informasi Pribadi</h3>
+          <form id="profilForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="acNama">Nama Lengkap <span class="required">*</span></label>
+                <input type="text" id="acNama" placeholder="Nama lengkap" maxlength="60" />
+                <span class="error-msg" id="err-acNama">Nama wajib diisi.</span>
+              </div>
+              <div class="form-group">
+                <label for="acUsername">Username</label>
+                <input type="text" id="acUsername" placeholder="username" maxlength="30" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="acEmail">Email <span class="required">*</span></label>
+              <input type="email" id="acEmail" placeholder="contoh@email.com" />
+              <span class="error-msg" id="err-acEmail">Email tidak valid.</span>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="acTelp">Nomor Telepon</label>
+                <input type="tel" id="acTelp" placeholder="08xxxxxxxxxx" maxlength="15" />
+              </div>
+              <div class="form-group">
+                <label for="acTgl">Tanggal Lahir</label>
+                <input type="date" id="acTgl" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="acGender">Jenis Kelamin</label>
+              <select id="acGender">
+                <option value="">-- Pilih --</option>
+                <option value="Laki-laki">Laki-laki</option>
+                <option value="Perempuan">Perempuan</option>
+                <option value="Lainnya">Lainnya</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="acKota">Kota</label>
+              <input type="text" id="acKota" placeholder="Kota tempat tinggal" maxlength="50" />
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn-reset" id="btnResetProfil">Reset</button>
+              <button type="submit" class="btn-save">Simpan Perubahan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-keamanan">
+        <div class="form-card">
+          <h3>Ubah Password</h3>
+          <form id="pwForm" novalidate>
+            <div class="form-group">
+              <label for="pwLama">Password Lama <span class="required">*</span></label>
+              <div class="input-wrap">
+                <input type="password" id="pwLama" placeholder="********" />
+                <button type="button" class="toggle-pw" data-target="pwLama">Show</button>
+              </div>
+              <span class="error-msg" id="err-pwLama">Password lama wajib diisi.</span>
+            </div>
+            <div class="form-group">
+              <label for="pwBaru">Password Baru <span class="required">*</span></label>
+              <div class="input-wrap">
+                <input type="password" id="pwBaru" placeholder="Min. 8 karakter" maxlength="64" />
+                <button type="button" class="toggle-pw" data-target="pwBaru">Show</button>
+              </div>
+              <span class="error-msg" id="err-pwBaru">Password minimal 8 karakter.</span>
+            </div>
+            <div class="form-group">
+              <label for="pwKonfirm">Konfirmasi Password Baru <span class="required">*</span></label>
+              <div class="input-wrap">
+                <input type="password" id="pwKonfirm" placeholder="Ulangi password baru" maxlength="64" />
+                <button type="button" class="toggle-pw" data-target="pwKonfirm">Show</button>
+              </div>
+              <span class="error-msg" id="err-pwKonfirm">Password tidak cocok.</span>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn-save">Ubah Password</button>
+            </div>
+          </form>
+        </div>
+        <div class="danger-zone">
+          <h4>Danger Zone</h4>
+          <p>Hapus akun dan semua data Anda secara permanen.</p>
+          <button class="btn-danger" id="btnDeleteAccount">Hapus Akun Saya</button>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-riwayat">
+        <div class="mini-table-wrap" id="riwayatWrapper">
+          <table class="mini-table">
+            <thead>
+              <tr>
+                <th>#</th><th>Film</th><th>Tanggal</th>
+                <th>Jam</th><th>Tipe</th><th>Jml</th><th>Total</th>
+              </tr>
+            </thead>
+            <tbody id="riwayatBody"></tbody>
+          </table>
+        </div>
+        <div class="riwayat-empty" id="riwayatEmpty" style="display:none">
+          <div class="icon">C</div>
+          <p>Belum ada riwayat pemesanan.<br><a href="Booking.html">Pesan tiket sekarang -></a></p>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 CineGo. All rights reserved</p>
+    <p>
+      <a href="About-Us.html">About Us</a> |
+      <a href="Contact-Us.html">Contact Us</a> |
+      <a href="Trending.html">Trending</a>
+    </p>
+    <div class="arrow"><a href="#">^</a></div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/MyAccount.js"></script>
+</body>
+</html>
