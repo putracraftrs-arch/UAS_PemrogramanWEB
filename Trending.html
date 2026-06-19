@@ -38,49 +38,82 @@
   <main>
     <section class="trending-section">
       <h2 class="section-title">Film Trending</h2>
-      <p class="section-desc">Film pilihan yang sedang ramai ditonton minggu ini.</p>
+      <p class="section-desc">Peringkat film populer minggu ini berdasarkan vote pengguna.</p>
 
-      <div class="film-list">
+      <!-- ── Controls ─────────────────────────────────────────────────── -->
+      <div class="trend-controls">
+        <div class="trend-search-wrap">
+          <span class="trend-search-icon">🔍</span>
+          <input type="text" id="trendSearch" placeholder="Cari judul, genre, sutradara, atau pemain…" />
+        </div>
+        <div class="genre-pills" id="genrePills"></div>
+        <div class="sort-view-row">
+          <div class="sort-left">
+            <select class="sort-select" id="sortSelect">
+              <option value="votes">🔥 Terpopuler</option>
+              <option value="rating">⭐ Rating Tertinggi</option>
+              <option value="durasi_asc">⏱ Durasi Terpendek</option>
+              <option value="durasi_desc">⏱ Durasi Terlama</option>
+              <option value="az">🔤 A – Z</option>
+            </select>
+            <span class="result-count" id="resultCount"></span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div class="view-btns">
+              <button class="view-btn active" id="btnViewGrid" title="Tampilan Grid">⊞</button>
+              <button class="view-btn"        id="btnViewList" title="Tampilan List">≡</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        <div class="film-card">
-          <img src="Images/siksa-kubur.jpg" alt="Siksa Kubur"
-            onerror="this.src='https://placehold.co/300x400/120a02/fb923c?text=Siksa+Kubur'" />
-          <h3>Siksa Kubur</h3>
-          <p>Horror / Drama</p>
-          <p>117 menit</p>
-          <a href="Booking.html?film=Siksa+Kubur">Pesan Tiket</a>
+      <!-- ── Stats bar ──────────────────────────────────────────────────── -->
+      <div class="trend-stats" id="trendStats"></div>
+
+      <!-- ── Film container ─────────────────────────────────────────────── -->
+      <div id="trendContainer"></div>
+    </section>
+  </main>
+
+  <!-- ── Film Detail Modal ────────────────────────────────────────────────── -->
+  <div class="film-modal-overlay" id="filmModalOverlay">
+    <div class="film-modal" id="filmModal">
+      <button class="modal-close-btn" id="btnModalClose" aria-label="Tutup">✕</button>
+      <div class="modal-body">
+
+        <div class="modal-hero-row">
+          <img id="mPoster" class="modal-poster" src="" alt="" />
+          <div class="modal-header">
+            <h3 class="modal-film-title" id="mTitle"></h3>
+            <div class="modal-rating-row" id="mRating"></div>
+            <div class="modal-pills" id="mPills"></div>
+          </div>
         </div>
 
-        <div class="film-card">
-          <img src="Images/a-minecraft-movie-movie-poster.jpg" alt="A Minecraft Movie"
-            onerror="this.src='https://placehold.co/300x400/120a02/fb923c?text=Minecraft+Movie'" />
-          <h3>A Minecraft Movie</h3>
-          <p>Adventure / Fantasy</p>
-          <p>101 menit</p>
-          <a href="Booking.html?film=A+Minecraft+Movie">Pesan Tiket</a>
+        <p class="modal-section-lbl">Sinopsis</p>
+        <p class="modal-sinopsis" id="mSinopsis"></p>
+
+        <p class="modal-section-lbl">Info Film</p>
+        <div class="modal-info-grid" id="mInfoGrid"></div>
+
+        <div class="modal-vote-bar">
+          <div>
+            <div class="modal-vote-big" id="mVoteNum">0</div>
+            <div class="modal-vote-sub">vote pengguna minggu ini</div>
+          </div>
+          <button class="btn-modal-vote" id="btnModalVote">🔥 Vote Film Ini</button>
         </div>
 
-        <div class="film-card">
-          <img src="Images/agak-laen.jpg" alt="Agak Laen"
-            onerror="this.src='https://placehold.co/300x400/120a02/fb923c?text=Agak+Laen'" />
-          <h3>Agak Laen</h3>
-          <p>Horror / Comedy</p>
-          <p>119 menit</p>
-          <a href="Booking.html?film=Agak+Laen">Pesan Tiket</a>
-        </div>
-
-        <div class="film-card">
-          <img src="Images/infinity.jpg" alt="Avengers: Infinity War"
-            onerror="this.src='https://placehold.co/300x400/120a02/fb923c?text=Infinity+War'" />
-          <h3>Avengers: Infinity War</h3>
-          <p>Action / Sci-Fi</p>
-          <p>149 menit</p>
-          <a href="Booking.html?film=Avengers%3A+Infinity+War">Pesan Tiket</a>
+        <div class="modal-action-row">
+          <button class="btn-modal-wl" id="btnModalWl">🤍 Simpan ke Wishlist</button>
+          <a class="btn-modal-book" id="btnModalBook" href="#">🎬 Pesan Tiket</a>
         </div>
 
       </div>
-    </section>
-  </main>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
 
   <footer>
     <p>&copy; 2026 CineGo. All rights reserved</p>
@@ -95,6 +128,7 @@
   </footer>
 
   <script src="js/auth.js"></script>
-  
+  <script src="js/Trending.js"></script>
 </body>
+
 </html>
