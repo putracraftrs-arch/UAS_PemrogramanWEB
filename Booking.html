@@ -1,283 +1,357 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pesan Tiket - CineGo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-<body class="booking-page">
-
-  <header class="navbar">
-    <div class="container navbar-inner">
-      <input type="checkbox" id="navToggle" class="nav-Toggle" />
-      <label for="navToggle" class="navToggleMenu">
-        <span></span><span></span><span></span>
-      </label>
-      <a href="Home.html" class="logo-link">
-        <img src="Images/logo.png" alt="CineGo Logo" class="logo" />
-      </a>
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="Home.html">Home</a></li>
-          <li><a href="Schedule.html">Schedule</a></li>
-          <li><a href="MyTicket.html">MyTicket</a></li>
-          <li><a href="MyAccount.html">MyAccount</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-
-  <main>
-    <section class="booking-section">
-
-      <div class="step-bar">
-        <div class="step-item active" id="si1">
-          <div class="step-dot">1</div>
-          <span>Pilih Film</span>
-        </div>
-        <div class="step-line" id="sl1"></div>
-        <div class="step-item" id="si2">
-          <div class="step-dot">2</div>
-          <span>Bioskop &amp; Jadwal</span>
-        </div>
-        <div class="step-line" id="sl2"></div>
-        <div class="step-item" id="si3">
-          <div class="step-dot">3</div>
-          <span>Pilih Kursi</span>
-        </div>
-        <div class="step-line" id="sl3"></div>
-        <div class="step-item" id="si4">
-          <div class="step-dot">4</div>
-          <span>Data Pemesan</span>
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pesan Tiket - CineGo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="booking-page">
+    <header class="navbar">
+      <div class="container navbar-inner">
+        <input type="checkbox" id="navToggle" class="nav-Toggle" />
+        <label for="navToggle" class="navToggleMenu">
+          <span></span><span></span><span></span>
+        </label>
+        <a href="Home.html" class="logo-link">
+          <img src="Images/logo.png" alt="CineGo Logo" class="logo" />
+        </a>
+        <nav>
+          <ul class="nav-menu">
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="Schedule.html">Schedule</a></li>
+            <li><a href="MyTicket.html">MyTicket</a></li>
+            <li><a href="MyAccount.html">MyAccount</a></li>
+          </ul>
+        </nav>
       </div>
+    </header>
 
-      <div id="step1">
-        <div class="bk-card">
-          <h3 class="bk-card-title">Pilih Film</h3>
-          <div class="film-picker-grid" id="filmPickerGrid"></div>
-        </div>
-      </div>
-
-      <div id="step2">
-
-        <div class="bk-card bk-film-info" id="filmInfoCard2">
-          <img id="fiPoster2" src="" alt="" class="fi-poster" />
-          <div class="fi-body">
-            <h3 id="fiTitle2"  class="fi-title"></h3>
-            <p  id="fiGenre2"  class="fi-genre"></p>
-            <p  id="fiDurasi2" class="fi-durasi"></p>
+    <main>
+      <section class="booking-section">
+        <div class="step-bar">
+          <div class="step-item active" id="si1">
+            <div class="step-dot">1</div>
+            <span>Pilih Film</span>
           </div>
-          <button type="button" class="fi-ganti" id="btnGantiFilm"><- Ganti Film</button>
-
-
-        </div>
-
-        <div class="bk-card">
-          <h3 class="bk-card-title">Pilih Bioskop</h3>
-          <div class="cinema-list" id="cinemaList"></div>
-        </div>
-
-        <div class="bk-card" id="dateCard">
-          <h3 class="bk-card-title">Pilih Tanggal</h3>
-          <div class="date-strip" id="dateStrip"></div>
-        </div>
-
-        <div class="bk-card" id="timeCard">
-          <h3 class="bk-card-title">Pilih Jam Tayang</h3>
-          <p class="bk-sub" id="timeCardSub"></p>
-          <div class="time-grid" id="timeGrid"></div>
-        </div>
-
-        <button type="button" class="btn-next" id="btnToSeats">
-          Pilih Kursi ->
-        </button>
-
-        <div id="debugSeatStep"></div>
-
-
-
-
-      </div>
-
-      <div id="step3">
-
-        <div class="bk-card bk-film-info" id="seatSummaryBar">
-          <img id="sSumPoster" src="" alt="" class="fi-poster" />
-          <div class="fi-body">
-            <h3 id="sSumFilm"   class="fi-title"></h3>
-            <p  id="sSumMeta"   class="fi-genre"></p>
-            <p  id="sSumCinema" class="fi-durasi"></p>
+          <div class="step-line" id="sl1"></div>
+          <div class="step-item" id="si2">
+            <div class="step-dot">2</div>
+            <span>Bioskop &amp; Jadwal</span>
           </div>
-          <button type="button" class="fi-ganti" id="btnBackToSchedule"><- Jadwal</button>
-
-        </div>
-
-        <div class="bk-card seat-section">
-          <h3 class="bk-card-title">Pilih Kursi</h3>
-          <div class="screen-bar">
-            <span class="screen-label">LAYAR</span>
+          <div class="step-line" id="sl2"></div>
+          <div class="step-item" id="si3">
+            <div class="step-dot">3</div>
+            <span>Pilih Kursi</span>
           </div>
-          <div class="seat-grid-wrap">
-            <div class="seat-grid" id="seatGrid"></div>
-          </div>
-          <div class="seat-legend">
-            <div class="legend-item"><div class="legend-dot ld-avail"></div> Kosong</div>
-            <div class="legend-item"><div class="legend-dot ld-select"></div> Dipilih</div>
-            <div class="legend-item"><div class="legend-dot ld-taken"></div> Penuh</div>
-          </div>
-          <div class="seat-counter" id="seatCounter">Pilih kursi kamu</div>
-        </div>
-
-        <button type="button" class="btn-next" id="btnToBookingForm">
-          Lanjut -> Data Pemesan
-        </button>
-
-      </div>
-
-      <!-- STEP 4 - Data Pemesan -->
-      <div id="step4">
-
-        <div class="booking-strip" id="bookingStrip">
-          <img id="bsStripPoster" src="" alt="" class="bs-poster" />
-          <div class="bs-info">
-            <div class="bs-film" id="bsStripFilm"></div>
-            <div class="bs-meta" id="bsStripMeta"></div>
-          </div>
-          <div class="bs-seats">
-            <div class="bs-seat-list" id="bsStripSeats"></div>
-            <div class="bs-price"     id="bsStripPrice"></div>
+          <div class="step-line" id="sl3"></div>
+          <div class="step-item" id="si4">
+            <div class="step-dot">4</div>
+            <span>Data Pemesan</span>
           </div>
         </div>
 
-        <div class="bk-card">
-          <h3 class="bk-card-title">Data Pemesan</h3>
-          <form id="bookingForm" novalidate>
+        <div id="step1">
+          <div class="bk-card">
+            <h3 class="bk-card-title">Pilih Film</h3>
+            <div class="film-picker-grid" id="filmPickerGrid"></div>
+          </div>
+        </div>
 
-            <div class="form-group">
-              <label for="nama">Nama Lengkap <span class="required">*</span></label>
-              <input type="text" id="nama" placeholder="Masukkan nama lengkap" maxlength="60" />
-              <span class="error-msg" id="err-nama">Nama wajib diisi.</span>
+        <div id="step2">
+          <div class="bk-card bk-film-info" id="filmInfoCard2">
+            <img id="fiPoster2" src="" alt="" class="fi-poster" />
+            <div class="fi-body">
+              <h3 id="fiTitle2" class="fi-title"></h3>
+              <p id="fiGenre2" class="fi-genre"></p>
+              <p id="fiDurasi2" class="fi-durasi"></p>
             </div>
+            <button type="button" class="fi-ganti" id="btnGantiFilm">
+              <- Ganti Film
+            </button>
+          </div>
 
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" placeholder="contoh@email.com" readonly />
-              <span class="error-msg" id="err-email">Email tidak valid.</span>
+          <div class="bk-card">
+            <h3 class="bk-card-title">Pilih Bioskop</h3>
+            <div class="cinema-list" id="cinemaList"></div>
+          </div>
+
+          <div class="bk-card" id="dateCard">
+            <h3 class="bk-card-title">Pilih Tanggal</h3>
+            <div class="date-strip" id="dateStrip"></div>
+          </div>
+
+          <div class="bk-card" id="timeCard">
+            <h3 class="bk-card-title">Pilih Jam Tayang</h3>
+            <p class="bk-sub" id="timeCardSub"></p>
+            <div class="time-grid" id="timeGrid"></div>
+          </div>
+
+          <button type="button" class="btn-next" id="btnToSeats">
+            Pilih Kursi ->
+          </button>
+
+          <div id="debugSeatStep"></div>
+        </div>
+
+        <div id="step3">
+          <div class="bk-card bk-film-info" id="seatSummaryBar">
+            <img id="sSumPoster" src="" alt="" class="fi-poster" />
+            <div class="fi-body">
+              <h3 id="sSumFilm" class="fi-title"></h3>
+              <p id="sSumMeta" class="fi-genre"></p>
+              <p id="sSumCinema" class="fi-durasi"></p>
             </div>
+            <button type="button" class="fi-ganti" id="btnBackToSchedule">
+              <- Jadwal
+            </button>
+          </div>
 
-            <hr class="form-divider" />
-
-            <div class="price-preview">
-              <div>
-                <div class="label">Kursi dipilih: <strong id="selectedSeatNames">-</strong></div>
-                <div class="label" style="margin-top:4px">Harga per kursi: <strong id="pricePerSeat">-</strong></div>
+          <div class="bk-card seat-section">
+            <h3 class="bk-card-title">Pilih Kursi</h3>
+            <div class="screen-bar">
+              <span class="screen-label">LAYAR</span>
+            </div>
+            <div class="seat-grid-wrap">
+              <div class="seat-grid" id="seatGrid"></div>
+            </div>
+            <div class="seat-legend">
+              <div class="legend-item">
+                <div class="legend-dot ld-avail"></div>
+                Kosong
               </div>
-              <span class="total" id="totalHarga">Rp 0</span>
+              <div class="legend-item">
+                <div class="legend-dot ld-select"></div>
+                Dipilih
+              </div>
+              <div class="legend-item">
+                <div class="legend-dot ld-taken"></div>
+                Penuh
+              </div>
             </div>
+            <div class="seat-counter" id="seatCounter">Pilih kursi kamu</div>
+          </div>
 
-            <div class="form-actions">
-              <button type="button" class="btn-back" id="btnBackToSeats"><- Kursi</button>
-
-              <button type="submit" class="btn-submit">Konfirmasi Pemesanan -></button>
-            </div>
-
-          </form>
+          <button type="button" class="btn-next" id="btnToBookingForm">
+            Lanjut -> Data Pemesan
+          </button>
         </div>
 
+        <!-- STEP 4 - Data Pemesan -->
+        <div id="step4">
+          <div class="booking-strip" id="bookingStrip">
+            <img id="bsStripPoster" src="" alt="" class="bs-poster" />
+            <div class="bs-info">
+              <div class="bs-film" id="bsStripFilm"></div>
+              <div class="bs-meta" id="bsStripMeta"></div>
+            </div>
+            <div class="bs-seats">
+              <div class="bs-seat-list" id="bsStripSeats"></div>
+              <div class="bs-price" id="bsStripPrice"></div>
+            </div>
+          </div>
+
+          <div class="bk-card">
+            <h3 class="bk-card-title">Data Pemesan</h3>
+            <form id="bookingForm" novalidate>
+              <div class="form-group">
+                <label for="nama"
+                  >Nama Lengkap <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  id="nama"
+                  placeholder="Masukkan nama lengkap"
+                  maxlength="60"
+                />
+                <span class="error-msg" id="err-nama">Nama wajib diisi.</span>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="contoh@email.com"
+                  readonly
+                />
+                <span class="error-msg" id="err-email">Email tidak valid.</span>
+              </div>
+
+              <hr class="form-divider" />
+
+              <div class="price-preview">
+                <div>
+                  <div class="label">
+                    Kursi dipilih: <strong id="selectedSeatNames">-</strong>
+                  </div>
+                  <div class="label" style="margin-top: 4px">
+                    Harga per kursi: <strong id="pricePerSeat">-</strong>
+                  </div>
+                </div>
+                <span class="total" id="totalHarga">Rp 0</span>
+              </div>
+
+              <div class="form-actions">
+                <button type="button" class="btn-back" id="btnBackToSeats">
+                  <- Kursi
+                </button>
+
+                <button type="submit" class="btn-submit">
+                  Konfirmasi Pemesanan ->
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 CineGo. All rights reserved</p>
+      <p>
+        <a href="About-Us.html">About Us</a> |
+        <a href="Contact-Us.html">Contact Us</a> |
+        <a href="Trending.html">Trending</a>
+      </p>
+      <div class="arrow"><a href="#">^</a></div>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <div class="auth-modal-overlay" id="authRequiredOverlay"></div>
+    <div
+      class="auth-modal"
+      id="authRequiredModal"
+      role="dialog"
+      aria-modal="true"
+    >
+      <button
+        type="button"
+        class="auth-close"
+        id="btnCloseAuthRequired"
+        aria-label="Tutup"
+      >
+        x
+      </button>
+      <div class="auth-brand">
+        <img
+          src="Images/logo.png"
+          alt="CineGo Logo"
+          class="auth-brand-logo-img"
+        />
+      </div>
+      <p>Masuk atau daftar terlebih dahulu untuk melanjutkan.</p>
+      <div class="auth-tabs">
+        <button type="button" class="auth-tab-btn active" data-tab="login">
+          Masuk
+        </button>
+        <button type="button" class="auth-tab-btn" data-tab="daftar">
+          Daftar
+        </button>
       </div>
 
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2026 CineGo. All rights reserved</p>
-    <p>
-      <a href="About-Us.html">About Us</a> |
-      <a href="Contact-Us.html">Contact Us</a> |
-      <a href="Trending.html">Trending</a>
-    </p>
-    <div class="arrow"><a href="#">^</a></div>
-  </footer>
-
-  <div class="toast" id="toast"></div>
-
-  <div class="auth-modal-overlay" id="authRequiredOverlay"></div>
-  <div class="auth-modal" id="authRequiredModal" role="dialog" aria-modal="true">
-    <button type="button" class="auth-close" id="btnCloseAuthRequired" aria-label="Tutup">x</button>
-    <div class="auth-brand">
-      <span class="auth-brand-logo">C</span>
-      <span class="auth-brand-name">Login untuk Memesan</span>
-    </div>
-    <p>
-      Masuk atau daftar terlebih dahulu untuk melanjutkan.
-    </p>
-    <div class="auth-tabs">
-      <button type="button" class="auth-tab-btn active" data-tab="login">Masuk</button>
-      <button type="button" class="auth-tab-btn"        data-tab="daftar">Daftar</button>
-    </div>
-
-    <div class="auth-panel active" id="bkPanel-login">
-      <form id="bkLoginForm" novalidate>
-        <div class="form-group">
-          <label for="bkLoginEmail">Email</label>
-          <input type="email" id="bkLoginEmail" placeholder="contoh@email.com" autocomplete="email" />
-          <span class="error-msg" id="err-bkLoginEmail"></span>
-        </div>
-        <div class="form-group">
-          <label for="bkLoginPw">Password</label>
-          <div class="input-wrap">
-            <input type="password" id="bkLoginPw" placeholder="********" autocomplete="current-password" />
-            <button type="button" class="toggle-pw" id="toggleBkLoginPw">Show</button>
+      <div class="auth-panel active" id="bkPanel-login">
+        <form id="bkLoginForm" novalidate>
+          <div class="form-group">
+            <label for="bkLoginEmail">Email</label>
+            <input
+              type="email"
+              id="bkLoginEmail"
+              placeholder="contoh@email.com"
+              autocomplete="email"
+            />
+            <span class="error-msg" id="err-bkLoginEmail"></span>
           </div>
-          <span class="error-msg" id="err-bkLoginPw"></span>
-        </div>
-        <button type="submit" class="btn-auth-submit">Masuk &amp; Lanjut -></button>
-      </form>
-      <p class="auth-switch-text">Belum punya akun?
-        <a href="#" id="linkBkToDaftar">Daftar sekarang</a>
-      </p>
-    </div>
-
-    <div class="auth-panel" id="bkPanel-daftar">
-      <form id="bkRegisterForm" novalidate>
-        <div class="form-group">
-          <label for="bkRegNama">Nama Lengkap</label>
-          <input type="text" id="bkRegNama" placeholder="Nama lengkap Anda" maxlength="60" />
-          <span class="error-msg" id="err-bkRegNama"></span>
-        </div>
-        <div class="form-group">
-          <label for="bkRegEmail">Email</label>
-          <input type="email" id="bkRegEmail" placeholder="contoh@email.com" />
-          <span class="error-msg" id="err-bkRegEmail"></span>
-        </div>
-        <div class="form-group">
-          <label for="bkRegPw">Password</label>
-          <div class="input-wrap">
-            <input type="password" id="bkRegPw" placeholder="Min. 8 karakter" maxlength="64" />
-            <button type="button" class="toggle-pw" id="toggleBkRegPw">Show</button>
+          <div class="form-group">
+            <label for="bkLoginPw">Password</label>
+            <div class="input-wrap">
+              <input
+                type="password"
+                id="bkLoginPw"
+                placeholder="********"
+                autocomplete="current-password"
+              />
+              <button type="button" class="toggle-pw" id="toggleBkLoginPw">
+                Show
+              </button>
+            </div>
+            <span class="error-msg" id="err-bkLoginPw"></span>
           </div>
-          <span class="error-msg" id="err-bkRegPw"></span>
-        </div>
-        <div class="form-group">
-          <label for="bkRegPwConfirm">Konfirmasi Password</label>
-          <input type="password" id="bkRegPwConfirm" placeholder="Ulangi password" maxlength="64" />
-          <span class="error-msg" id="err-bkRegPwConfirm"></span>
-        </div>
-        <button type="submit" class="btn-auth-submit">Daftar &amp; Lanjut -></button>
-      </form>
-      <p class="auth-switch-text">Sudah punya akun?
-        <a href="#" id="linkBkToLogin">Masuk di sini</a>
-      </p>
-    </div>
-  </div>
+          <button type="submit" class="btn-auth-submit">
+            Masuk &amp; Lanjut ->
+          </button>
+        </form>
+        <p class="auth-switch-text">
+          Belum punya akun?
+          <a href="#" id="linkBkToDaftar">Daftar sekarang</a>
+        </p>
+      </div>
 
-  <script src="js/auth.js"></script>
-  <script src="js/Booking.js"></script>
-</body>
+      <div class="auth-panel" id="bkPanel-daftar">
+        <form id="bkRegisterForm" novalidate>
+          <div class="form-group">
+            <label for="bkRegNama">Nama Lengkap</label>
+            <input
+              type="text"
+              id="bkRegNama"
+              placeholder="Nama lengkap Anda"
+              maxlength="60"
+            />
+            <span class="error-msg" id="err-bkRegNama"></span>
+          </div>
+          <div class="form-group">
+            <label for="bkRegEmail">Email</label>
+            <input
+              type="email"
+              id="bkRegEmail"
+              placeholder="contoh@email.com"
+            />
+            <span class="error-msg" id="err-bkRegEmail"></span>
+          </div>
+          <div class="form-group">
+            <label for="bkRegPw">Password</label>
+            <div class="input-wrap">
+              <input
+                type="password"
+                id="bkRegPw"
+                placeholder="Min. 8 karakter"
+                maxlength="64"
+              />
+              <button type="button" class="toggle-pw" id="toggleBkRegPw">
+                Show
+              </button>
+            </div>
+            <span class="error-msg" id="err-bkRegPw"></span>
+          </div>
+          <div class="form-group">
+            <label for="bkRegPwConfirm">Konfirmasi Password</label>
+            <input
+              type="password"
+              id="bkRegPwConfirm"
+              placeholder="Ulangi password"
+              maxlength="64"
+            />
+            <span class="error-msg" id="err-bkRegPwConfirm"></span>
+          </div>
+          <button type="submit" class="btn-auth-submit">
+            Daftar &amp; Lanjut ->
+          </button>
+        </form>
+        <p class="auth-switch-text">
+          Sudah punya akun?
+          <a href="#" id="linkBkToLogin">Masuk di sini</a>
+        </p>
+      </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/Booking.js"></script>
+  </body>
 </html>

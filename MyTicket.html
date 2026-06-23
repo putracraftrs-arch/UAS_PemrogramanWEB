@@ -1,181 +1,259 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyTicket - CineGo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MyTicket - CineGo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-
-<body>
-
-  <header class="navbar">
-    <div class="container navbar-inner">
-      <input type="checkbox" id="navToggle" class="nav-Toggle">
-      <label for="navToggle" class="navToggleMenu">
-        <span></span><span></span><span></span>
-      </label>
-      <a href="Home.html" class="logo-link">
-        <img src="Images/logo.png" alt="CineGo Logo" class="logo" />
-      </a>
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="Home.html">Home</a></li>
-          <li><a href="Schedule.html">Schedule</a></li>
-          <li><a href="MyTicket.html" class="active">MyTicket</a></li>
-          <li><a href="MyAccount.html">MyAccount</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-
-    <section class="auth-gate-section" id="authGate" style="display:none">
-      <div class="auth-gate-hero">
-        <div class="auth-gate-hero-icon">C</div>
-        <h1 class="auth-gate-hero-title">Tiket Kamu Ada di Sini</h1>
-        <p class="auth-gate-hero-sub">Masuk untuk melihat riwayat pemesanan tiket dan mengelola pesanan Anda.</p>
-        <div class="auth-gate-features">
-          <div class="agf-item"><span class="agf-icon">*</span><span class="agf-text">Riwayat Tiket</span></div>
-          <div class="agf-item"><span class="agf-icon">*</span><span class="agf-text">Cari Pesanan</span></div>
-          <div class="agf-item"><span class="agf-icon">*</span><span class="agf-text">Kelola Tiket</span></div>
-          <div class="agf-item"><span class="agf-icon">*</span><span class="agf-text">Akses Cepat</span></div>
-        </div>
+  <body>
+    <header class="navbar">
+      <div class="container navbar-inner">
+        <input type="checkbox" id="navToggle" class="nav-Toggle" />
+        <label for="navToggle" class="navToggleMenu">
+          <span></span><span></span><span></span>
+        </label>
+        <a href="Home.html" class="logo-link">
+          <img src="Images/logo.png" alt="CineGo Logo" class="logo" />
+        </a>
+        <nav>
+          <ul class="nav-menu">
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="Schedule.html">Schedule</a></li>
+            <li><a href="MyTicket.html" class="active">MyTicket</a></li>
+            <li><a href="MyAccount.html">MyAccount</a></li>
+          </ul>
+        </nav>
       </div>
-      <div class="auth-gate-card">
-        <div class="auth-tabs">
-          <button class="auth-tab-btn active" data-tab="login">Masuk</button>
-          <button class="auth-tab-btn" data-tab="daftar">Daftar Gratis</button>
-        </div>
-        <!-- Panel Login -->
-        <div class="auth-panel active" id="authPanel-login">
-          <form id="gateLoginForm" novalidate>
-            <div class="form-group">
-              <label for="gLoginEmail">Email</label>
-              <input type="email" id="gLoginEmail" placeholder="contoh@email.com" autocomplete="email" />
-              <span class="error-msg" id="err-gLoginEmail"></span>
+    </header>
+
+    <main>
+      <section class="auth-gate-section" id="authGate" style="display: none">
+        <div class="auth-gate-hero">
+          <div class="auth-gate-hero-icon">
+            <img
+              src="Images/logo.png"
+              alt="CineGo Logo"
+              class="auth-gate-hero-icon-img"
+            />
+          </div>
+          <h1 class="auth-gate-hero-title">Tiket Kamu Ada di Sini</h1>
+          <p class="auth-gate-hero-sub">
+            Masuk untuk melihat riwayat pemesanan tiket dan mengelola pesanan
+            Anda.
+          </p>
+          <div class="auth-gate-features">
+            <div class="agf-item">
+              <span class="agf-icon">*</span
+              ><span class="agf-text">Riwayat Tiket</span>
             </div>
-            <div class="form-group">
-              <label for="gLoginPw">Password</label>
-              <div class="input-wrap">
-                <input type="password" id="gLoginPw" placeholder="********" autocomplete="current-password" />
-                <button type="button" class="toggle-pw" id="toggleGLoginPw">Show</button>
+            <div class="agf-item">
+              <span class="agf-icon">*</span
+              ><span class="agf-text">Cari Pesanan</span>
+            </div>
+            <div class="agf-item">
+              <span class="agf-icon">*</span
+              ><span class="agf-text">Kelola Tiket</span>
+            </div>
+            <div class="agf-item">
+              <span class="agf-icon">*</span
+              ><span class="agf-text">Akses Cepat</span>
+            </div>
+          </div>
+        </div>
+        <div class="auth-gate-card">
+          <div class="auth-tabs">
+            <button class="auth-tab-btn active" data-tab="login">Masuk</button>
+            <button class="auth-tab-btn" data-tab="daftar">
+              Daftar Gratis
+            </button>
+          </div>
+          <!-- Panel Login -->
+          <div class="auth-panel active" id="authPanel-login">
+            <form id="gateLoginForm" novalidate>
+              <div class="form-group">
+                <label for="gLoginEmail">Email</label>
+                <input
+                  type="email"
+                  id="gLoginEmail"
+                  placeholder="contoh@email.com"
+                  autocomplete="email"
+                />
+                <span class="error-msg" id="err-gLoginEmail"></span>
               </div>
-              <span class="error-msg" id="err-gLoginPw"></span>
-            </div>
-            <button type="submit" class="btn-auth-submit">Masuk -> Lihat Tiket</button>
-          </form>
-          <p class="auth-switch-text">Belum punya akun? <a href="#" id="gateLinkToDaftar">Daftar gratis sekarang</a></p>
-        </div>
-
-        <div class="auth-panel" id="authPanel-daftar">
-          <form id="gateRegisterForm" novalidate>
-            <div class="form-group">
-              <label for="gRegNama">Nama Lengkap</label>
-              <input type="text" id="gRegNama" placeholder="Nama lengkap Anda" maxlength="60" />
-              <span class="error-msg" id="err-gRegNama"></span>
-            </div>
-            <div class="form-group">
-              <label for="gRegEmail">Email</label>
-              <input type="email" id="gRegEmail" placeholder="contoh@email.com" autocomplete="email" />
-              <span class="error-msg" id="err-gRegEmail"></span>
-            </div>
-            <div class="form-group">
-              <label for="gRegPw">Password</label>
-              <div class="input-wrap">
-                <input type="password" id="gRegPw" placeholder="Min. 8 karakter" maxlength="64" />
-                <button type="button" class="toggle-pw" id="toggleGRegPw">Show</button>
+              <div class="form-group">
+                <label for="gLoginPw">Password</label>
+                <div class="input-wrap">
+                  <input
+                    type="password"
+                    id="gLoginPw"
+                    placeholder="********"
+                    autocomplete="current-password"
+                  />
+                  <button type="button" class="toggle-pw" id="toggleGLoginPw">
+                    Show
+                  </button>
+                </div>
+                <span class="error-msg" id="err-gLoginPw"></span>
               </div>
-              <span class="error-msg" id="err-gRegPw"></span>
-            </div>
-            <div class="form-group">
-              <label for="gRegPwConfirm">Konfirmasi Password</label>
-              <input type="password" id="gRegPwConfirm" placeholder="Ulangi password" maxlength="64" />
-              <span class="error-msg" id="err-gRegPwConfirm"></span>
-            </div>
-            <button type="submit" class="btn-auth-submit">Buat Akun Gratis -></button>
-          </form>
-          <p class="auth-switch-text">Sudah punya akun? <a href="#" id="gateLinkToLogin">Masuk di sini</a></p>
+              <button type="submit" class="btn-auth-submit">
+                Masuk -> Lihat Tiket
+              </button>
+            </form>
+            <p class="auth-switch-text">
+              Belum punya akun?
+              <a href="#" id="gateLinkToDaftar">Daftar gratis sekarang</a>
+            </p>
+          </div>
+
+          <div class="auth-panel" id="authPanel-daftar">
+            <form id="gateRegisterForm" novalidate>
+              <div class="form-group">
+                <label for="gRegNama">Nama Lengkap</label>
+                <input
+                  type="text"
+                  id="gRegNama"
+                  placeholder="Nama lengkap Anda"
+                  maxlength="60"
+                />
+                <span class="error-msg" id="err-gRegNama"></span>
+              </div>
+              <div class="form-group">
+                <label for="gRegEmail">Email</label>
+                <input
+                  type="email"
+                  id="gRegEmail"
+                  placeholder="contoh@email.com"
+                  autocomplete="email"
+                />
+                <span class="error-msg" id="err-gRegEmail"></span>
+              </div>
+              <div class="form-group">
+                <label for="gRegPw">Password</label>
+                <div class="input-wrap">
+                  <input
+                    type="password"
+                    id="gRegPw"
+                    placeholder="Min. 8 karakter"
+                    maxlength="64"
+                  />
+                  <button type="button" class="toggle-pw" id="toggleGRegPw">
+                    Show
+                  </button>
+                </div>
+                <span class="error-msg" id="err-gRegPw"></span>
+              </div>
+              <div class="form-group">
+                <label for="gRegPwConfirm">Konfirmasi Password</label>
+                <input
+                  type="password"
+                  id="gRegPwConfirm"
+                  placeholder="Ulangi password"
+                  maxlength="64"
+                />
+                <span class="error-msg" id="err-gRegPwConfirm"></span>
+              </div>
+              <button type="submit" class="btn-auth-submit">
+                Buat Akun Gratis ->
+              </button>
+            </form>
+            <p class="auth-switch-text">
+              Sudah punya akun?
+              <a href="#" id="gateLinkToLogin">Masuk di sini</a>
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="ticket-section" id="ticketContent" style="display:none">
-
-      <div class="ticket-topbar">
-        <div>
-          <h2 class="section-title">Tiket Saya</h2>
-          <p class="section-desc">Riwayat pemesanan tiket Anda.</p>
+      <section class="ticket-section" id="ticketContent" style="display: none">
+        <div class="ticket-topbar">
+          <div>
+            <h2 class="section-title">Tiket Saya</h2>
+            <p class="section-desc">Riwayat pemesanan tiket Anda.</p>
+          </div>
+          <div class="right">
+            <input
+              type="text"
+              class="search-input"
+              id="searchInput"
+              placeholder="Cari film atau nama..."
+            />
+            <button class="btn-hapus-semua" id="btnHapusSemua">
+              Hapus Semua
+            </button>
+            <a href="Booking.html" class="btn-tambah">+ Pesan Tiket</a>
+          </div>
         </div>
-        <div class="right">
-          <input type="text" class="search-input" id="searchInput" placeholder="Cari film atau nama..." />
-          <button class="btn-hapus-semua" id="btnHapusSemua">Hapus Semua</button>
-          <a href="Booking.html" class="btn-tambah">+ Pesan Tiket</a>
+
+        <div class="stats-bar" id="statsBar"></div>
+
+        <div class="table-wrapper" id="tableWrapper">
+          <table id="ticketTable">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nama</th>
+                <th>Film</th>
+                <th>Tanggal</th>
+                <th>Jam</th>
+                <th>Bioskop</th>
+                <th>Kursi</th>
+                <th>Tipe</th>
+                <th>Jml</th>
+                <th>Total</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="ticketBody"></tbody>
+          </table>
         </div>
-      </div>
 
-      <div class="stats-bar" id="statsBar"></div>
+        <div class="empty-state" id="emptyState">
+          <div class="icon">
+            <img
+              src="Images/logo.png"
+              alt="CineGo Logo"
+              class="empty-state-logo"
+            />
+          </div>
+          <h3>Belum ada tiket dipesan</h3>
+          <p>Yuk pesan tiket film favoritmu sekarang!</p>
+          <a href="Booking.html" class="btn-tambah">Pesan Tiket Sekarang</a>
+        </div>
+      </section>
+    </main>
 
-      <div class="table-wrapper" id="tableWrapper">
-        <table id="ticketTable">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Nama</th>
-              <th>Film</th>
-              <th>Tanggal</th>
-              <th>Jam</th>
-              <th>Bioskop</th>
-              <th>Kursi</th>
-              <th>Tipe</th>
-              <th>Jml</th>
-              <th>Total</th>
-              <th>Aksi</th>
-            </tr>
-          </thead>
-          <tbody id="ticketBody"></tbody>
-        </table>
-      </div>
+    <footer>
+      <p>&copy; 2026 CineGo. All rights reserved</p>
+      <p>
+        <a href="About-Us.html">About Us</a> |
+        <a href="Contact-Us.html">Contact Us</a> |
+        <a href="Trending.html">Trending</a>
+      </p>
+      <div class="arrow"><a href="#">^</a></div>
+    </footer>
 
-      <div class="empty-state" id="emptyState">
-        <div class="icon">C</div>
-        <h3>Belum ada tiket dipesan</h3>
-        <p>Yuk pesan tiket film favoritmu sekarang!</p>
-        <a href="Booking.html" class="btn-tambah">Pesan Tiket Sekarang</a>
-      </div>
-
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2026 CineGo. All rights reserved</p>
-    <p>
-      <a href="About-Us.html">About Us</a> |
-      <a href="Contact-Us.html">Contact Us</a> |
-      <a href="Trending.html">Trending</a>
-    </p>
-    <div class="arrow"><a href="#">^</a></div>
-  </footer>
-
-  <div class="modal-overlay" id="modalOverlay">
-    <div class="modal-box">
-      <div class="modal-icon">!</div>
-      <h3 id="modalTitle">Hapus Tiket?</h3>
-      <p id="modalDesc">Tindakan ini tidak dapat dibatalkan.</p>
-      <div class="modal-actions">
-        <button class="btn-cancel-modal" id="btnCancelModal">Batal</button>
-        <button class="btn-confirm-modal" id="btnConfirmModal">Hapus</button>
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal-box">
+        <div class="modal-icon">!</div>
+        <h3 id="modalTitle">Hapus Tiket?</h3>
+        <p id="modalDesc">Tindakan ini tidak dapat dibatalkan.</p>
+        <div class="modal-actions">
+          <button class="btn-cancel-modal" id="btnCancelModal">Batal</button>
+          <button class="btn-confirm-modal" id="btnConfirmModal">Hapus</button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="toast" id="toast"></div>
-  <script src="js/auth.js"></script>
-  <script src="js/my-ticket.js"></script>
-</body>
+    <div class="toast" id="toast"></div>
+    <script src="js/auth.js"></script>
+    <script src="js/my-ticket.js"></script>
+  </body>
 </html>
