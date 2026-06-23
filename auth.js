@@ -322,6 +322,3 @@ const AUTH = (() => {
 })();
 
 window.AUTH = AUTH;
-
-
-//tes commit
