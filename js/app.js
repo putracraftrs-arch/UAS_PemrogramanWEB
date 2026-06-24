@@ -1,22 +1,10 @@
-/* =============================================================
-   app.js — CineGo
-   Gabungan semua modul JS. Urutan:
-     1. AUTH        (semua halaman)
-     2. Schedule    (Schedule.html)
-     3. Booking     (Booking.html)
-     4. Trending    (Trending.html)
-     5. MyTicket    (MyTicket.html)
-     6. MyAccount   (MyAccount.html)
-     7. Contact-Us  (Contact-Us.html)
-   ============================================================= */
 
-/* ─────────────────────────────────────────────────────────────
-   1. AUTH  ·  semua halaman
-   ───────────────────────────────────────────────────────────── */
+
+
 const AUTH = (() => {
-  // ============================================================
-  // AUTH MODULE (register/login/logout & auth UI)
-  // ============================================================
+  
+  
+  
 
   const KEY_USERS = "cinego_users";
   const KEY_SESSION = "cinego_session";
@@ -397,12 +385,10 @@ const AUTH = (() => {
 
 window.AUTH = AUTH;
 
-/* =============================================================
-   SCHEDULE MODULE (Schedule.html)
-   ============================================================= */
+
 document.addEventListener("DOMContentLoaded", () => {
   const grid = document.getElementById("scheduleGrid");
-  if (!grid) return; // bukan halaman Schedule
+  if (!grid) return; 
 
   const JADWAL = [
     {
@@ -495,9 +481,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/* =============================================================
-   BOOKING MODULE (Booking.html)
-   ============================================================= */
+
 (function () {
   "use strict";
 
@@ -1409,7 +1393,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.cinegoGoToSeats = goToSeatStep;
 
   function initBooking() {
-    if (!document.getElementById("filmPickerGrid")) return; // bukan halaman Booking
+    if (!document.getElementById("filmPickerGrid")) return; 
 
     document
       .getElementById("btnGantiFilm")
@@ -1713,11 +1697,9 @@ document.addEventListener("DOMContentLoaded", () => {
   else initBooking();
 })();
 
-/* =============================================================
-   TRENDING MODULE (Trending.html)
-   ============================================================= */
+
 document.addEventListener("DOMContentLoaded", () => {
-  if (!document.getElementById("trendContainer")) return; // bukan halaman Trending
+  if (!document.getElementById("trendContainer")) return; 
 
   const FILMS_TR = [
     {
@@ -2229,11 +2211,9 @@ document.addEventListener("DOMContentLoaded", () => {
   render();
 });
 
-/* =============================================================
-   MY TICKET MODULE (MyTicket.html)
-   ============================================================= */
+
 document.addEventListener("DOMContentLoaded", () => {
-  if (!document.getElementById("ticketTable")) return; // bukan halaman MyTicket
+  if (!document.getElementById("ticketTable")) return; 
 
   const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -2548,11 +2528,9 @@ document.addEventListener("DOMContentLoaded", () => {
   renderTable();
 });
 
-/* =============================================================
-   MY ACCOUNT MODULE (MyAccount.html)
-   ============================================================= */
+
 document.addEventListener("DOMContentLoaded", () => {
-  if (!document.getElementById("accountContent")) return; // bukan halaman MyAccount
+  if (!document.getElementById("accountContent")) return; 
 
   const KEY_TIKET_MA = "cinego_tiket";
   const EMAIL_RE_MA = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -2932,11 +2910,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-/* =============================================================
-   CONTACT US MODULE (Contact-Us.html)
-   ============================================================= */
+
 document.addEventListener("DOMContentLoaded", () => {
-  if (!document.getElementById("contactForm")) return; // bukan halaman Contact Us
+  if (!document.getElementById("contactForm")) return; 
 
   const pesanEl = document.getElementById("cnPesan");
   const charEl = document.getElementById("charCount");
