@@ -77,7 +77,7 @@
               ></span>
             </div>
 
-            <div style="display: flex; align-items: center; gap: 8px">
+            <div class="trend-viewwrap">
               <div class="view-btns" aria-label="Mode tampilan">
                 <button
                   class="view-btn active"
@@ -112,65 +112,62 @@
       </section>
     </main>
 
-    <div
-      class="film-modal-overlay"
-      id="filmModalOverlay"
-      aria-hidden="true"
-    >
-    <section
-      class="film-modal"
-      id="filmModal"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Detail film"
-    >
-      <button
-        class="modal-close-btn"
-        id="btnModalClose"
-        aria-label="Tutup"
-        type="button"
+    <div class="film-modal-overlay" id="filmModalOverlay" aria-hidden="true">
+      <section
+        class="film-modal"
+        id="filmModal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Detail film"
       >
-        ✕
-      </button>
+        <button
+          class="modal-close-btn"
+          id="btnModalClose"
+          aria-label="Tutup"
+          type="button"
+        >
+          ✕
+        </button>
 
-      <div class="modal-body">
-        <div class="modal-hero-row">
-          <img id="mPoster" class="modal-poster" src="" alt="" />
+        <div class="modal-body">
+          <div class="modal-hero-row">
+            <img id="mPoster" class="modal-poster" src="" alt="" />
 
-          <div class="modal-header">
-            <h2 class="modal-film-title" id="mTitle"></h2>
-            <div class="modal-rating-row" id="mRating"></div>
-            <div class="modal-pills" id="mPills"></div>
+            <div class="modal-header">
+              <h2 class="modal-film-title" id="mTitle"></h2>
+              <div class="modal-rating-row" id="mRating"></div>
+              <div class="modal-pills" id="mPills"></div>
+            </div>
+          </div>
+
+          <h3 class="modal-section-lbl">Sinopsis</h3>
+          <p class="modal-sinopsis" id="mSinopsis"></p>
+
+          <h3 class="modal-section-lbl">Info Film</h3>
+          <div class="modal-info-grid" id="mInfoGrid"></div>
+
+          <div class="modal-vote-bar">
+            <div>
+              <div class="modal-vote-big" id="mVoteNum">0</div>
+              <div class="modal-vote-sub">vote pengguna minggu ini</div>
+            </div>
+            <button class="btn-modal-vote" id="btnModalVote" type="button">
+              🔥 Vote Film Ini
+            </button>
+          </div>
+
+          <div class="modal-action-row">
+            <button class="btn-modal-wl" id="btnModalWl" type="button">
+              🤍 Simpan ke Wishlist
+            </button>
+            <a class="btn-modal-book" id="btnModalBook" href="#"
+              >🎬 Pesan Tiket</a
+            >
           </div>
         </div>
-
-        <h3 class="modal-section-lbl">Sinopsis</h3>
-        <p class="modal-sinopsis" id="mSinopsis"></p>
-
-        <h3 class="modal-section-lbl">Info Film</h3>
-        <div class="modal-info-grid" id="mInfoGrid"></div>
-
-        <div class="modal-vote-bar">
-          <div>
-            <div class="modal-vote-big" id="mVoteNum">0</div>
-            <div class="modal-vote-sub">vote pengguna minggu ini</div>
-          </div>
-          <button class="btn-modal-vote" id="btnModalVote" type="button">
-            🔥 Vote Film Ini
-          </button>
-        </div>
-
-        <div class="modal-action-row">
-          <button class="btn-modal-wl" id="btnModalWl" type="button">
-            🤍 Simpan ke Wishlist
-          </button>
-          <a class="btn-modal-book" id="btnModalBook" href="#"
-            >🎬 Pesan Tiket</a
-          >
-        </div>
-      </div>
-    </section>
-    </div><!-- end film-modal-overlay -->
+      </section>
+    </div>
+    <!-- end film-modal-overlay -->
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
