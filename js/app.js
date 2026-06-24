@@ -1600,7 +1600,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
       closeAuthRequired();
-      goToSeatStep();
+      goToBookingForm();
     });
 
     document
@@ -1648,7 +1648,7 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
         closeAuthRequired();
-        goToSeatStep();
+        goToBookingForm();
       });
 
     renderFilmPicker();
