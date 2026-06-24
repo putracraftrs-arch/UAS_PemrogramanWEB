@@ -20,10 +20,12 @@
         <label for="navToggle" class="navToggleMenu">
           <span></span><span></span><span></span>
         </label>
+
         <a href="Home.html" class="logo-link">
           <img src="Images/logo.png" alt="CineGo Logo" class="logo" />
         </a>
-        <nav>
+
+        <nav aria-label="Navigasi utama">
           <ul class="nav-menu">
             <li><a href="Home.html">Home</a></li>
             <li><a href="Schedule.html">Schedule</a></li>
@@ -35,7 +37,12 @@
     </header>
 
     <main>
-      <section class="auth-gate-section" id="authGate" style="display: none">
+      <section
+        class="auth-gate-section"
+        id="authGate"
+        style="display: none"
+        aria-labelledby="myticket-auth-title"
+      >
         <div class="auth-gate-hero">
           <div class="auth-gate-hero-icon">
             <img
@@ -44,11 +51,14 @@
               class="auth-gate-hero-icon-img"
             />
           </div>
-          <h1 class="auth-gate-hero-title">Tiket Kamu Ada di Sini</h1>
+          <h1 class="auth-gate-hero-title" id="myticket-auth-title">
+            Tiket Kamu Ada di Sini
+          </h1>
           <p class="auth-gate-hero-sub">
             Masuk untuk melihat riwayat pemesanan tiket dan mengelola pesanan
             Anda.
           </p>
+
           <div class="auth-gate-features">
             <div class="agf-item">
               <span class="agf-icon">*</span
@@ -68,15 +78,18 @@
             </div>
           </div>
         </div>
+
         <div class="auth-gate-card">
-          <div class="auth-tabs">
-            <button class="auth-tab-btn active" data-tab="login">Masuk</button>
-            <button class="auth-tab-btn" data-tab="daftar">
+          <div class="auth-tabs" role="tablist" aria-label="Tab autentikasi">
+            <button class="auth-tab-btn active" data-tab="login" type="button">
+              Masuk
+            </button>
+            <button class="auth-tab-btn" data-tab="daftar" type="button">
               Daftar Gratis
             </button>
           </div>
-          <!-- Panel Login -->
-          <div class="auth-panel active" id="authPanel-login">
+
+          <div class="auth-panel active" id="authPanel-login" role="tabpanel">
             <form id="gateLoginForm" novalidate>
               <div class="form-group">
                 <label for="gLoginEmail">Email</label>
@@ -107,13 +120,14 @@
                 Masuk -> Lihat Tiket
               </button>
             </form>
+
             <p class="auth-switch-text">
               Belum punya akun?
               <a href="#" id="gateLinkToDaftar">Daftar gratis sekarang</a>
             </p>
           </div>
 
-          <div class="auth-panel" id="authPanel-daftar">
+          <div class="auth-panel" id="authPanel-daftar" role="tabpanel">
             <form id="gateRegisterForm" novalidate>
               <div class="form-group">
                 <label for="gRegNama">Nama Lengkap</label>
@@ -164,6 +178,7 @@
                 Buat Akun Gratis ->
               </button>
             </form>
+
             <p class="auth-switch-text">
               Sudah punya akun?
               <a href="#" id="gateLinkToLogin">Masuk di sini</a>
@@ -172,29 +187,44 @@
         </div>
       </section>
 
-      <section class="ticket-section" id="ticketContent" style="display: none">
+      <section
+        class="ticket-section"
+        id="ticketContent"
+        style="display: none"
+        aria-labelledby="myticket-title"
+      >
         <div class="ticket-topbar">
           <div>
-            <h2 class="section-title">Tiket Saya</h2>
+            <h1 class="section-title" id="myticket-title">Tiket Saya</h1>
             <p class="section-desc">Riwayat pemesanan tiket Anda.</p>
           </div>
-          <div class="right">
+
+          <div class="right" aria-label="Aksi tiket">
+            <label for="searchInput" class="sr-only">Cari tiket</label>
             <input
               type="text"
               class="search-input"
               id="searchInput"
               placeholder="Cari film atau nama..."
             />
-            <button class="btn-hapus-semua" id="btnHapusSemua">
+            <button class="btn-hapus-semua" id="btnHapusSemua" type="button">
               Hapus Semua
             </button>
             <a href="Booking.html" class="btn-tambah">+ Pesan Tiket</a>
           </div>
         </div>
 
-        <div class="stats-bar" id="statsBar"></div>
+        <section
+          class="stats-bar"
+          id="statsBar"
+          aria-label="Statistik tiket"
+        ></section>
 
-        <div class="table-wrapper" id="tableWrapper">
+        <section
+          class="table-wrapper"
+          id="tableWrapper"
+          aria-label="Tabel tiket"
+        >
           <table id="ticketTable">
             <thead>
               <tr>
@@ -213,7 +243,7 @@
             </thead>
             <tbody id="ticketBody"></tbody>
           </table>
-        </div>
+        </section>
 
         <div class="empty-state" id="emptyState">
           <div class="icon">
@@ -223,12 +253,35 @@
               class="empty-state-logo"
             />
           </div>
-          <h3>Belum ada tiket dipesan</h3>
+          <h2>Belum ada tiket dipesan</h2>
           <p>Yuk pesan tiket film favoritmu sekarang!</p>
           <a href="Booking.html" class="btn-tambah">Pesan Tiket Sekarang</a>
         </div>
       </section>
     </main>
+
+    <section
+      class="modal-overlay"
+      id="modalOverlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Konfirmasi hapus"
+      style="display: none"
+    >
+      <div class="modal-box">
+        <div class="modal-icon">!</div>
+        <h2 id="modalTitle">Hapus Tiket?</h2>
+        <p id="modalDesc">Tindakan ini tidak dapat dibatalkan.</p>
+        <div class="modal-actions">
+          <button class="btn-cancel-modal" id="btnCancelModal" type="button">
+            Batal
+          </button>
+          <button class="btn-confirm-modal" id="btnConfirmModal" type="button">
+            Hapus
+          </button>
+        </div>
+      </div>
+    </section>
 
     <footer>
       <p>&copy; 2026 CineGo. All rights reserved</p>
@@ -240,20 +293,7 @@
       <div class="arrow"><a href="#">^</a></div>
     </footer>
 
-    <div class="modal-overlay" id="modalOverlay">
-      <div class="modal-box">
-        <div class="modal-icon">!</div>
-        <h3 id="modalTitle">Hapus Tiket?</h3>
-        <p id="modalDesc">Tindakan ini tidak dapat dibatalkan.</p>
-        <div class="modal-actions">
-          <button class="btn-cancel-modal" id="btnCancelModal">Batal</button>
-          <button class="btn-confirm-modal" id="btnConfirmModal">Hapus</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="toast" id="toast"></div>
-  <script src="js/app.js"></script>
-
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="js/app.js"></script>
   </body>
 </html>

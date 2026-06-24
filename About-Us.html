@@ -1,108 +1,108 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - CineGo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us - CineGo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css" />
-</head>
+  <body>
+    <header class="navbar">
+      <div class="container navbar-inner">
+        <input type="checkbox" id="navToggle" class="nav-Toggle" />
+        <label for="navToggle" class="navToggleMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
 
-<body>
+        <a href="Home.html" class="logo-link">
+          <img src="Images/logo.png" alt="CineGo Logo" class="logo" />
+        </a>
 
-  <header class="navbar">
-    <div class="container navbar-inner">
-      <input type="checkbox" id="navToggle" class="nav-Toggle">
-      <label for="navToggle" class="navToggleMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
-      <a href="Home.html" class="logo-link">
-        <img src="Images/logo.png" alt="CineGo Logo" class="logo" />
-      </a>
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="Home.html">Home</a></li>
-          <li><a href="Schedule.html">Schedule</a></li>
-          <li><a href="MyTicket.html">MyTicket</a></li>
-          <li><a href="MyAccount.html">MyAccount</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-
-    <section class="about-section">
-      <div class="about-card">
-        <h2 class="section-title">Tentang Kami</h2>
-        <p>
-          <strong>CineGo</strong> adalah platform pemesanan tiket bioskop online yang dirancang untuk
-          memberikan kemudahan kepada pengguna dalam memilih film, jadwal tayang,
-          dan tempat duduk secara praktis.
-        </p>
-        <p>
-          Kami berkomitmen untuk menghadirkan pengalaman menonton yang lebih nyaman dan efisien,
-          tanpa perlu antre di loket. Dengan antarmuka yang sederhana dan responsif, CineGo dapat
-          diakses kapan saja dan di mana saja.
-        </p>
+        <nav aria-label="Navigasi utama">
+          <ul class="nav-menu">
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="Schedule.html">Schedule</a></li>
+            <li><a href="MyTicket.html">MyTicket</a></li>
+            <li><a href="MyAccount.html">MyAccount</a></li>
+          </ul>
+        </nav>
       </div>
-    </section>
+    </header>
 
-    <section class="about-section">
-      <h3>Visi</h3>
+    <main>
+      <section class="about-section" aria-labelledby="about-title">
+        <div class="about-card">
+          <h1 id="about-title" class="section-title">Tentang Kami</h1>
+          <p>
+            <strong>CineGo</strong> adalah platform pemesanan tiket bioskop
+            online yang dirancang untuk memberikan kemudahan kepada pengguna
+            dalam memilih film, jadwal tayang, dan tempat duduk secara praktis.
+          </p>
+          <p>
+            Kami berkomitmen untuk menghadirkan pengalaman menonton yang lebih
+            nyaman dan efisien, tanpa perlu antre di loket. Dengan antarmuka
+            yang sederhana dan responsif, CineGo dapat diakses kapan saja dan di
+            mana saja.
+          </p>
+        </div>
+      </section>
+
+      <section class="about-section" aria-labelledby="vision-title">
+        <h2 id="vision-title">Visi</h2>
+        <p>
+          Menjadi platform pemesanan tiket bioskop terpercaya yang memberikan
+          pengalaman terbaik bagi pecinta film di Indonesia.
+        </p>
+      </section>
+
+      <section class="about-section" aria-labelledby="mission-title">
+        <h2 id="mission-title">Misi</h2>
+        <ul>
+          <li>Menyediakan layanan pemesanan tiket yang cepat dan mudah.</li>
+          <li>Memberikan informasi jadwal film yang akurat dan terkini.</li>
+          <li>Meningkatkan kenyamanan pengguna dalam memilih tempat duduk.</li>
+          <li>Menghadirkan pengalaman digital yang aman dan terpercaya.</li>
+        </ul>
+      </section>
+
+      <section class="about-section" aria-labelledby="team-title">
+        <h2 id="team-title">Tim Kami</h2>
+        <p>
+          CineGo merupakan proyek yang dikembangkan oleh mahasiswa Mikroskil
+          sebagai bagian dari pengembangan keterampilan di bidang teknologi
+          informasi, dengan fokus pada pembuatan sistem pemesanan tiket yang
+          efisien dan user-friendly.
+        </p>
+      </section>
+
+      <section class="about-section" aria-labelledby="contact-title">
+        <h2 id="contact-title">Hubungi Kami</h2>
+        <p>
+          Punya pertanyaan atau masukan? Kunjungi halaman
+          <a href="Contact-Us.html">Contact Us</a> kami.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 CineGo. All rights reserved</p>
       <p>
-        Menjadi platform pemesanan tiket bioskop terpercaya yang memberikan pengalaman terbaik
-        bagi pecinta film di Indonesia.
+        <a href="About-Us.html" class="active">About Us</a> |
+        <a href="Contact-Us.html">Contact Us</a> |
+        <a href="Trending.html">Trending</a>
       </p>
-    </section>
+      <div class="arrow"><a href="#">^</a></div>
+    </footer>
 
-    <section class="about-section">
-      <h3>Misi</h3>
-      <ul>
-        <li>Menyediakan layanan pemesanan tiket yang cepat dan mudah.</li>
-        <li>Memberikan informasi jadwal film yang akurat dan terkini.</li>
-        <li>Meningkatkan kenyamanan pengguna dalam memilih tempat duduk.</li>
-        <li>Menghadirkan pengalaman digital yang aman dan terpercaya.</li>
-      </ul>
-    </section>
-
-    <section class="about-section">
-      <h3>Tim Kami</h3>
-      <p>
-        CineGo merupakan proyek yang dikembangkan oleh mahasiswa Mikroskil sebagai
-        bagian dari pengembangan keterampilan di bidang teknologi informasi,
-        dengan fokus pada pembuatan sistem pemesanan tiket yang efisien dan user-friendly.
-      </p>
-    </section>
-
-    <section class="about-section">
-      <h3>Hubungi Kami</h3>
-      <p>
-        Punya pertanyaan atau masukan? Kunjungi halaman
-        <a href="Contact-Us.html">Contact Us</a> kami.
-      </p>
-    </section>
-
-  </main>
-
-  <footer>
-    <p>&copy; 2026 CineGo. All rights reserved</p>
-    <p>
-      <a href="About-Us.html" class="active">About Us</a> |
-      <a href="Contact-Us.html">Contact Us</a> |
-      <a href="Trending.html">Trending</a>
-    </p>
-    <div class="arrow">
-      <a href="#">^</a>
-    </div>
-  </footer>
-  <script src="js/app.js"></script>
-
-  
-</body>
+    <script src="js/app.js"></script>
+  </body>
 </html>

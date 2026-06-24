@@ -23,7 +23,7 @@
         <a href="Home.html" class="logo-link">
           <img src="Images/logo.png" alt="CineGo Logo" class="logo" />
         </a>
-        <nav>
+        <nav aria-label="Navigasi utama">
           <ul class="nav-menu">
             <li><a href="Home.html">Home</a></li>
             <li><a href="Schedule.html">Schedule</a></li>
@@ -35,7 +35,12 @@
     </header>
 
     <main>
-      <section class="auth-gate-section" id="authGate" style="display: none">
+      <section
+        class="auth-gate-section"
+        id="authGate"
+        style="display: none"
+        aria-labelledby="auth-gate-title"
+      >
         <div class="auth-gate-hero">
           <div class="auth-gate-hero-icon">
             <img
@@ -44,42 +49,50 @@
               class="auth-gate-hero-logo"
             />
           </div>
-          <h1 class="auth-gate-hero-title">Selamat Datang di CineGo</h1>
+          <h1 class="auth-gate-hero-title" id="auth-gate-title">
+            Selamat Datang di CineGo
+          </h1>
           <p class="auth-gate-hero-sub">
             Masuk atau buat akun untuk menikmati fitur lengkap: riwayat tiket,
             profil pribadi, dan pemesanan lebih cepat.
           </p>
 
-          <div class="auth-gate-features">
+          <div class="auth-gate-features" aria-label="Fitur utama">
             <div class="agf-item">
-              <span class="agf-icon">*</span>
-              <span class="agf-text">Riwayat Tiket</span>
+              <span class="agf-icon">*</span
+              ><span class="agf-text">Riwayat Tiket</span>
             </div>
             <div class="agf-item">
-              <span class="agf-icon">*</span>
-              <span class="agf-text">Pesan Lebih Cepat</span>
+              <span class="agf-icon">*</span
+              ><span class="agf-text">Pesan Lebih Cepat</span>
             </div>
             <div class="agf-item">
-              <span class="agf-icon">*</span>
-              <span class="agf-text">Profil Pribadi</span>
+              <span class="agf-icon">*</span
+              ><span class="agf-text">Profil Pribadi</span>
             </div>
             <div class="agf-item">
-              <span class="agf-icon">*</span>
-              <span class="agf-text">Akun Aman</span>
+              <span class="agf-icon">*</span
+              ><span class="agf-text">Akun Aman</span>
             </div>
           </div>
         </div>
 
         <div class="auth-gate-card">
-          <!-- Tabs -->
-          <div class="auth-tabs">
-            <button class="auth-tab-btn active" data-tab="login">Masuk</button>
-            <button class="auth-tab-btn" data-tab="daftar">
+          <div class="auth-tabs" role="tablist" aria-label="Tab autentikasi">
+            <button class="auth-tab-btn active" data-tab="login" type="button">
+              Masuk
+            </button>
+            <button class="auth-tab-btn" data-tab="daftar" type="button">
               Daftar Gratis
             </button>
           </div>
 
-          <div class="auth-panel active" id="authPanel-login">
+          <div
+            class="auth-panel active"
+            id="authPanel-login"
+            role="tabpanel"
+            aria-label="Panel login"
+          >
             <form id="gateLoginForm" novalidate>
               <div class="form-group">
                 <label for="gLoginEmail">Email</label>
@@ -118,7 +131,12 @@
             </p>
           </div>
 
-          <div class="auth-panel" id="authPanel-daftar">
+          <div
+            class="auth-panel"
+            id="authPanel-daftar"
+            role="tabpanel"
+            aria-label="Panel daftar"
+          >
             <form id="gateRegisterForm" novalidate>
               <div class="form-group">
                 <label for="gRegNama">Nama Lengkap</label>
@@ -185,24 +203,27 @@
         class="account-section"
         id="accountContent"
         style="display: none"
+        aria-labelledby="account-title"
       >
         <div class="account-header-row">
           <div>
-            <h2 class="section-title">My Account</h2>
+            <h1 class="section-title" id="account-title">My Account</h1>
             <p class="section-desc">
               Kelola informasi akun dan riwayat pesanan Anda.
             </p>
           </div>
-          <button class="btn-logout" id="btnLogout">Keluar</button>
+          <button class="btn-logout" id="btnLogout" type="button">
+            Keluar
+          </button>
         </div>
 
-        <div class="avatar-block">
+        <section class="avatar-block" aria-label="Profil pengguna">
           <div class="avatar-circle" id="avatarInitial">?</div>
           <div class="avatar-info">
-            <h3 id="avatarName">Pengguna CineGo</h3>
+            <h2 id="avatarName">Pengguna CineGo</h2>
             <p id="avatarEmail">-</p>
           </div>
-          <div class="avatar-stats">
+          <div class="avatar-stats" aria-label="Ringkasan statistik">
             <div class="av-stat">
               <div class="av-num" id="statPesan">0</div>
               <div class="av-label">Pesanan</div>
@@ -212,17 +233,27 @@
               <div class="av-label">Tiket</div>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div class="tabs">
-          <button class="tab-btn active" data-tab="profil">Profil</button>
-          <button class="tab-btn" data-tab="keamanan">Keamanan</button>
-          <button class="tab-btn" data-tab="riwayat">Riwayat</button>
-        </div>
+        <section class="tabs" aria-label="Navigasi tab">
+          <button class="tab-btn active" data-tab="profil" type="button">
+            Profil
+          </button>
+          <button class="tab-btn" data-tab="keamanan" type="button">
+            Keamanan
+          </button>
+          <button class="tab-btn" data-tab="riwayat" type="button">
+            Riwayat
+          </button>
+        </section>
 
-        <div class="tab-panel active" id="tab-profil">
-          <div class="form-card">
-            <h3>Informasi Pribadi</h3>
+        <section
+          class="tab-panel active"
+          id="tab-profil"
+          aria-label="Panel profil"
+        >
+          <article class="form-card">
+            <h2>Informasi Pribadi</h2>
             <form id="profilForm" novalidate>
               <div class="form-row">
                 <div class="form-group">
@@ -249,6 +280,7 @@
                   />
                 </div>
               </div>
+
               <div class="form-group">
                 <label for="acEmail"
                   >Email <span class="required">*</span></label
@@ -262,6 +294,7 @@
                   >Email tidak valid.</span
                 >
               </div>
+
               <div class="form-row">
                 <div class="form-group">
                   <label for="acTelp">Nomor Telepon</label>
@@ -277,6 +310,7 @@
                   <input type="date" id="acTgl" />
                 </div>
               </div>
+
               <div class="form-group">
                 <label for="acGender">Jenis Kelamin</label>
                 <select id="acGender">
@@ -286,6 +320,7 @@
                   <option value="Lainnya">Lainnya</option>
                 </select>
               </div>
+
               <div class="form-group">
                 <label for="acKota">Kota</label>
                 <input
@@ -295,6 +330,7 @@
                   maxlength="50"
                 />
               </div>
+
               <div class="form-actions">
                 <button type="button" class="btn-reset" id="btnResetProfil">
                   Reset
@@ -302,12 +338,16 @@
                 <button type="submit" class="btn-save">Simpan Perubahan</button>
               </div>
             </form>
-          </div>
-        </div>
+          </article>
+        </section>
 
-        <div class="tab-panel" id="tab-keamanan">
-          <div class="form-card">
-            <h3>Ubah Password</h3>
+        <section
+          class="tab-panel"
+          id="tab-keamanan"
+          aria-label="Panel keamanan"
+        >
+          <article class="form-card">
+            <h2>Ubah Password</h2>
             <form id="pwForm" novalidate>
               <div class="form-group">
                 <label for="pwLama"
@@ -323,6 +363,7 @@
                   >Password lama wajib diisi.</span
                 >
               </div>
+
               <div class="form-group">
                 <label for="pwBaru"
                   >Password Baru <span class="required">*</span></label
@@ -342,6 +383,7 @@
                   >Password minimal 8 karakter.</span
                 >
               </div>
+
               <div class="form-group">
                 <label for="pwKonfirm"
                   >Konfirmasi Password Baru
@@ -366,22 +408,28 @@
                   >Password tidak cocok.</span
                 >
               </div>
+
               <div class="form-actions">
                 <button type="submit" class="btn-save">Ubah Password</button>
               </div>
             </form>
-          </div>
-          <div class="danger-zone">
-            <h4>Danger Zone</h4>
+          </article>
+
+          <aside class="danger-zone" aria-label="Hapus akun">
+            <h3>Danger Zone</h3>
             <p>Hapus akun dan semua data Anda secara permanen.</p>
-            <button class="btn-danger" id="btnDeleteAccount">
+            <button class="btn-danger" id="btnDeleteAccount" type="button">
               Hapus Akun Saya
             </button>
-          </div>
-        </div>
+          </aside>
+        </section>
 
-        <div class="tab-panel" id="tab-riwayat">
-          <div class="mini-table-wrap" id="riwayatWrapper">
+        <section
+          class="tab-panel"
+          id="tab-riwayat"
+          aria-label="Riwayat pesanan"
+        >
+          <article class="mini-table-wrap" id="riwayatWrapper">
             <table class="mini-table">
               <thead>
                 <tr>
@@ -396,7 +444,8 @@
               </thead>
               <tbody id="riwayatBody"></tbody>
             </table>
-          </div>
+          </article>
+
           <div class="riwayat-empty" id="riwayatEmpty" style="display: none">
             <div class="icon">
               <img
@@ -406,12 +455,11 @@
               />
             </div>
             <p>
-              Belum ada riwayat pemesanan.<br /><a href="Booking.html"
-                >Pesan tiket sekarang -></a
-              >
+              Belum ada riwayat pemesanan.<br />
+              <a href="Booking.html">Pesan tiket sekarang -></a>
             </p>
           </div>
-        </div>
+        </section>
       </section>
     </main>
 
@@ -425,8 +473,7 @@
       <div class="arrow"><a href="#">^</a></div>
     </footer>
 
-    <div class="toast" id="toast"></div>
-  <script src="js/app.js"></script>
-
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="js/app.js"></script>
   </body>
 </html>

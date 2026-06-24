@@ -1,99 +1,154 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trending - CineGo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trending - CineGo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css" />
-</head>
+  <body>
+    <header class="navbar">
+      <div class="container navbar-inner">
+        <input type="checkbox" id="navToggle" class="nav-Toggle" />
+        <label for="navToggle" class="navToggleMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
 
-<body>
+        <a href="Home.html" class="logo-link">
+          <img src="Images/logo.png" alt="CineGo Logo" class="logo" />
+        </a>
 
-  <header class="navbar">
-    <div class="container navbar-inner">
-      <input type="checkbox" id="navToggle" class="nav-Toggle">
-      <label for="navToggle" class="navToggleMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
-      <a href="Home.html" class="logo-link">
-        <img src="Images/logo.png" alt="CineGo Logo" class="logo" />
-      </a>
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="Home.html">Home</a></li>
-          <li><a href="Schedule.html">Schedule</a></li>
-          <li><a href="MyTicket.html">MyTicket</a></li>
-          <li><a href="MyAccount.html">MyAccount</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+        <nav aria-label="Navigasi utama">
+          <ul class="nav-menu">
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="Schedule.html">Schedule</a></li>
+            <li><a href="MyTicket.html">MyTicket</a></li>
+            <li><a href="MyAccount.html">MyAccount</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-  <main>
-    <section class="trending-section">
-      <h2 class="section-title">Film Trending</h2>
-      <p class="section-desc">Peringkat film populer minggu ini berdasarkan vote pengguna.</p>
+    <main>
+      <section class="trending-section" aria-labelledby="trending-title">
+        <h1 id="trending-title" class="section-title">Film Trending</h1>
+        <p class="section-desc">
+          Peringkat film populer minggu ini berdasarkan vote pengguna.
+        </p>
 
-      <!-- ── Controls ─────────────────────────────────────────────────── -->
-      <div class="trend-controls">
-        <div class="trend-search-wrap">
-          <span class="trend-search-icon">🔍</span>
-          <input type="text" id="trendSearch" placeholder="Cari judul, genre, sutradara, atau pemain…" />
-        </div>
-        <div class="genre-pills" id="genrePills"></div>
-        <div class="sort-view-row">
-          <div class="sort-left">
-            <select class="sort-select" id="sortSelect">
-              <option value="votes">🔥 Terpopuler</option>
-              <option value="rating">⭐ Rating Tertinggi</option>
-              <option value="durasi_asc">⏱ Durasi Terpendek</option>
-              <option value="durasi_desc">⏱ Durasi Terlama</option>
-              <option value="az">🔤 A – Z</option>
-            </select>
-            <span class="result-count" id="resultCount"></span>
+        <section
+          class="trend-controls"
+          aria-label="Kontrol pencarian dan filter"
+        >
+          <div class="trend-search-wrap">
+            <span class="trend-search-icon" aria-hidden="true">🔍</span>
+            <input
+              type="text"
+              id="trendSearch"
+              placeholder="Cari judul, genre, sutradara, atau pemain…"
+            />
           </div>
-          <div style="display:flex;align-items:center;gap:8px">
-            <div class="view-btns">
-              <button class="view-btn active" id="btnViewGrid" title="Tampilan Grid">⊞</button>
-              <button class="view-btn"        id="btnViewList" title="Tampilan List">≡</button>
+
+          <div class="genre-pills" id="genrePills" aria-label="Genre"></div>
+
+          <div class="sort-view-row">
+            <div class="sort-left">
+              <label for="sortSelect" class="sr-only">Urutkan</label>
+              <select class="sort-select" id="sortSelect">
+                <option value="votes">🔥 Terpopuler</option>
+                <option value="rating">⭐ Rating Tertinggi</option>
+                <option value="durasi_asc">⏱ Durasi Terpendek</option>
+                <option value="durasi_desc">⏱ Durasi Terlama</option>
+                <option value="az">🔤 A – Z</option>
+              </select>
+              <span
+                class="result-count"
+                id="resultCount"
+                aria-live="polite"
+              ></span>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 8px">
+              <div class="view-btns" aria-label="Mode tampilan">
+                <button
+                  class="view-btn active"
+                  id="btnViewGrid"
+                  title="Tampilan Grid"
+                  type="button"
+                >
+                  ⊞
+                </button>
+                <button
+                  class="view-btn"
+                  id="btnViewList"
+                  title="Tampilan List"
+                  type="button"
+                >
+                  ≡
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </section>
 
-      <!-- ── Stats bar ──────────────────────────────────────────────────── -->
-      <div class="trend-stats" id="trendStats"></div>
+        <section
+          class="trend-stats"
+          id="trendStats"
+          aria-label="Statistik trending"
+        ></section>
 
-      <!-- ── Film container ─────────────────────────────────────────────── -->
-      <div id="trendContainer"></div>
-    </section>
-  </main>
+        <section aria-label="Daftar film trending">
+          <div id="trendContainer"></div>
+        </section>
+      </section>
+    </main>
 
-  <!-- ── Film Detail Modal ────────────────────────────────────────────────── -->
-  <div class="film-modal-overlay" id="filmModalOverlay">
-    <div class="film-modal" id="filmModal">
-      <button class="modal-close-btn" id="btnModalClose" aria-label="Tutup">✕</button>
+    <div
+      class="film-modal-overlay"
+      id="filmModalOverlay"
+      aria-hidden="true"
+    ></div>
+
+    <section
+      class="film-modal"
+      id="filmModal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Detail film"
+    >
+      <button
+        class="modal-close-btn"
+        id="btnModalClose"
+        aria-label="Tutup"
+        type="button"
+      >
+        ✕
+      </button>
+
       <div class="modal-body">
-
         <div class="modal-hero-row">
           <img id="mPoster" class="modal-poster" src="" alt="" />
+
           <div class="modal-header">
-            <h3 class="modal-film-title" id="mTitle"></h3>
+            <h2 class="modal-film-title" id="mTitle"></h2>
             <div class="modal-rating-row" id="mRating"></div>
             <div class="modal-pills" id="mPills"></div>
           </div>
         </div>
 
-        <p class="modal-section-lbl">Sinopsis</p>
+        <h3 class="modal-section-lbl">Sinopsis</h3>
         <p class="modal-sinopsis" id="mSinopsis"></p>
 
-        <p class="modal-section-lbl">Info Film</p>
+        <h3 class="modal-section-lbl">Info Film</h3>
         <div class="modal-info-grid" id="mInfoGrid"></div>
 
         <div class="modal-vote-bar">
@@ -101,33 +156,34 @@
             <div class="modal-vote-big" id="mVoteNum">0</div>
             <div class="modal-vote-sub">vote pengguna minggu ini</div>
           </div>
-          <button class="btn-modal-vote" id="btnModalVote">🔥 Vote Film Ini</button>
+          <button class="btn-modal-vote" id="btnModalVote" type="button">
+            🔥 Vote Film Ini
+          </button>
         </div>
 
         <div class="modal-action-row">
-          <button class="btn-modal-wl" id="btnModalWl">🤍 Simpan ke Wishlist</button>
-          <a class="btn-modal-book" id="btnModalBook" href="#">🎬 Pesan Tiket</a>
+          <button class="btn-modal-wl" id="btnModalWl" type="button">
+            🤍 Simpan ke Wishlist
+          </button>
+          <a class="btn-modal-book" id="btnModalBook" href="#"
+            >🎬 Pesan Tiket</a
+          >
         </div>
-
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="toast" id="toast"></div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <footer>
-    <p>&copy; 2026 CineGo. All rights reserved</p>
-    <p>
-      <a href="About-Us.html">About Us</a> |
-      <a href="Contact-Us.html">Contact Us</a> |
-      <a href="Trending.html" class="active">Trending</a>
-    </p>
-    <div class="arrow">
-      <a href="#">^</a>
-    </div>
-  </footer>
-  <script src="js/app.js"></script>
+    <footer>
+      <p>&copy; 2026 CineGo. All rights reserved</p>
+      <p>
+        <a href="About-Us.html">About Us</a> |
+        <a href="Contact-Us.html">Contact Us</a> |
+        <a href="Trending.html" class="active">Trending</a>
+      </p>
+      <div class="arrow"><a href="#">^</a></div>
+    </footer>
 
-</body>
-
+    <script src="js/app.js"></script>
+  </body>
 </html>

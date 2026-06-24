@@ -12,6 +12,7 @@
     />
     <link rel="stylesheet" href="css/style.css" />
   </head>
+
   <body class="booking-page">
     <header class="navbar">
       <div class="container navbar-inner">
@@ -22,7 +23,7 @@
         <a href="Home.html" class="logo-link">
           <img src="Images/logo.png" alt="CineGo Logo" class="logo" />
         </a>
-        <nav>
+        <nav aria-label="Navigasi utama">
           <ul class="nav-menu">
             <li><a href="Home.html">Home</a></li>
             <li><a href="Schedule.html">Schedule</a></li>
@@ -34,94 +35,106 @@
     </header>
 
     <main>
-      <section class="booking-section">
-        <div class="step-bar">
-          <div class="step-item active" id="si1">
+      <section class="booking-section" aria-labelledby="booking-title">
+        <h1 id="booking-title" class="section-title" style="display: none">
+          Pesan Tiket
+        </h1>
+
+        <ol class="step-bar" aria-label="Langkah pemesanan tiket">
+          <li class="step-item active" id="si1">
             <div class="step-dot">1</div>
             <span>Pilih Film</span>
-          </div>
-          <div class="step-line" id="sl1"></div>
-          <div class="step-item" id="si2">
+          </li>
+          <div class="step-line" id="sl1" aria-hidden="true"></div>
+          <li class="step-item" id="si2">
             <div class="step-dot">2</div>
             <span>Bioskop &amp; Jadwal</span>
-          </div>
-          <div class="step-line" id="sl2"></div>
-          <div class="step-item" id="si3">
+          </li>
+          <div class="step-line" id="sl2" aria-hidden="true"></div>
+          <li class="step-item" id="si3">
             <div class="step-dot">3</div>
             <span>Pilih Kursi</span>
-          </div>
-          <div class="step-line" id="sl3"></div>
-          <div class="step-item" id="si4">
+          </li>
+          <div class="step-line" id="sl3" aria-hidden="true"></div>
+          <li class="step-item" id="si4">
             <div class="step-dot">4</div>
             <span>Data Pemesan</span>
-          </div>
-        </div>
+          </li>
+        </ol>
 
-        <div id="step1">
-          <div class="bk-card">
-            <h3 class="bk-card-title">Pilih Film</h3>
+        <div id="step1" aria-label="Step 1 - Pilih Film">
+          <article class="bk-card" aria-labelledby="step1-title">
+            <h2 class="bk-card-title" id="step1-title">Pilih Film</h2>
             <div class="film-picker-grid" id="filmPickerGrid"></div>
-          </div>
+          </article>
         </div>
 
-        <div id="step2">
-          <div class="bk-card bk-film-info" id="filmInfoCard2">
+        <div id="step2" aria-label="Step 2 - Bioskop dan Jadwal">
+          <article
+            class="bk-card bk-film-info"
+            id="filmInfoCard2"
+            aria-label="Info Film"
+          >
             <img id="fiPoster2" src="" alt="" class="fi-poster" />
             <div class="fi-body">
-              <h3 id="fiTitle2" class="fi-title"></h3>
+              <h2 id="fiTitle2" class="fi-title"></h2>
               <p id="fiGenre2" class="fi-genre"></p>
               <p id="fiDurasi2" class="fi-durasi"></p>
             </div>
             <button type="button" class="fi-ganti" id="btnGantiFilm">
               <- Ganti Film
             </button>
-          </div>
+          </article>
 
-          <div class="bk-card">
-            <h3 class="bk-card-title">Pilih Bioskop</h3>
+          <article class="bk-card" aria-label="Pilih Bioskop">
+            <h2 class="bk-card-title">Pilih Bioskop</h2>
             <div class="cinema-list" id="cinemaList"></div>
-          </div>
+          </article>
 
-          <div class="bk-card" id="dateCard">
-            <h3 class="bk-card-title">Pilih Tanggal</h3>
+          <article class="bk-card" id="dateCard" aria-label="Pilih Tanggal">
+            <h2 class="bk-card-title">Pilih Tanggal</h2>
             <div class="date-strip" id="dateStrip"></div>
-          </div>
+          </article>
 
-          <div class="bk-card" id="timeCard">
-            <h3 class="bk-card-title">Pilih Jam Tayang</h3>
+          <article class="bk-card" id="timeCard" aria-label="Pilih Jam Tayang">
+            <h2 class="bk-card-title">Pilih Jam Tayang</h2>
             <p class="bk-sub" id="timeCardSub"></p>
             <div class="time-grid" id="timeGrid"></div>
-          </div>
+          </article>
 
           <button type="button" class="btn-next" id="btnToSeats">
             Pilih Kursi ->
           </button>
 
-          <div id="debugSeatStep"></div>
+          <div id="debugSeatStep" aria-hidden="true"></div>
         </div>
 
-        <div id="step3">
-          <div class="bk-card bk-film-info" id="seatSummaryBar">
+        <div id="step3" aria-label="Step 3 - Pilih Kursi">
+          <article
+            class="bk-card bk-film-info"
+            id="seatSummaryBar"
+            aria-label="Ringkasan pilihan"
+          >
             <img id="sSumPoster" src="" alt="" class="fi-poster" />
             <div class="fi-body">
-              <h3 id="sSumFilm" class="fi-title"></h3>
+              <h2 id="sSumFilm" class="fi-title"></h2>
               <p id="sSumMeta" class="fi-genre"></p>
               <p id="sSumCinema" class="fi-durasi"></p>
             </div>
             <button type="button" class="fi-ganti" id="btnBackToSchedule">
               <- Jadwal
             </button>
-          </div>
+          </article>
 
-          <div class="bk-card seat-section">
-            <h3 class="bk-card-title">Pilih Kursi</h3>
+          <article class="bk-card seat-section" aria-label="Peta kursi">
+            <h2 class="bk-card-title">Pilih Kursi</h2>
             <div class="screen-bar">
               <span class="screen-label">LAYAR</span>
             </div>
             <div class="seat-grid-wrap">
               <div class="seat-grid" id="seatGrid"></div>
             </div>
-            <div class="seat-legend">
+            <div class="seat-legend" aria-label="Legenda kursi">
               <div class="legend-item">
                 <div class="legend-dot ld-avail"></div>
                 Kosong
@@ -136,7 +149,7 @@
               </div>
             </div>
             <div class="seat-counter" id="seatCounter">Pilih kursi kamu</div>
-          </div>
+          </article>
 
           <button type="button" class="btn-next" id="btnToBookingForm">
             Lanjut -> Data Pemesan
@@ -144,8 +157,12 @@
         </div>
 
         <!-- STEP 4 - Data Pemesan -->
-        <div id="step4">
-          <div class="booking-strip" id="bookingStrip">
+        <div id="step4" aria-label="Step 4 - Data Pemesan">
+          <article
+            class="booking-strip"
+            id="bookingStrip"
+            aria-label="Ringkasan pemesanan"
+          >
             <img id="bsStripPoster" src="" alt="" class="bs-poster" />
             <div class="bs-info">
               <div class="bs-film" id="bsStripFilm"></div>
@@ -155,10 +172,10 @@
               <div class="bs-seat-list" id="bsStripSeats"></div>
               <div class="bs-price" id="bsStripPrice"></div>
             </div>
-          </div>
+          </article>
 
-          <div class="bk-card">
-            <h3 class="bk-card-title">Data Pemesan</h3>
+          <article class="bk-card" aria-label="Form data pemesan">
+            <h2 class="bk-card-title">Data Pemesan</h2>
             <form id="bookingForm" novalidate>
               <div class="form-group">
                 <label for="nama"
@@ -186,7 +203,7 @@
 
               <hr class="form-divider" />
 
-              <div class="price-preview">
+              <div class="price-preview" aria-label="Preview harga">
                 <div>
                   <div class="label">
                     Kursi dipilih: <strong id="selectedSeatNames">-</strong>
@@ -208,7 +225,7 @@
                 </button>
               </div>
             </form>
-          </div>
+          </article>
         </div>
       </section>
     </main>
@@ -223,14 +240,19 @@
       <div class="arrow"><a href="#">^</a></div>
     </footer>
 
-    <div class="toast" id="toast"></div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-    <div class="auth-modal-overlay" id="authRequiredOverlay"></div>
     <div
+      class="auth-modal-overlay"
+      id="authRequiredOverlay"
+      aria-hidden="true"
+    ></div>
+    <section
       class="auth-modal"
       id="authRequiredModal"
       role="dialog"
       aria-modal="true"
+      aria-label="Login diperlukan"
     >
       <button
         type="button"
@@ -240,6 +262,7 @@
       >
         x
       </button>
+
       <div class="auth-brand">
         <img
           src="Images/logo.png"
@@ -247,8 +270,10 @@
           class="auth-brand-logo-img"
         />
       </div>
+
       <p>Masuk atau daftar terlebih dahulu untuk melanjutkan.</p>
-      <div class="auth-tabs">
+
+      <div class="auth-tabs" role="tablist" aria-label="Tab autentikasi">
         <button type="button" class="auth-tab-btn active" data-tab="login">
           Masuk
         </button>
@@ -257,7 +282,12 @@
         </button>
       </div>
 
-      <div class="auth-panel active" id="bkPanel-login">
+      <div
+        class="auth-panel active"
+        id="bkPanel-login"
+        role="tabpanel"
+        aria-label="Panel login"
+      >
         <form id="bkLoginForm" novalidate>
           <div class="form-group">
             <label for="bkLoginEmail">Email</label>
@@ -269,6 +299,7 @@
             />
             <span class="error-msg" id="err-bkLoginEmail"></span>
           </div>
+
           <div class="form-group">
             <label for="bkLoginPw">Password</label>
             <div class="input-wrap">
@@ -284,17 +315,24 @@
             </div>
             <span class="error-msg" id="err-bkLoginPw"></span>
           </div>
+
           <button type="submit" class="btn-auth-submit">
             Masuk &amp; Lanjut ->
           </button>
         </form>
+
         <p class="auth-switch-text">
           Belum punya akun?
           <a href="#" id="linkBkToDaftar">Daftar sekarang</a>
         </p>
       </div>
 
-      <div class="auth-panel" id="bkPanel-daftar">
+      <div
+        class="auth-panel"
+        id="bkPanel-daftar"
+        role="tabpanel"
+        aria-label="Panel daftar"
+      >
         <form id="bkRegisterForm" novalidate>
           <div class="form-group">
             <label for="bkRegNama">Nama Lengkap</label>
@@ -306,6 +344,7 @@
             />
             <span class="error-msg" id="err-bkRegNama"></span>
           </div>
+
           <div class="form-group">
             <label for="bkRegEmail">Email</label>
             <input
@@ -315,6 +354,7 @@
             />
             <span class="error-msg" id="err-bkRegEmail"></span>
           </div>
+
           <div class="form-group">
             <label for="bkRegPw">Password</label>
             <div class="input-wrap">
@@ -330,6 +370,7 @@
             </div>
             <span class="error-msg" id="err-bkRegPw"></span>
           </div>
+
           <div class="form-group">
             <label for="bkRegPwConfirm">Konfirmasi Password</label>
             <input
@@ -340,17 +381,19 @@
             />
             <span class="error-msg" id="err-bkRegPwConfirm"></span>
           </div>
+
           <button type="submit" class="btn-auth-submit">
             Daftar &amp; Lanjut ->
           </button>
         </form>
+
         <p class="auth-switch-text">
           Sudah punya akun?
           <a href="#" id="linkBkToLogin">Masuk di sini</a>
         </p>
       </div>
-    </div>
-  <script src="js/app.js"></script>
+    </section>
 
+    <script src="js/app.js"></script>
   </body>
 </html>
