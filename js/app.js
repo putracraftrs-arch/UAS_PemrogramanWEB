@@ -1,11 +1,4 @@
-
-
-
 const AUTH = (() => {
-  
-  
-  
-
   const KEY_USERS = "cinego_users";
   const KEY_SESSION = "cinego_session";
 
@@ -385,10 +378,9 @@ const AUTH = (() => {
 
 window.AUTH = AUTH;
 
-
 document.addEventListener("DOMContentLoaded", () => {
   const grid = document.getElementById("scheduleGrid");
-  if (!grid) return; 
+  if (!grid) return;
 
   const JADWAL = [
     {
@@ -480,7 +472,6 @@ document.addEventListener("DOMContentLoaded", () => {
     grid.appendChild(card);
   });
 });
-
 
 (function () {
   "use strict";
@@ -1393,7 +1384,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.cinegoGoToSeats = goToSeatStep;
 
   function initBooking() {
-    if (!document.getElementById("filmPickerGrid")) return; 
+    if (!document.getElementById("filmPickerGrid")) return;
 
     document
       .getElementById("btnGantiFilm")
@@ -1697,9 +1688,8 @@ document.addEventListener("DOMContentLoaded", () => {
   else initBooking();
 })();
 
-
 document.addEventListener("DOMContentLoaded", () => {
-  if (!document.getElementById("trendContainer")) return; 
+  if (!document.getElementById("trendContainer")) return;
 
   const FILMS_TR = [
     {
@@ -2211,9 +2201,8 @@ document.addEventListener("DOMContentLoaded", () => {
   render();
 });
 
-
 document.addEventListener("DOMContentLoaded", () => {
-  if (!document.getElementById("ticketTable")) return; 
+  if (!document.getElementById("ticketTable")) return;
 
   const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -2528,9 +2517,8 @@ document.addEventListener("DOMContentLoaded", () => {
   renderTable();
 });
 
-
 document.addEventListener("DOMContentLoaded", () => {
-  if (!document.getElementById("accountContent")) return; 
+  if (!document.getElementById("accountContent")) return;
 
   const KEY_TIKET_MA = "cinego_tiket";
   const EMAIL_RE_MA = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -2910,9 +2898,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-
 document.addEventListener("DOMContentLoaded", () => {
-  if (!document.getElementById("contactForm")) return; 
+  if (!document.getElementById("contactForm")) return;
 
   const pesanEl = document.getElementById("cnPesan");
   const charEl = document.getElementById("charCount");

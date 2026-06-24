@@ -2248,13 +2248,11 @@ tbody td .email-txt {
   line-height: 1;
 }
 
-
 .auth-gate-hero-icon-img {
   height: 44px;
   width: auto;
   display: block;
 }
-
 
 .auth-gate-hero-icon-img {
   height: 44px;
@@ -3275,7 +3273,6 @@ body.booking-page > .toast.show {
   transform: translateX(-50%) translateY(0);
 }
 
-
 .trend-controls {
   display: flex;
   flex-direction: column;
@@ -3319,7 +3316,6 @@ body.booking-page > .toast.show {
   pointer-events: none;
 }
 
-
 .genre-pills {
   display: flex;
   gap: 8px;
@@ -3350,7 +3346,6 @@ body.booking-page > .toast.show {
   color: #fff;
   border-color: transparent;
 }
-
 
 .sort-view-row {
   display: flex;
@@ -3426,7 +3421,6 @@ body.booking-page > .toast.show {
   border-color: rgba(234, 88, 12, 0.3);
 }
 
-
 .trend-stats {
   display: flex;
   gap: 12px;
@@ -3465,7 +3459,6 @@ body.booking-page > .toast.show {
   margin-top: 1px;
 }
 
-
 .trend-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
@@ -3488,7 +3481,6 @@ body.booking-page > .toast.show {
   transform: translateY(-6px);
   border-color: #ea580c;
 }
-
 
 .rank-badge {
   position: absolute;
@@ -3519,7 +3511,6 @@ body.booking-page > .toast.show {
   color: #cbd5e1;
   border: 1px solid #2a1a06;
 }
-
 
 .wl-card-btn {
   position: absolute;
@@ -3552,7 +3543,6 @@ body.booking-page > .toast.show {
   border-color: rgba(239, 68, 68, 0.3);
   background: rgba(239, 68, 68, 0.1);
 }
-
 
 .poster-wrap {
   position: relative;
@@ -3605,7 +3595,6 @@ body.booking-page > .toast.show {
 .btn-detail-overlay:hover {
   background: #ea580c;
 }
-
 
 .trend-card-body {
   padding: 12px 14px;
@@ -3714,7 +3703,6 @@ body.booking-page > .toast.show {
   filter: brightness(1.15);
   color: #fff;
 }
-
 
 .trend-list {
   display: flex;
@@ -3863,7 +3851,6 @@ body.booking-page > .toast.show {
   color: #fff;
 }
 
-
 .trend-empty {
   text-align: center;
   padding: 60px 24px;
@@ -3880,7 +3867,6 @@ body.booking-page > .toast.show {
   color: #5a3a20;
   font-size: 0.88rem;
 }
-
 
 .film-modal-overlay {
   position: fixed;
@@ -3915,7 +3901,6 @@ body.booking-page > .toast.show {
 .film-modal-overlay.show .film-modal {
   transform: scale(1) translateY(0);
 }
-
 
 .film-modal::-webkit-scrollbar {
   width: 5px;
@@ -4165,7 +4150,6 @@ body.booking-page > .toast.show {
   color: #fff;
 }
 
-
 @media (max-width: 640px) {
   .trend-stats {
     flex-direction: column;
@@ -4193,7 +4177,6 @@ body.booking-page > .toast.show {
     gap: 10px;
   }
 }
-
 
 .hero-wrap {
   position: relative;
@@ -4262,7 +4245,6 @@ body.booking-page > .toast.show {
   padding: 80px 24px 72px;
   text-align: center;
 }
-
 
 .hero-logo {
   width: 88px;
@@ -4364,7 +4346,6 @@ body.booking-page > .toast.show {
   color: #fb923c;
 }
 
-
 .stats-strip {
   background: #0b0602;
   border-top: 1px solid #1e1206;
@@ -4400,7 +4381,6 @@ body.booking-page > .toast.show {
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
-
 
 .features-section {
   max-width: 1100px;
@@ -4467,7 +4447,6 @@ body.booking-page > .toast.show {
   line-height: 1.6;
 }
 
-
 .now-showing {
   max-width: 1100px;
   margin: 0 auto;
@@ -4510,7 +4489,6 @@ body.booking-page > .toast.show {
   border-color: rgba(234, 88, 12, 0.45);
   color: #fb923c;
 }
-
 
 .film-grid-v2 {
   display: grid;
@@ -4650,7 +4628,6 @@ body.booking-page > .toast.show {
   color: #fff;
 }
 
-
 .cta-banner {
   background: linear-gradient(135deg, #1a0a02 0%, #0b0602 100%);
   border-top: 1px solid #2a1a06;
@@ -4679,7 +4656,6 @@ body.booking-page > .toast.show {
   margin-bottom: 28px;
 }
 
-
 .hidden-init {
   display: none;
 }
@@ -4702,7 +4678,6 @@ body.booking-page > .toast.show {
   align-items: center;
   gap: 8px;
 }
-
 
 @media (max-width: 640px) {
   .stats-strip-inner {
