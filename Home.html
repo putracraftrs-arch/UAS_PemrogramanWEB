@@ -68,17 +68,13 @@
 
       <section class="stats-strip" aria-label="Statistik CineGo">
         <div class="stats-strip-inner">
-          <div class="stat-item" role="group" aria-label="Film Tayang">
-            <div class="stat-num">7</div>
-            <div class="stat-lbl">Film Tayang</div>
+          <div class="stat-item" role="group" aria-label="Film Tersedia">
+            <div class="stat-num">11</div>
+            <div class="stat-lbl">Film Tersedia</div>
           </div>
           <div class="stat-item" role="group" aria-label="Bioskop Tersedia">
             <div class="stat-num">6</div>
             <div class="stat-lbl">Bioskop Tersedia</div>
-          </div>
-          <div class="stat-item" role="group" aria-label="Tipe Studio">
-            <div class="stat-num">3</div>
-            <div class="stat-lbl">Tipe Studio</div>
           </div>
           <div class="stat-item" role="group" aria-label="Pemesanan Online">
             <div class="stat-num">24/7</div>
@@ -114,13 +110,6 @@
               CGV, XXI, IMAX, 4DX — semua tersedia di satu tempat.
             </div>
           </article>
-          <article class="feature-card" role="listitem">
-            <span class="feat-icon">📋</span>
-            <div class="feat-title">Riwayat Tiket</div>
-            <div class="feat-desc">
-              Semua tiket tersimpan di akun kamu. Cek kapan saja, di mana saja.
-            </div>
-          </article>
         </div>
       </section>
 
@@ -131,212 +120,353 @@
       >
         <div class="now-showing-head">
           <div class="left">
-            <h2 id="now-showing-title" class="section-title">Sedang Tayang</h2>
-            <p>Film pilihan yang tersedia minggu ini</p>
+            <h2 id="now-showing-title" class="section-title">Daftar Film</h2>
+            <p>Film sedang tayang &amp; akan segera hadir di bioskop Medan</p>
           </div>
           <a href="Schedule.html" class="btn-see-all">Lihat Jadwal →</a>
         </div>
 
-        <div
-          class="film-grid-v2 film-list"
-          role="list"
-          aria-label="Daftar film"
-        >
-          <article class="film-card-v2 film-card" role="listitem">
-            <div class="poster-box">
-              <img
-                src="Images/jumbo-indonesian-movie-poster.jpg"
-                alt="Jumbo"
-                onerror="
-                  this.src =
-                    'https://placehold.co/300x400/120a02/fb923c?text=Jumbo'
-                "
-              />
-              <span class="genre-tag">Animation</span>
-              <div class="poster-overlay">
-                <a href="Booking.html?film=Jumbo">🎟️ Pesan Tiket</a>
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="card-title">Jumbo</div>
-              <div class="card-meta">
-                🎭 Animation / Adventure &nbsp;·&nbsp; ⏱ 102 menit
-              </div>
-              <a href="Booking.html?film=Jumbo" class="btn-book-mobile"
-                >Pesan Tiket</a
-              >
-            </div>
-          </article>
+        <div class="carousel-wrap">
+          <button
+            class="carousel-btn carousel-prev"
+            id="carouselPrev"
+            type="button"
+            aria-label="Sebelumnya"
+          >
+            &#8249;
+          </button>
+          <div class="carousel-viewport" id="carouselViewport">
+            <div
+              class="carousel-track"
+              id="carouselTrack"
+              role="list"
+              aria-label="Daftar film"
+            >
+              <article class="film-card-v2 film-card" role="listitem">
+                <div class="poster-box">
+                  <img
+                    src="Images/jumbo-indonesian-movie-poster.jpg"
+                    alt="Jumbo"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/300x400/120a02/fb923c?text=Jumbo'
+                    "
+                  />
+                  <span class="genre-tag">Animation</span>
+                  <div class="poster-overlay">
+                    <a href="Booking.html?film=Jumbo">🎟️ Pesan Tiket</a>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="card-title">Jumbo</div>
+                  <div class="card-meta">
+                    🎭 Animation / Adventure &nbsp;·&nbsp; ⏱ 102 menit
+                  </div>
+                  <a href="Booking.html?film=Jumbo" class="btn-book-mobile"
+                    >Pesan Tiket</a
+                  >
+                </div>
+              </article>
 
-          <article class="film-card-v2 film-card" role="listitem">
-            <div class="poster-box">
-              <img
-                src="Images/ancika-1995.jpg"
-                alt="Ancika: 1995"
-                onerror="
-                  this.src =
-                    'https://placehold.co/300x400/120a02/fb923c?text=Ancika+1995'
-                "
-              />
-              <span class="genre-tag">Romance</span>
-              <div class="poster-overlay">
-                <a href="Booking.html?film=Ancika%3A+1995">🎟️ Pesan Tiket</a>
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="card-title">Ancika: 1995</div>
-              <div class="card-meta">
-                🎭 Romance / Drama &nbsp;·&nbsp; ⏱ 100 menit
-              </div>
-              <a href="Booking.html?film=Ancika%3A+1995" class="btn-book-mobile"
-                >Pesan Tiket</a
-              >
-            </div>
-          </article>
+              <article class="film-card-v2 film-card" role="listitem">
+                <div class="poster-box">
+                  <img
+                    src="Images/ancika-1995.jpg"
+                    alt="Ancika: 1995"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/300x400/120a02/fb923c?text=Ancika+1995'
+                    "
+                  />
+                  <span class="genre-tag">Romance</span>
+                  <div class="poster-overlay">
+                    <a href="Booking.html?film=Ancika%3A+1995"
+                      >🎟️ Pesan Tiket</a
+                    >
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="card-title">Ancika: 1995</div>
+                  <div class="card-meta">
+                    🎭 Romance / Drama &nbsp;·&nbsp; ⏱ 100 menit
+                  </div>
+                  <a
+                    href="Booking.html?film=Ancika%3A+1995"
+                    class="btn-book-mobile"
+                    >Pesan Tiket</a
+                  >
+                </div>
+              </article>
 
-          <article class="film-card-v2 film-card" role="listitem">
-            <div class="poster-box">
-              <img
-                src="Images/a-minecraft-movie-movie-poster.jpg"
-                alt="A Minecraft Movie"
-                onerror="
-                  this.src =
-                    'https://placehold.co/300x400/120a02/fb923c?text=Minecraft+Movie'
-                "
-              />
-              <span class="genre-tag">Adventure</span>
-              <div class="poster-overlay">
-                <a href="Booking.html?film=A+Minecraft+Movie">🎟️ Pesan Tiket</a>
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="card-title">A Minecraft Movie</div>
-              <div class="card-meta">
-                🎭 Adventure / Fantasy &nbsp;·&nbsp; ⏱ 101 menit
-              </div>
-              <a
-                href="Booking.html?film=A+Minecraft+Movie"
-                class="btn-book-mobile"
-                >Pesan Tiket</a
-              >
-            </div>
-          </article>
+              <article class="film-card-v2 film-card" role="listitem">
+                <div class="poster-box">
+                  <img
+                    src="Images/a-minecraft-movie-movie-poster.jpg"
+                    alt="A Minecraft Movie"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/300x400/120a02/fb923c?text=Minecraft+Movie'
+                    "
+                  />
+                  <span class="genre-tag">Adventure</span>
+                  <div class="poster-overlay">
+                    <a href="Booking.html?film=A+Minecraft+Movie"
+                      >🎟️ Pesan Tiket</a
+                    >
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="card-title">A Minecraft Movie</div>
+                  <div class="card-meta">
+                    🎭 Adventure / Fantasy &nbsp;·&nbsp; ⏱ 101 menit
+                  </div>
+                  <a
+                    href="Booking.html?film=A+Minecraft+Movie"
+                    class="btn-book-mobile"
+                    >Pesan Tiket</a
+                  >
+                </div>
+              </article>
 
-          <article class="film-card-v2 film-card" role="listitem">
-            <div class="poster-box">
-              <img
-                src="Images/agak-laen.jpg"
-                alt="Agak Laen"
-                onerror="
-                  this.src =
-                    'https://placehold.co/300x400/120a02/fb923c?text=Agak+Laen'
-                "
-              />
-              <span class="genre-tag">Horror</span>
-              <div class="poster-overlay">
-                <a href="Booking.html?film=Agak+Laen">🎟️ Pesan Tiket</a>
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="card-title">Agak Laen</div>
-              <div class="card-meta">
-                🎭 Horror / Comedy &nbsp;·&nbsp; ⏱ 119 menit
-              </div>
-              <a href="Booking.html?film=Agak+Laen" class="btn-book-mobile"
-                >Pesan Tiket</a
-              >
-            </div>
-          </article>
+              <article class="film-card-v2 film-card" role="listitem">
+                <div class="poster-box">
+                  <img
+                    src="Images/agak-laen.jpg"
+                    alt="Agak Laen"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/300x400/120a02/fb923c?text=Agak+Laen'
+                    "
+                  />
+                  <span class="genre-tag">Horror</span>
+                  <div class="poster-overlay">
+                    <a href="Booking.html?film=Agak+Laen">🎟️ Pesan Tiket</a>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="card-title">Agak Laen</div>
+                  <div class="card-meta">
+                    🎭 Horror / Comedy &nbsp;·&nbsp; ⏱ 119 menit
+                  </div>
+                  <a href="Booking.html?film=Agak+Laen" class="btn-book-mobile"
+                    >Pesan Tiket</a
+                  >
+                </div>
+              </article>
 
-          <article class="film-card-v2 film-card" role="listitem">
-            <div class="poster-box">
-              <img
-                src="Images/siksa-kubur.jpg"
-                alt="Siksa Kubur"
-                onerror="
-                  this.src =
-                    'https://placehold.co/300x400/120a02/fb923c?text=Siksa+Kubur'
-                "
-              />
-              <span class="genre-tag">Horror</span>
-              <div class="poster-overlay">
-                <a href="Booking.html?film=Siksa+Kubur">🎟️ Pesan Tiket</a>
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="card-title">Siksa Kubur</div>
-              <div class="card-meta">
-                🎭 Horror / Drama &nbsp;·&nbsp; ⏱ 117 menit
-              </div>
-              <a href="Booking.html?film=Siksa+Kubur" class="btn-book-mobile"
-                >Pesan Tiket</a
-              >
-            </div>
-          </article>
+              <article class="film-card-v2 film-card" role="listitem">
+                <div class="poster-box">
+                  <img
+                    src="Images/siksa-kubur.jpg"
+                    alt="Siksa Kubur"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/300x400/120a02/fb923c?text=Siksa+Kubur'
+                    "
+                  />
+                  <span class="genre-tag">Horror</span>
+                  <div class="poster-overlay">
+                    <a href="Booking.html?film=Siksa+Kubur">🎟️ Pesan Tiket</a>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="card-title">Siksa Kubur</div>
+                  <div class="card-meta">
+                    🎭 Horror / Drama &nbsp;·&nbsp; ⏱ 117 menit
+                  </div>
+                  <a
+                    href="Booking.html?film=Siksa+Kubur"
+                    class="btn-book-mobile"
+                    >Pesan Tiket</a
+                  >
+                </div>
+              </article>
 
-          <article class="film-card-v2 film-card" role="listitem">
-            <div class="poster-box">
-              <img
-                src="Images/25MIFR.jpg"
-                alt="Mission: Impossible - The Final Reckoning"
-                onerror="
-                  this.src =
-                    'https://placehold.co/300x400/120a02/fb923c?text=MI+Final+Reckoning'
-                "
-              />
-              <span class="genre-tag">Action</span>
-              <div class="poster-overlay">
-                <a
-                  href="Booking.html?film=Mission%3A+Impossible+%E2%80%93+The+Final+Reckoning"
-                  >🎟️ Pesan Tiket</a
-                >
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="card-title">
-                Mission: Impossible – The Final Reckoning
-              </div>
-              <div class="card-meta">
-                🎭 Action / Thriller &nbsp;·&nbsp; ⏱ 169 menit
-              </div>
-              <a
-                href="Booking.html?film=Mission%3A+Impossible+%E2%80%93+The+Final+Reckoning"
-                class="btn-book-mobile"
-                >Pesan Tiket</a
-              >
-            </div>
-          </article>
+              <article class="film-card-v2 film-card" role="listitem">
+                <div class="poster-box">
+                  <img
+                    src="Images/25MIFR.jpg"
+                    alt="Mission: Impossible – The Final Reckoning"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/300x400/120a02/fb923c?text=MI+Final+Reckoning'
+                    "
+                  />
+                  <span class="genre-tag">Action</span>
+                  <div class="poster-overlay">
+                    <a
+                      href="Booking.html?film=Mission%3A+Impossible+%E2%80%93+The+Final+Reckoning"
+                      >🎟️ Pesan Tiket</a
+                    >
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="card-title">
+                    Mission: Impossible – The Final Reckoning
+                  </div>
+                  <div class="card-meta">
+                    🎭 Action / Thriller &nbsp;·&nbsp; ⏱ 169 menit
+                  </div>
+                  <a
+                    href="Booking.html?film=Mission%3A+Impossible+%E2%80%93+The+Final+Reckoning"
+                    class="btn-book-mobile"
+                    >Pesan Tiket</a
+                  >
+                </div>
+              </article>
 
-          <article class="film-card-v2 film-card" role="listitem">
-            <div class="poster-box">
-              <img
-                src="Images/infinity.jpg"
-                alt="Avengers: Infinity War"
-                onerror="
-                  this.src =
-                    'https://placehold.co/300x400/120a02/fb923c?text=Infinity+War'
-                "
-              />
-              <span class="genre-tag">Action</span>
-              <div class="poster-overlay">
-                <a href="Booking.html?film=Avengers%3A+Infinity+War"
-                  >🎟️ Pesan Tiket</a
-                >
-              </div>
+              <article class="film-card-v2 film-card" role="listitem">
+                <div class="poster-box">
+                  <img
+                    src="Images/infinity.jpg"
+                    alt="Avengers: Infinity War"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/300x400/120a02/fb923c?text=Infinity+War'
+                    "
+                  />
+                  <span class="genre-tag">Action</span>
+                  <div class="poster-overlay">
+                    <a href="Booking.html?film=Avengers%3A+Infinity+War"
+                      >🎟️ Pesan Tiket</a
+                    >
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="card-title">Avengers: Infinity War</div>
+                  <div class="card-meta">
+                    🎭 Action / Sci-Fi &nbsp;·&nbsp; ⏱ 149 menit
+                  </div>
+                  <a
+                    href="Booking.html?film=Avengers%3A+Infinity+War"
+                    class="btn-book-mobile"
+                    >Pesan Tiket</a
+                  >
+                </div>
+              </article>
+
+              <article class="film-card-v2 film-card" role="listitem">
+                <div class="poster-box">
+                  <img
+                    src="Images/fantastic 4.jpg"
+                    alt="Fantastic Four: First Steps"
+                  />
+                  <span class="genre-tag">Sci-Fi</span>
+                  <span class="pre-sale-badge">Pre-Sale</span>
+                  <div class="poster-overlay">
+                    <a
+                      href="Booking.html?film=Fantastic+Four%3A+First+Steps"
+                      class="overlay-presale-info"
+                      >🎟️ Pre-Sale Tiket</a
+                    >
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="card-title">Fantastic Four: First Steps</div>
+                  <div class="card-meta">
+                    🎭 Action / Sci-Fi &nbsp;·&nbsp; ⏱ 130 menit
+                  </div>
+                  <a
+                    href="Booking.html?film=Fantastic+Four%3A+First+Steps"
+                    class="btn-presale"
+                    >🎟️ Pre-Sale Tiket</a
+                  >
+                </div>
+              </article>
+
+              <article class="film-card-v2 film-card" role="listitem">
+                <div class="poster-box">
+                  <img src="Images/Jurassic world.jpg" />
+                  <span class="genre-tag">Adventure</span>
+                  <span class="pre-sale-badge">Pre-Sale</span>
+                  <div class="poster-overlay">
+                    <a
+                      href="Booking.html?film=Jurassic+World+Rebirth"
+                      class="overlay-presale-info"
+                      >🎟️ Pre-Sale Tiket</a
+                    >
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="card-title">Jurassic World Rebirth</div>
+                  <div class="card-meta">
+                    🎭 Action / Adventure &nbsp;·&nbsp; ⏱ 125 menit
+                  </div>
+                  <a
+                    href="Booking.html?film=Jurassic+World+Rebirth"
+                    class="btn-presale"
+                    >🎟️ Pre-Sale Tiket</a
+                  >
+                </div>
+              </article>
+
+              <article class="film-card-v2 film-card" role="listitem">
+                <div class="poster-box">
+                  <img src="Images/Superman.jpg" alt="Superman: Legacy" />
+                  <span class="genre-tag">Superhero</span>
+                  <span class="pre-sale-badge">Pre-Sale</span>
+                  <div class="poster-overlay">
+                    <a
+                      href="Booking.html?film=Superman%3A+Legacy"
+                      class="overlay-presale-info"
+                      >🎟️ Pre-Sale Tiket</a
+                    >
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="card-title">Superman: Legacy</div>
+                  <div class="card-meta">
+                    🎭 Action / Superhero &nbsp;·&nbsp; ⏱ 138 menit
+                  </div>
+                  <a
+                    href="Booking.html?film=Superman%3A+Legacy"
+                    class="btn-presale"
+                    >🎟️ Pre-Sale Tiket</a
+                  >
+                </div>
+              </article>
+
+              <article class="film-card-v2 film-card" role="listitem">
+                <div class="poster-box">
+                  <img src="Images/Batman II.jpg" alt="The Batman Part II" />
+                  <span class="genre-tag">Thriller</span>
+                  <span class="pre-sale-badge">Pre-Sale</span>
+                  <div class="poster-overlay">
+                    <a
+                      href="Booking.html?film=The+Batman+Part+II"
+                      class="overlay-presale-info"
+                      >🎟️ Pre-Sale Tiket</a
+                    >
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="card-title">The Batman Part II</div>
+                  <div class="card-meta">
+                    🎭 Action / Thriller &nbsp;·&nbsp; ⏱ 165 menit
+                  </div>
+                  <a
+                    href="Booking.html?film=The+Batman+Part+II"
+                    class="btn-presale"
+                    >🎟️ Pre-Sale Tiket</a
+                  >
+                </div>
+              </article>
             </div>
-            <div class="card-body">
-              <div class="card-title">Avengers: Infinity War</div>
-              <div class="card-meta">
-                🎭 Action / Sci-Fi &nbsp;·&nbsp; ⏱ 149 menit
-              </div>
-              <a
-                href="Booking.html?film=Avengers%3A+Infinity+War"
-                class="btn-book-mobile"
-                >Pesan Tiket</a
-              >
-            </div>
-          </article>
+          </div>
+          <button
+            class="carousel-btn carousel-next"
+            id="carouselNext"
+            type="button"
+            aria-label="Selanjutnya"
+          >
+            &#8250;
+          </button>
         </div>
+        <div
+          class="carousel-dots"
+          id="carouselDots"
+          aria-label="Navigasi slide"
+        ></div>
       </section>
 
       <section class="cta-banner" aria-label="Ajakan booking">

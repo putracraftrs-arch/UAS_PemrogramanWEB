@@ -471,6 +471,83 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     grid.appendChild(card);
   });
+
+  const AKAN_TAYANG = [
+    {
+      film: "Fantastic Four: First Steps",
+      genre: "Action / Sci-Fi",
+      durasi: "130 menit",
+      rilisDate: "2026-07-01",
+      rilisLabel: "1 Juli 2026",
+      poster: "Images/fantastic 4.jpg",
+      alt: "Fantastic Four: First Steps",
+    },
+    {
+      film: "Jurassic World Rebirth",
+      genre: "Action / Adventure",
+      durasi: "125 menit",
+      rilisDate: "2026-07-03",
+      rilisLabel: "3 Juli 2026",
+      poster: "Images/Jurassic world.jpg",
+      alt: "Jurassic World Rebirth",
+    },
+    {
+      film: "Superman: Legacy",
+      genre: "Action / Superhero",
+      durasi: "138 menit",
+      rilisDate: "2026-07-08",
+      rilisLabel: "8 Juli 2026",
+      poster: "Images/Superman.jpg",
+      alt: "Superman: Legacy",
+    },
+    {
+      film: "The Batman Part II",
+      genre: "Action / Thriller",
+      durasi: "165 menit",
+      rilisDate: "2026-07-10",
+      rilisLabel: "10 Juli 2026",
+      poster: "Images/Batman II.jpg",
+      alt: "The Batman Part II",
+    },
+  ];
+
+  const scheduleSection = document.querySelector(".schedule-section");
+  if (scheduleSection) {
+    const titleAT = document.createElement("h2");
+    titleAT.className = "section-title akan-tayang-title";
+    titleAT.textContent = "Akan Tayang";
+
+    const descAT = document.createElement("p");
+    descAT.className = "section-desc";
+    descAT.textContent = "Film yang segera hadir di bioskop Medan";
+
+    const gridAT = document.createElement("div");
+    gridAT.className = "schedule-grid akan-tayang-grid";
+    gridAT.setAttribute("role", "list");
+    gridAT.setAttribute("aria-label", "Daftar film akan tayang");
+
+    AKAN_TAYANG.forEach((j) => {
+      const card = document.createElement("div");
+      card.className = "schedule-card schedule-card-cs";
+      card.innerHTML = `
+        <img src="${j.poster}" alt="${j.alt}" onerror="this.src='https://placehold.co/80x114/120a02/fb923c?text=${encodeURIComponent(j.alt)}'" />
+        <div class="schedule-info">
+          <div class="cs-presale-badge">Pre-Sale</div>
+          <h3>${j.film}</h3>
+          <p>${j.genre} &middot; ${j.durasi}</p>
+          <div class="schedule-details">
+            <span class="btn-date">🗓️ Rilis ${j.rilisLabel}</span>
+          </div>
+          <span class="btn-booking btn-booking-cs">🔔 Pre-Sale Segera</span>
+        </div>
+      `;
+      gridAT.appendChild(card);
+    });
+
+    scheduleSection.appendChild(titleAT);
+    scheduleSection.appendChild(descAT);
+    scheduleSection.appendChild(gridAT);
+  }
 });
 
 (function () {
@@ -869,6 +946,66 @@ document.addEventListener("DOMContentLoaded", () => {
         },
       ],
     },
+    "Fantastic Four: First Steps": {
+      genre: "Action / Sci-Fi",
+      durasi: "130 menit",
+      poster: "Images/fantastic 4.jpg",
+      presale: true,
+      jadwal: [
+        { tanggal: "2026-07-01", hari: "Rab", tgl: "1", bln: "Jul", sesi: ["13:00", "16:00", "19:00"] },
+        { tanggal: "2026-07-02", hari: "Kam", tgl: "2", bln: "Jul", sesi: ["13:00", "16:00", "19:00"] },
+        { tanggal: "2026-07-03", hari: "Jum", tgl: "3", bln: "Jul", sesi: ["12:00", "15:00", "18:00", "21:00"] },
+        { tanggal: "2026-07-04", hari: "Sab", tgl: "4", bln: "Jul", sesi: ["09:00", "12:00", "15:00", "18:00", "21:00"] },
+        { tanggal: "2026-07-05", hari: "Min", tgl: "5", bln: "Jul", sesi: ["10:00", "13:00", "16:00", "19:00"] },
+        { tanggal: "2026-07-06", hari: "Sen", tgl: "6", bln: "Jul", sesi: ["13:00", "16:00", "19:00"] },
+        { tanggal: "2026-07-07", hari: "Sel", tgl: "7", bln: "Jul", sesi: ["13:00", "16:00", "19:00"] },
+      ],
+    },
+    "Jurassic World Rebirth": {
+      genre: "Action / Adventure",
+      durasi: "125 menit",
+      poster: "Images/Jurassic world.jpg",
+      presale: true,
+      jadwal: [
+        { tanggal: "2026-07-03", hari: "Jum", tgl: "3", bln: "Jul", sesi: ["13:30", "16:30", "19:30", "21:30"] },
+        { tanggal: "2026-07-04", hari: "Sab", tgl: "4", bln: "Jul", sesi: ["09:30", "12:30", "15:30", "18:30", "21:30"] },
+        { tanggal: "2026-07-05", hari: "Min", tgl: "5", bln: "Jul", sesi: ["10:30", "13:30", "16:30", "19:30"] },
+        { tanggal: "2026-07-06", hari: "Sen", tgl: "6", bln: "Jul", sesi: ["13:30", "16:30", "19:30"] },
+        { tanggal: "2026-07-07", hari: "Sel", tgl: "7", bln: "Jul", sesi: ["13:30", "16:30", "19:30"] },
+        { tanggal: "2026-07-08", hari: "Rab", tgl: "8", bln: "Jul", sesi: ["13:30", "16:30", "19:30"] },
+        { tanggal: "2026-07-09", hari: "Kam", tgl: "9", bln: "Jul", sesi: ["13:30", "16:30", "19:30"] },
+      ],
+    },
+    "Superman: Legacy": {
+      genre: "Action / Superhero",
+      durasi: "138 menit",
+      poster: "Images/Superman.jpg",
+      presale: true,
+      jadwal: [
+        { tanggal: "2026-07-08", hari: "Rab", tgl: "8", bln: "Jul", sesi: ["12:15", "15:15", "18:15", "21:15"] },
+        { tanggal: "2026-07-09", hari: "Kam", tgl: "9", bln: "Jul", sesi: ["12:15", "15:15", "18:15"] },
+        { tanggal: "2026-07-10", hari: "Jum", tgl: "10", bln: "Jul", sesi: ["12:15", "15:15", "18:15", "21:15"] },
+        { tanggal: "2026-07-11", hari: "Sab", tgl: "11", bln: "Jul", sesi: ["09:15", "12:15", "15:15", "18:15", "21:15"] },
+        { tanggal: "2026-07-12", hari: "Min", tgl: "12", bln: "Jul", sesi: ["10:15", "13:15", "16:15", "19:15"] },
+        { tanggal: "2026-07-13", hari: "Sen", tgl: "13", bln: "Jul", sesi: ["12:15", "15:15", "18:15"] },
+        { tanggal: "2026-07-14", hari: "Sel", tgl: "14", bln: "Jul", sesi: ["12:15", "15:15", "18:15"] },
+      ],
+    },
+    "The Batman Part II": {
+      genre: "Action / Thriller",
+      durasi: "165 menit",
+      poster: "Images/Batman II.jpg",
+      presale: true,
+      jadwal: [
+        { tanggal: "2026-07-10", hari: "Jum", tgl: "10", bln: "Jul", sesi: ["14:00", "17:30", "21:00"] },
+        { tanggal: "2026-07-11", hari: "Sab", tgl: "11", bln: "Jul", sesi: ["10:00", "14:00", "17:30", "21:00"] },
+        { tanggal: "2026-07-12", hari: "Min", tgl: "12", bln: "Jul", sesi: ["10:00", "14:00", "17:30", "21:00"] },
+        { tanggal: "2026-07-13", hari: "Sen", tgl: "13", bln: "Jul", sesi: ["14:00", "17:30", "21:00"] },
+        { tanggal: "2026-07-14", hari: "Sel", tgl: "14", bln: "Jul", sesi: ["14:00", "17:30", "21:00"] },
+        { tanggal: "2026-07-15", hari: "Rab", tgl: "15", bln: "Jul", sesi: ["14:00", "17:30", "21:00"] },
+        { tanggal: "2026-07-16", hari: "Kam", tgl: "16", bln: "Jul", sesi: ["14:00", "17:30"] },
+      ],
+    },
   };
 
   const CINEMAS = [
@@ -1172,6 +1309,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function generateSeatState(cinema) {
+    const ROWS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".slice(0, cinema.rows);
+    const state = {};
+    if (FILMS[selFilm]?.presale) {
+      for (let r = 0; r < cinema.rows; r++) {
+        for (let c = 1; c <= cinema.cols; c++) {
+          state[ROWS[r] + c] = "available";
+        }
+      }
+      return state;
+    }
     const seedStr = selFilm + cinema.id + selTanggal.tanggal + selJam;
     let seed = 0;
     for (let i = 0; i < seedStr.length; i++)
@@ -1182,8 +1329,6 @@ document.addEventListener("DOMContentLoaded", () => {
       seed ^= seed << 5;
       return (seed >>> 0) / 4294967296;
     }
-    const state = {};
-    const ROWS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".slice(0, cinema.rows);
     const occupancyRate = 0.35 + rand() * 0.4;
     const midRow = Math.floor(cinema.rows / 2);
     for (let r = 0; r < cinema.rows; r++) {
@@ -1805,6 +1950,78 @@ document.addEventListener("DOMContentLoaded", () => {
       bookingKey: "Mission%3A+Impossible+%E2%80%93+The+Final+Reckoning",
       baseVotes: 445,
     },
+    {
+      id: 8,
+      film: "Fantastic Four: First Steps",
+      genre: "Action / Sci-Fi",
+      tags: ["Action", "Sci-Fi", "Marvel"],
+      durasi: 130,
+      rating: 0,
+      tahun: 2026,
+      sutradara: "Matt Shakman",
+      pemain: "Pedro Pascal, Vanessa Kirby, Joseph Quinn, Ebon Moss-Bachrach",
+      sinopsis:
+        "Keluarga super pertama Marvel — Reed Richards, Sue Storm, Johnny Storm, dan Ben Grimm — memulai petualangan luar angkasa mereka yang mengubah segalanya. Menghadapi ancaman kosmik yang belum pernah ada sebelumnya, mereka harus belajar bekerja sebagai satu kesatuan.",
+      poster: "Images/fantastic 4.jpg",
+      bookingKey: "Fantastic+Four%3A+First+Steps",
+      baseVotes: 380,
+      comingSoon: true,
+      rilisLabel: "1 Juli 2026",
+    },
+    {
+      id: 9,
+      film: "Jurassic World Rebirth",
+      genre: "Action / Adventure",
+      tags: ["Action", "Adventure", "Thriller"],
+      durasi: 125,
+      rating: 0,
+      tahun: 2026,
+      sutradara: "Gareth Edwards",
+      pemain: "Scarlett Johansson, Jonathan Bailey, Mahershala Ali",
+      sinopsis:
+        "Lima tahun setelah peristiwa Jurassic World Dominion, sebuah misi rahasia dikirim ke pulau terpencil yang masih dihuni dinosaurus. Apa yang mereka temukan di sana jauh lebih berbahaya dari yang dibayangkan.",
+      poster: "Images/Jurassic world.jpg",
+      bookingKey: "Jurassic+World+Rebirth",
+      baseVotes: 320,
+      comingSoon: true,
+      rilisLabel: "3 Juli 2026",
+    },
+    {
+      id: 10,
+      film: "Superman: Legacy",
+      genre: "Action / Superhero",
+      tags: ["Action", "Sci-Fi", "DC"],
+      durasi: 138,
+      rating: 0,
+      tahun: 2026,
+      sutradara: "James Gunn",
+      pemain: "David Corenswet, Rachel Brosnahan, Nicholas Hoult",
+      sinopsis:
+        "Clark Kent memulai perjalanannya sebagai Superman — sang pahlawan yang menyeimbangkan warisan Kryptonian-nya dengan identitasnya sebagai manusia Kansas. Sebuah babak baru semesta DC dimulai.",
+      poster: "Images/Superman.jpg",
+      bookingKey: "Superman%3A+Legacy",
+      baseVotes: 290,
+      comingSoon: true,
+      rilisLabel: "8 Juli 2026",
+    },
+    {
+      id: 11,
+      film: "The Batman Part II",
+      genre: "Action / Thriller",
+      tags: ["Action", "Thriller", "DC"],
+      durasi: 165,
+      rating: 0,
+      tahun: 2026,
+      sutradara: "Matt Reeves",
+      pemain: "Robert Pattinson, Zoë Kravitz, Barry Keoghan",
+      sinopsis:
+        "Bruce Wayne kembali menghadapi Gotham yang lebih gelap. Setelah kejatuhan Riddler, kekuatan baru bangkit dari bayang-bayang kota — dan The Batman harus menghadapi ujian terberat dalam hidupnya.",
+      poster: "Images/Batman II.jpg",
+      bookingKey: "The+Batman+Part+II",
+      baseVotes: 245,
+      comingSoon: true,
+      rilisLabel: "10 Juli 2026",
+    },
   ];
 
   const KEY_VOTES = "cinego_trend_votes";
@@ -1986,7 +2203,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const wlLen = getWishlist().length;
     document.getElementById("trendStats").innerHTML = `
       <div class="t-stat"><div class="t-stat-icon">🔥</div><div><div class="t-stat-val">${fmtVotes(grand)}</div><div class="t-stat-lbl">Total vote minggu ini</div></div></div>
-      <div class="t-stat"><div class="t-stat-icon">🎬</div><div><div class="t-stat-val">${FILMS_TR.length}</div><div class="t-stat-lbl">Film sedang tayang</div></div></div>
+      <div class="t-stat"><div class="t-stat-icon">🎬</div><div><div class="t-stat-val">${FILMS_TR.filter(f=>!f.comingSoon).length}</div><div class="t-stat-lbl">Film sedang tayang</div></div></div>
+      <div class="t-stat"><div class="t-stat-icon">🔔</div><div><div class="t-stat-val">${FILMS_TR.filter(f=>f.comingSoon).length}</div><div class="t-stat-lbl">Segera hadir</div></div></div>
       <div class="t-stat"><div class="t-stat-icon">🏆</div><div><div class="t-stat-val" style="font-size:.88rem;line-height:1.3">${top.film.length > 20 ? top.film.slice(0, 20) + "…" : top.film}</div><div class="t-stat-lbl">Film terpopuler saat ini</div></div></div>
       <div class="t-stat"><div class="t-stat-icon">❤️</div><div><div class="t-stat-val">${wlLen}</div><div class="t-stat-lbl">Film di wishlist kamu</div></div></div>
     `;
@@ -2004,7 +2222,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const card = document.createElement("div");
       card.className = "trend-card";
       card.innerHTML = `
-        <div class="rank-badge ${rankBadgeClass(rank)}">${rankLabel(rank)}</div>
+        <div class="rank-badge ${rankBadgeClass(rank)}">${f.comingSoon ? "🔔 Segera" : rankLabel(rank)}</div>
         <button class="wl-card-btn${wled ? " wled" : ""}" data-id="${f.id}" title="${wled ? "Hapus dari wishlist" : "Simpan ke wishlist"}">${wled ? "❤️" : "🤍"}</button>
         <div class="poster-wrap">
           <img src="${f.poster}" alt="${escHtmlTR(f.film)}" onerror="this.src='https://placehold.co/300x400/120a02/fb923c?text=${encImg}'"/>
@@ -2013,13 +2231,13 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="trend-card-body">
           <div class="trend-card-title">${escHtmlTR(f.film)}</div>
           <div class="trend-card-genre">${escHtmlTR(f.genre)}</div>
-          <div class="trend-card-meta"><span class="rating-pill">⭐ ${f.rating}</span><span class="dur-pill">${fmtDur(f.durasi)}</span></div>
+          <div class="trend-card-meta"><span class="rating-pill ${f.comingSoon ? "rating-tbd" : ""}">${f.comingSoon ? "Belum Rilis" : "⭐ " + f.rating}</span><span class="dur-pill">${fmtDur(f.durasi)}</span></div>
           <hr class="trend-divider"/>
           <div class="vote-row">
             <div class="vote-count">🔥 ${fmtVotes(votes)} <span class="vlbl">votes</span></div>
             <button class="btn-vote${voted ? " voted" : ""}" data-id="${f.id}" ${voted ? "disabled" : ""}>${voted ? "✓ Voted" : "+ Vote"}</button>
           </div>
-          <a href="Booking.html?film=${f.bookingKey}" class="btn-card-book">Pesan Tiket</a>
+          ${f.comingSoon ? `<a href="Booking.html?film=${f.bookingKey}" class="btn-card-book btn-card-presale">🎟️ Pre-Sale Tiket</a>` : `<a href="Booking.html?film=${f.bookingKey}" class="btn-card-book">Pesan Tiket</a>`}
         </div>
       `;
       wrap.appendChild(card);
@@ -2043,7 +2261,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <img class="list-poster" src="${f.poster}" alt="${escHtmlTR(f.film)}" onerror="this.src='https://placehold.co/70x100/120a02/fb923c?text=${encImg}'"/>
         <div class="list-info">
           <div class="list-title">${escHtmlTR(f.film)}</div>
-          <div class="list-meta"><span>⭐ ${f.rating}</span><span>⏱ ${fmtDur(f.durasi)}</span><span>${f.tahun}</span><span style="color:#3a2010">${escHtmlTR(f.genre)}</span></div>
+          <div class="list-meta"><span>${f.comingSoon ? "🔔 Belum Rilis" : "⭐ " + f.rating}</span><span>⏱ ${fmtDur(f.durasi)}</span><span>${f.tahun}</span><span style="color:#3a2010">${escHtmlTR(f.genre)}</span></div>
           <p class="list-sinopsis">${escHtmlTR(f.sinopsis)}</p>
         </div>
         <div class="list-actions">
@@ -2053,7 +2271,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <button class="wl-card-btn${wled ? " wled" : ""}" data-id="${f.id}" title="${wled ? "Hapus wishlist" : "Simpan ke wishlist"}">${wled ? "❤️" : "🤍"}</button>
           </div>
           <button class="btn-list-detail" data-id="${f.id}">Detail</button>
-          <a href="Booking.html?film=${f.bookingKey}" class="btn-list-book">Pesan →</a>
+          ${f.comingSoon ? `<a href="Booking.html?film=${f.bookingKey}" class="btn-list-book btn-list-presale">🎟️ Pre-Sale</a>` : `<a href="Booking.html?film=${f.bookingKey}" class="btn-list-book">Pesan →</a>`}
         </div>
       `;
       wrap.appendChild(item);
@@ -2126,7 +2344,9 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     document.getElementById("mTitle").textContent = f.film;
     document.getElementById("mRating").innerHTML =
-      `⭐ ${f.rating} <small>/ 10</small>`;
+      f.comingSoon
+        ? `<span class="modal-rating-tbd">Belum Ada Rating</span>`
+        : `⭐ ${f.rating} <small>/ 10</small>`;
     document.getElementById("mSinopsis").textContent = f.sinopsis;
     document.getElementById("mVoteNum").textContent = fmtVotes(votes);
     document.getElementById("mPills").innerHTML =
@@ -2980,4 +3200,103 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("formView").style.display = "block";
     document.getElementById("successView").style.display = "none";
   });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const viewport = document.getElementById("carouselViewport");
+  if (!viewport) return;
+
+  const track = document.getElementById("carouselTrack");
+  const dotsEl = document.getElementById("carouselDots");
+  const btnPrev = document.getElementById("carouselPrev");
+  const btnNext = document.getElementById("carouselNext");
+  const cards = Array.from(track.querySelectorAll(".film-card-v2"));
+  const total = cards.length;
+  const GAP = 16;
+  let currentIdx = 0;
+
+  function getVisible() {
+    const w = viewport.offsetWidth;
+    if (w >= 820) return 5;
+    if (w >= 620) return 4;
+    if (w >= 420) return 3;
+    return 2;
+  }
+
+  function getCardWidth() {
+    const v = getVisible();
+    return (viewport.offsetWidth - GAP * (v - 1)) / v;
+  }
+
+  function maxIndex() {
+    return Math.max(0, total - getVisible());
+  }
+
+  function setWidths() {
+    const w = getCardWidth();
+    cards.forEach((c) => {
+      c.style.width = w + "px";
+      c.style.flexShrink = "0";
+    });
+  }
+
+  function moveTo(idx) {
+    currentIdx = Math.max(0, Math.min(idx, maxIndex()));
+    const w = getCardWidth();
+    track.style.transform = `translateX(-${currentIdx * (w + GAP)}px)`;
+    if (btnPrev) btnPrev.disabled = currentIdx === 0;
+    if (btnNext) btnNext.disabled = currentIdx >= maxIndex();
+    updateDots();
+  }
+
+  function buildDots() {
+    if (!dotsEl) return;
+    dotsEl.innerHTML = "";
+    const v = getVisible();
+    const pages = Math.ceil(total / v);
+    for (let i = 0; i < pages; i++) {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "carousel-dot";
+      dot.setAttribute("aria-label", "Halaman " + (i + 1));
+      dot.addEventListener("click", () => {
+        const vNow = getVisible();
+        moveTo(Math.min(i * vNow, maxIndex()));
+      });
+      dotsEl.appendChild(dot);
+    }
+  }
+
+  function updateDots() {
+    if (!dotsEl) return;
+    const v = getVisible();
+    const activePage = Math.round(currentIdx / v);
+    dotsEl.querySelectorAll(".carousel-dot").forEach((d, i) => {
+      d.classList.toggle("active", i === activePage);
+    });
+  }
+
+  btnPrev?.addEventListener("click", () => moveTo(currentIdx - 1));
+  btnNext?.addEventListener("click", () => moveTo(currentIdx + 1));
+
+  let touchX = 0;
+  track.addEventListener("touchstart", (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener("touchend", (e) => {
+    const dx = touchX - e.changedTouches[0].clientX;
+    if (Math.abs(dx) > 40) moveTo(currentIdx + (dx > 0 ? 1 : -1));
+  }, { passive: true });
+
+  function init() {
+    setWidths();
+    buildDots();
+    moveTo(0);
+  }
+
+  window.addEventListener("resize", () => {
+    setWidths();
+    buildDots();
+    moveTo(Math.min(currentIdx, maxIndex()));
+  });
+
+  init();
 });
