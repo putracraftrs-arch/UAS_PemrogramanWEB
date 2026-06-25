@@ -2233,10 +2233,25 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="trend-card-genre">${escHtmlTR(f.genre)}</div>
           <div class="trend-card-meta"><span class="rating-pill ${f.comingSoon ? "rating-tbd" : ""}">${f.comingSoon ? "Belum Rilis" : "⭐ " + f.rating}</span><span class="dur-pill">${fmtDur(f.durasi)}</span></div>
           <hr class="trend-divider"/>
-          <div class="vote-row">
-            <div class="vote-count">🔥 ${fmtVotes(votes)} <span class="vlbl">votes</span></div>
-            <button class="btn-vote${voted ? " voted" : ""}" data-id="${f.id}" ${voted ? "disabled" : ""}>${voted ? "✓ Voted" : "+ Vote"}</button>
-          </div>
+${f.comingSoon
+  ? `
+    <div class="vote-row comingsoon-info">
+      <span>🎬 Segera Hadir</span>
+    </div>
+  `
+  : `
+    <div class="vote-row">
+      <div class="vote-count">
+        🔥 ${fmtVotes(votes)} <span class="vlbl">votes</span>
+      </div>
+      <button class="btn-vote${voted ? " voted" : ""}"
+              data-id="${f.id}"
+              ${voted ? "disabled" : ""}>
+        ${voted ? "✓ Voted" : "+ Vote"}
+      </button>
+    </div>
+  `
+}
           ${f.comingSoon ? `<a href="Booking.html?film=${f.bookingKey}" class="btn-card-book btn-card-presale">🎟️ Pre-Sale Tiket</a>` : `<a href="Booking.html?film=${f.bookingKey}" class="btn-card-book">Pesan Tiket</a>`}
         </div>
       `;

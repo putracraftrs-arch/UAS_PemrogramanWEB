@@ -1240,6 +1240,15 @@ footer a.active {
   color: #f1f5f9;
 }
 
+.comingsoon-info{
+    display:flex;
+    align-items:center;
+    min-height:34px;
+    color:#763BEC;
+    font-size:14px;
+    font-weight:600;
+}
+
 .tipe-group {
   display: flex;
   gap: 12px;
