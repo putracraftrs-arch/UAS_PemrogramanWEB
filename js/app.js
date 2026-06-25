@@ -2277,23 +2277,76 @@ ${f.comingSoon
 item.className = "trend-list-item";
 item.dataset.id = f.id;
       item.innerHTML = `
-        <div class="list-rank-num ${listRankClass(rank)}">${rankLabel(rank)}</div>
-        <img class="list-poster" src="${f.poster}" alt="${escHtmlTR(f.film)}" onerror="this.src='https://placehold.co/70x100/120a02/fb923c?text=${encImg}'"/>
-        <div class="list-info">
-          <div class="list-title">${escHtmlTR(f.film)}</div>
-          <div class="list-meta"><span>${f.comingSoon ? "🔔 Belum Rilis" : "⭐ " + f.rating}</span><span>⏱ ${fmtDur(f.durasi)}</span><span>${f.tahun}</span><span style="color:#3a2010">${escHtmlTR(f.genre)}</span></div>
-          <p class="list-sinopsis">${escHtmlTR(f.sinopsis)}</p>
-        </div>
-        <div class="list-actions">
-          <div class="list-vote-num">🔥 ${fmtVotes(votes)} <span class="lbl">votes</span></div>
-          <div class="list-btn-row">
-            <button class="btn-vote${voted ? " voted" : ""}" data-id="${f.id}" ${voted ? "disabled" : ""}>${voted ? "✓" : "+ Vote"}</button>
-            <button class="wl-card-btn${wled ? " wled" : ""}" data-id="${f.id}" title="${wled ? "Hapus wishlist" : "Simpan ke wishlist"}">${wled ? "❤️" : "🤍"}</button>
-          </div>
-          <button class="btn-list-detail" data-id="${f.id}">Detail</button>
-          ${f.comingSoon ? `<a href="Booking.html?film=${f.bookingKey}" class="btn-list-book btn-list-presale">🎟️ Pre-Sale</a>` : `<a href="Booking.html?film=${f.bookingKey}" class="btn-list-book">Pesan →</a>`}
-        </div>
-      `;
+  <div class="list-rank-num ${listRankClass(rank)}">${rankLabel(rank)}</div>
+
+  <img class="list-poster"
+       src="${f.poster}"
+       alt="${escHtmlTR(f.film)}"
+       onerror="this.src='https://placehold.co/70x100/120a02/fb923c?text=${encImg}'"/>
+
+  <div class="list-info">
+    <div class="list-title">${escHtmlTR(f.film)}</div>
+
+    <div class="list-meta">
+      <span>${f.comingSoon ? "🔔 Belum Rilis" : "⭐ " + f.rating}</span>
+      <span>⏱ ${fmtDur(f.durasi)}</span>
+      <span>${f.tahun}</span>
+      <span style="color:#3a2010">${escHtmlTR(f.genre)}</span>
+    </div>
+
+    <p class="list-sinopsis">${escHtmlTR(f.sinopsis)}</p>
+  </div>
+
+  <div class="list-actions">
+
+    ${!f.comingSoon ? `
+      <div class="list-vote-num">
+        🔥 ${fmtVotes(votes)} <span class="lbl">votes</span>
+      </div>
+
+      <div class="list-btn-row">
+        <button class="btn-vote${voted ? " voted" : ""}"
+                data-id="${f.id}"
+                ${voted ? "disabled" : ""}>
+          ${voted ? "✓" : "+ Vote"}
+        </button>
+
+        <button class="wl-card-btn${wled ? " wled" : ""}"
+                data-id="${f.id}">
+          ${wled ? "❤️" : "🤍"}
+        </button>
+      </div>
+    ` : `
+      <div class="comingsoon-info">
+        🎬 Segera Hadir
+      </div>
+
+      <div class="list-btn-row">
+        <button class="wl-card-btn${wled ? " wled" : ""}"
+                data-id="${f.id}">
+          ${wled ? "❤️" : "🤍"}
+        </button>
+      </div>
+    `}
+
+    <button class="btn-list-detail" data-id="${f.id}">
+      Detail
+    </button>
+
+    ${
+      f.comingSoon
+        ? `<a href="Booking.html?film=${f.bookingKey}"
+              class="btn-list-book btn-list-presale">
+              🎟️ Pre-Sale
+           </a>`
+        : `<a href="Booking.html?film=${f.bookingKey}"
+              class="btn-list-book">
+              Pesan →
+           </a>`
+    }
+
+  </div>
+`;
       wrap.appendChild(item);
     });
     return wrap;
@@ -2388,6 +2441,11 @@ item.dataset.id = f.id;
       wled = inWishlist(id);
     const encImg = encodeURIComponent(f.film.slice(0, 14));
     const mPoster = document.getElementById("mPoster");
+    const voteSub = document.getElementById("mVoteSub");
+
+voteSub.textContent = f.comingSoon
+  ? "Film belum dirilis"
+  : "vote pengguna minggu ini";
     mPoster.src = f.poster;
     mPoster.alt = f.film;
     mPoster.onerror = function () {
@@ -2399,7 +2457,8 @@ item.dataset.id = f.id;
         ? `<span class="modal-rating-tbd">Belum Ada Rating</span>`
         : `⭐ ${f.rating} <small>/ 10</small>`;
     document.getElementById("mSinopsis").textContent = f.sinopsis;
-    document.getElementById("mVoteNum").textContent = fmtVotes(votes);
+    document.getElementById("mVoteNum").textContent =
+  f.comingSoon ? "-" : fmtVotes(votes);
     document.getElementById("mPills").innerHTML =
       `<span class="mpill mpill-genre">${escHtmlTR(f.genre)}</span><span class="mpill mpill-year">📅 ${f.tahun}</span><span class="mpill mpill-dur">⏱ ${fmtDur(f.durasi)}</span>`;
     document.getElementById("mInfoGrid").innerHTML = `
@@ -2408,15 +2467,26 @@ item.dataset.id = f.id;
       <div class="modal-info-item" style="grid-column:1/-1"><div class="mi-lbl">Pemain</div><div class="mi-val">${escHtmlTR(f.pemain)}</div></div>
     `;
     const btnVote = document.getElementById("btnModalVote");
-    btnVote.textContent = voted ? "✓ Sudah Divote" : "🔥 Vote Film Ini";
-    btnVote.className = "btn-modal-vote" + (voted ? " mv-voted" : "");
-    btnVote.onclick = () => {
-      if (castVote(id)) {
-        showToastTR("🔥 Vote berhasil!");
-        populateModal(id);
-        render();
-      }
-    };
+
+if (f.comingSoon) {
+  btnVote.style.display = "none";
+} else {
+  btnVote.style.display = "";
+
+  btnVote.textContent =
+    voted ? "✓ Sudah Divote" : "🔥 Vote Film Ini";
+
+  btnVote.className =
+    "btn-modal-vote" + (voted ? " mv-voted" : "");
+
+  btnVote.onclick = () => {
+    if (castVote(id)) {
+      showToastTR("🔥 Vote berhasil!");
+      populateModal(id);
+      render();
+    }
+  };
+}
     const btnWl = document.getElementById("btnModalWl");
     btnWl.innerHTML = wled ? "❤️ Ada di Wishlist" : "🤍 Simpan ke Wishlist";
     btnWl.className = "btn-modal-wl" + (wled ? " mwl-on" : "");
