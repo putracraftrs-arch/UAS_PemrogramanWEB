@@ -3583,6 +3583,7 @@ body.booking-page > .toast.show {
   display: flex;
   align-items: flex-end;
   padding: 12px;
+  cursor: pointer;
 }
 .trend-card:hover .poster-overlay {
   opacity: 1;
@@ -3600,6 +3601,7 @@ body.booking-page > .toast.show {
   font-weight: 700;
   cursor: pointer;
   transition: background-color 0.2s;
+  text-align: center;
 }
 .btn-detail-overlay:hover {
   background: #ea580c;
@@ -3730,10 +3732,12 @@ body.booking-page > .toast.show {
   transition:
     transform 0.25s,
     border-color 0.25s;
+  cursor: pointer;
 }
+
 .trend-list-item:hover {
-  transform: translateY(-3px);
-  border-color: #ea580c;
+  transform: translateY(-2px);
+  transition: 0.2s ease;
 }
 
 .list-rank-num {

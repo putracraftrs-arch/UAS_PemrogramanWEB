@@ -2224,10 +2224,14 @@ document.addEventListener("DOMContentLoaded", () => {
       card.innerHTML = `
         <div class="rank-badge ${rankBadgeClass(rank)}">${f.comingSoon ? "🔔 Segera" : rankLabel(rank)}</div>
         <button class="wl-card-btn${wled ? " wled" : ""}" data-id="${f.id}" title="${wled ? "Hapus dari wishlist" : "Simpan ke wishlist"}">${wled ? "❤️" : "🤍"}</button>
-        <div class="poster-wrap">
-          <img src="${f.poster}" alt="${escHtmlTR(f.film)}" onerror="this.src='https://placehold.co/300x400/120a02/fb923c?text=${encImg}'"/>
-          <div class="poster-overlay"><button class="btn-detail-overlay" data-id="${f.id}">Lihat Detail →</button></div>
-        </div>
+        <div class="poster-wrap" data-id="${f.id}">
+  <img src="${f.poster}" alt="${escHtmlTR(f.film)}" onerror="this.src='https://placehold.co/300x400/120a02/fb923c?text=${encImg}'"/>
+  <div class="poster-overlay">
+    <span class="btn-detail-overlay"  data-id="${f.id}">
+      Lihat Detail →
+    </span>
+  </div>
+</div>
         <div class="trend-card-body">
           <div class="trend-card-title">${escHtmlTR(f.film)}</div>
           <div class="trend-card-genre">${escHtmlTR(f.genre)}</div>
@@ -2270,7 +2274,8 @@ ${f.comingSoon
         wled = inWishlist(f.id);
       const encImg = encodeURIComponent(f.film.slice(0, 12));
       const item = document.createElement("div");
-      item.className = "trend-list-item";
+item.className = "trend-list-item";
+item.dataset.id = f.id;
       item.innerHTML = `
         <div class="list-rank-num ${listRankClass(rank)}">${rankLabel(rank)}</div>
         <img class="list-poster" src="${f.poster}" alt="${escHtmlTR(f.film)}" onerror="this.src='https://placehold.co/70x100/120a02/fb923c?text=${encImg}'"/>
@@ -2293,6 +2298,7 @@ ${f.comingSoon
     });
     return wrap;
   }
+  
 
   function renderEmpty() {
     const div = document.createElement("div");
@@ -2327,6 +2333,36 @@ ${f.comingSoon
           openModalTR(parseInt(btn.dataset.id));
         });
       });
+    container
+  .querySelectorAll(".trend-list-card")
+  .forEach((card) => {
+    card.addEventListener("click", () => {
+      openModalTR(parseInt(card.dataset.id));
+    });
+  });
+    container
+  .querySelectorAll(".poster-wrap")
+  .forEach((poster) => {
+    poster.addEventListener("click", () => {
+      openModalTR(parseInt(poster.dataset.id));
+    });
+  });
+  container.querySelectorAll(".trend-list-item").forEach((item) => {
+  item.addEventListener("click", (e) => {
+
+    // Jangan buka modal kalau klik tombol tertentu
+    if (
+      e.target.closest(".btn-vote") ||
+      e.target.closest(".wl-card-btn") ||
+      e.target.closest(".btn-list-book") ||
+      e.target.closest(".btn-list-detail")
+    ) {
+      return;
+    }
+
+    openModalTR(parseInt(item.dataset.id));
+  });
+});
   }
 
   function render() {
