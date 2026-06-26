@@ -1,0 +1,135 @@
+@media (max-width: 768px) {
+  .navbar-inner {
+    flex-wrap: wrap;
+    gap: 0;
+  }
+  .navToggleMenu {
+    display: flex;
+    margin-right: 12px;
+  }
+  nav {
+    order: 3;
+    width: 100%;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    padding: 8px 0;
+    border-top: 1px solid #2a1a06;
+    margin-top: 12px;
+  }
+
+  .nav-Toggle:checked ~ nav .nav-menu {
+    display: flex;
+  }
+  .nav-menu li a {
+    display: block;
+    padding: 12px 0;
+    border-radius: 0;
+    text-align: center;
+  }
+
+  .hero-content h2 {
+    font-size: 1.6rem;
+  }
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+
+  .film-list {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  .schedule-grid {
+    grid-template-columns: 1fr;
+  }
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .steps-grid {
+    flex-direction: column;
+  }
+  .stats-grid {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .booking-card {
+    padding: 24px 18px;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .tipe-group {
+    flex-direction: column;
+  }
+  .ticket-topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .search-input {
+    width: 100%;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-form-card {
+    padding: 20px 16px;
+  }
+  .avatar-stats {
+    display: none;
+  }
+  .form-card {
+    padding: 20px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h2 {
+    font-size: 1.3rem;
+  }
+  .film-list {
+    grid-template-columns: 1fr 1fr;
+  }
+  .about-section {
+    padding: 0 16px;
+  }
+
+  .arrow {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+.nav-menu li a.nav-logged-in {
+  color: #fb923c;
+  font-weight: 700;
+}
+
+.nav-logout-btn {
+  background: transparent;
+  border: 1px solid #3a1a0a;
+  color: #a87050;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 6px;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+  vertical-align: middle;
+}
+
+.nav-logout-btn:hover {
+  color: #ef4444;
+  border-color: #ef4444;
+}
+

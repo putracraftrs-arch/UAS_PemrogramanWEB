@@ -1,0 +1,237 @@
+.account-section {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+}
+
+.avatar-block {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: #120a02;
+  border: 1px solid #2a1a06;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.avatar-circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ea580c, #d97706);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.avatar-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 2px;
+}
+.avatar-info p {
+  color: #5a3a20;
+  font-size: 0.85rem;
+}
+
+.avatar-stats {
+  margin-left: auto;
+  display: flex;
+  gap: 16px;
+}
+
+.av-stat {
+  text-align: center;
+}
+.av-stat .av-num {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fb923c;
+}
+.av-stat .av-label {
+  font-size: 0.75rem;
+  color: #5a3a20;
+  margin-top: 2px;
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  background-color: #0f0602;
+  border: 1px solid #2a1a06;
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: 24px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 9px;
+  border: none;
+  border-radius: 7px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #5a3a20;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.tab-btn.active {
+  background-color: #1a0e04;
+  color: #fb923c;
+  border: 1px solid #2a1a06;
+}
+.tab-btn:hover:not(.active) {
+  color: #a87050;
+}
+
+.tab-panel {
+  display: none;
+}
+.tab-panel.active {
+  display: block;
+}
+
+.form-card {
+  background-color: #120a02;
+  border: 1px solid #2a1a06;
+  border-radius: 14px;
+  padding: 28px 28px 24px;
+}
+
+.form-card h3 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #d4845a;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border-bottom: 1px solid #1f1208;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.input-wrap {
+  position: relative;
+}
+.input-wrap input {
+  padding-right: 44px;
+}
+
+.toggle-pw {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #5a3a20;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.toggle-pw:hover {
+  color: #a87050;
+}
+
+.mini-table-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid #2a1a06;
+}
+
+.mini-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  min-width: 540px;
+}
+.mini-table thead tr {
+  background-color: #1a0e04;
+}
+.mini-table thead th {
+  text-align: left;
+  padding: 12px 14px;
+  color: #d4845a;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-bottom: 1px solid #2a1a06;
+}
+
+.mini-table tbody tr {
+  background-color: #120a02;
+  border-bottom: 1px solid #1f1208;
+}
+.mini-table tbody tr:last-child {
+  border-bottom: none;
+}
+.mini-table tbody tr:hover {
+  background-color: #1a0e04;
+}
+.mini-table tbody td {
+  padding: 12px 14px;
+  color: #e2cbb4;
+  vertical-align: middle;
+}
+
+.riwayat-empty {
+  text-align: center;
+  padding: 40px;
+  color: #4a3520;
+}
+.riwayat-empty .icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.danger-zone {
+  background-color: rgba(239, 68, 68, 0.04);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-top: 20px;
+}
+
+.danger-zone h4 {
+  color: #ef4444;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+.danger-zone p {
+  color: #5a3a20;
+  font-size: 0.83rem;
+  margin-bottom: 14px;
+}
+
+.btn-danger {
+  padding: 9px 20px;
+  background: transparent;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.83rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+.btn-danger:hover {
+  background-color: rgba(239, 68, 68, 0.08);
+  border-color: #ef4444;
+}
+

@@ -1,0 +1,33 @@
+.about-section {
+  max-width: 800px;
+  margin: 0 auto 28px;
+  padding: 0 24px;
+}
+
+.about-section:first-child {
+  padding-top: 40px;
+}
+
+.about-card {
+  background-color: #120a02;
+  border: 1px solid #2a1a06;
+  border-radius: 12px;
+  padding: 28px;
+}
+
+.about-section h3 {
+  color: #fb923c;
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+}
+.about-section p {
+  color: #a87050;
+  line-height: 1.75;
+  margin-bottom: 10px;
+}
+.about-section ul {
+  color: #a87050;
+  padding-left: 20px;
+  line-height: 2.1;
+}
+

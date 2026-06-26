@@ -1,0 +1,146 @@
+.navbar {
+  background-color: #0f0a04;
+  border-bottom: 1px solid #2a1a06;
+  padding: 14px 0;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-Toggle {
+  display: none;
+}
+
+.navToggleMenu {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.navToggleMenu span {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background-color: #f1f5f9;
+  border-radius: 2px;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.logo {
+  height: 42px;
+  width: auto;
+}
+
+nav {
+  order: -1;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 4px;
+}
+
+.nav-menu li a {
+  font-size: 0.9rem;
+  padding: 8px 14px;
+  border-radius: 8px;
+  color: #a87050;
+  transition:
+    color 0.2s,
+    background-color 0.2s;
+}
+
+.nav-menu li a.active {
+  color: #f1f5f9;
+  font-weight: 600;
+  background-color: rgba(234, 88, 12, 0.18);
+}
+
+.nav-menu li a:hover {
+  color: #f1f5f9;
+  background-color: rgba(251, 146, 60, 0.08);
+}
+
+.nav-menu li a.coming-soon {
+  color: #4a3520;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 8px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.section-desc {
+  color: #a87050;
+  margin-bottom: 24px;
+}
+
+.hero-content {
+  text-align: center;
+  padding: 72px 24px 60px;
+  background: linear-gradient(160deg, #1a0e04 0%, #0b0602 100%);
+  border-bottom: 1px solid #2a1a06;
+}
+
+.hero-content h2 {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+}
+.hero-content p {
+  color: #a87050;
+  font-size: 1.05rem;
+  margin-bottom: 28px;
+}
+
+.btn-pesan {
+  display: inline-block;
+  background: linear-gradient(135deg, #ea580c, #d97706);
+  color: #fff;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition:
+    filter 0.3s,
+    transform 0.2s;
+}
+
+.btn-pesan:hover {
+  filter: brightness(1.15);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+#film,
