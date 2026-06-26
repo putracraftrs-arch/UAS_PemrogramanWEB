@@ -1464,23 +1464,24 @@ tbody td .email-txt {
   font-size: 0.8rem;
 }
 
-.btn-eticket {
-  background: linear-gradient(135deg, #d97706, #b45309);
-  border: none;
-  color: #fff;
+.btn-hapus {
+  background: transparent;
+  border: 1px solid #3a1a0a;
+  color: #ef4444;
   padding: 5px 12px;
   border-radius: 6px;
   font-size: 0.78rem;
   font-weight: 600;
   cursor: pointer;
-  transition: filter 0.2s, transform 0.15s;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
   white-space: nowrap;
-  letter-spacing: 0.01em;
 }
 
-.btn-eticket:hover {
-  filter: brightness(1.15);
-  transform: translateY(-1px);
+.btn-hapus:hover {
+  background-color: rgba(239, 68, 68, 0.08);
+  border-color: #ef4444;
 }
 
 .empty-state {
@@ -4195,12 +4196,15 @@ body.booking-page > .toast.show {
   overflow: hidden;
   background: #050208;
   border-bottom: 1px solid #2a1a06;
+  width: 100%;
+  margin: 0;
 }
 
 .hero-strip {
   position: absolute;
-  left: 0;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
   height: 18px;
   background: repeating-linear-gradient(
     90deg,
@@ -4409,9 +4413,15 @@ body.booking-page > .toast.show {
 }
 
 .features-section {
-  max-width: 1100px;
+  width: 100%;
+  background: linear-gradient(180deg, #08060f 0%, #0b0d1a 100%);
+  border-top: 1px solid #1a1630;
+  border-bottom: 1px solid #1a1630;
+  padding: 56px 48px 40px;
+}
+.features-section-inner {
+  max-width: 100%;
   margin: 0 auto;
-  padding: 56px 24px 8px;
 }
 .features-section h2 {
   margin-bottom: 6px;
@@ -4423,8 +4433,8 @@ body.booking-page > .toast.show {
 
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
   margin-bottom: 16px;
 }
 .feature-card {
@@ -4904,6 +4914,15 @@ body.booking-page > .toast.show {
   .carousel-next { margin-left: 6px; }
 }
 
+@media (max-width: 900px) {
+  .features-section {
+    padding: 48px 32px 32px;
+  }
+  .feature-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
 @media (max-width: 640px) {
   .stats-strip-inner {
     flex-direction: column;
@@ -4915,8 +4934,12 @@ body.booking-page > .toast.show {
     width: 100%;
     max-width: 340px;
   }
+  .features-section {
+    padding: 40px 20px 28px;
+  }
   .feature-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 14px;
   }
 }
 @media (max-width: 400px) {
@@ -5136,184 +5159,4 @@ body.booking-page > .toast.show {
   .qris-timer { font-size: 1.9rem; }
   .qris-actions { flex-direction: column; }
   .btn-qris-confirm { width: 100%; }
-}
-
-
-/* ═══════════════════════════════════════════════
-   E-TICKET MODAL
-═══════════════════════════════════════════════ */
-.eticket-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.72);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 3000;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.28s;
-}
-.eticket-overlay.show {
-  opacity: 1;
-  pointer-events: all;
-}
-.eticket-card {
-  background: #1a0e04;
-  border: 1px solid #3a2010;
-  border-radius: 16px;
-  width: min(400px, 92vw);
-  transform: scale(0.9) translateY(12px);
-  transition: transform 0.28s;
-  overflow: hidden;
-}
-.eticket-overlay.show .eticket-card {
-  transform: scale(1) translateY(0);
-}
-
-/* Header strip */
-.eticket-header {
-  background: linear-gradient(135deg, #b45309, #78350f);
-  padding: 16px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.et-brand {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 0.04em;
-}
-.et-badge-label {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: #fef3c7;
-  border: 1px solid rgba(255,255,255,0.4);
-  border-radius: 4px;
-  padding: 2px 8px;
-}
-
-/* Booking code */
-.et-code-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 20px 10px;
-}
-.et-code-label {
-  font-size: 0.72rem;
-  color: #7a4a20;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-.et-code {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #f59e0b;
-  letter-spacing: 0.08em;
-  font-family: monospace;
-}
-
-/* Tear divider */
-.et-divider {
-  display: flex;
-  align-items: center;
-  position: relative;
-  margin: 0;
-}
-.et-notch {
-  width: 18px;
-  height: 18px;
-  background: #0e0704;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.et-notch-left  { margin-left: -9px; }
-.et-notch-right { margin-right: -9px; }
-.et-dashed-line {
-  flex: 1;
-  border-top: 2px dashed #2a1a08;
-  margin: 0 4px;
-}
-
-/* Body rows */
-.et-body {
-  padding: 14px 20px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.et-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 8px;
-}
-.et-label {
-  font-size: 0.72rem;
-  color: #7a4a20;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  flex-shrink: 0;
-  min-width: 72px;
-}
-.et-value {
-  font-size: 0.85rem;
-  color: #f1e8da;
-  text-align: right;
-  word-break: break-word;
-}
-.et-film  { font-weight: 700; color: #f59e0b; font-size: 0.9rem; }
-.et-kursi { color: #fb923c; font-weight: 600; }
-.et-total-row { margin-top: 4px; border-top: 1px solid #2a1a08; padding-top: 10px; }
-.et-total { color: #22c55e; font-weight: 700; font-size: 0.95rem; }
-
-/* Barcode */
-.et-barcode-wrap {
-  padding: 14px 20px 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-}
-.et-bars {
-  display: flex;
-  align-items: stretch;
-  gap: 2px;
-  height: 42px;
-}
-.et-bar {
-  background: #f59e0b;
-  height: 100%;
-  border-radius: 1px;
-  opacity: 0.85;
-}
-.et-barcode-num {
-  font-family: monospace;
-  font-size: 0.65rem;
-  color: #5a3a20;
-  letter-spacing: 0.12em;
-}
-
-/* Close button */
-.btn-close-eticket {
-  display: block;
-  width: calc(100% - 40px);
-  margin: 10px 20px 16px;
-  background: transparent;
-  border: 1px solid #3a2010;
-  color: #a87050;
-  border-radius: 8px;
-  padding: 10px;
-  font-family: "Inter", sans-serif;
-  font-size: 0.88rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
-}
-.btn-close-eticket:hover {
-  background-color: #120a02;
-  color: #f1f5f9;
 }
