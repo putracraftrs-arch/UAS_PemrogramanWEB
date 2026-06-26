@@ -1126,7 +1126,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   function setStep(n) {
-    [1, 2, 3, 4].forEach((i) => {
+    [1, 2, 3, 4, 5].forEach((i) => {
       const el = document.getElementById("si" + i);
       if (!el) return;
       el.classList.toggle("active", i === n);
@@ -1135,7 +1135,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function goToStep(n) {
-    [1, 2, 3, 4].forEach((i) => {
+    [1, 2, 3, 4, 5].forEach((i) => {
       const el = document.getElementById("step" + i);
       if (el) el.style.display = i === n ? "block" : "none";
     });
@@ -1603,20 +1603,8 @@ document.addEventListener("DOMContentLoaded", () => {
           hargaPerKursi: selCinema.harga,
           total: selSeats.length * selCinema.harga,
         };
-        const semua = JSON.parse(localStorage.getItem("cinego_tiket") || "[]");
-        semua.push(tiket);
-        localStorage.setItem("cinego_tiket", JSON.stringify(semua));
-        [1, 2, 3, 4].forEach((i) => {
-          const si = document.getElementById("si" + i);
-          if (si) {
-            si.classList.remove("active");
-            si.classList.add("done");
-          }
-        });
-        showToast("✅ Tiket berhasil dipesan!", "#15803d");
-        setTimeout(() => {
-          window.location.href = "MyTicket.html";
-        }, 1900);
+        // Proceed to QRIS payment step
+        goToQrisStep(tiket);
       });
 
     document
@@ -1772,7 +1760,16 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
     renderFilmPicker();
-    [2, 3, 4].forEach((i) => showEl("step" + i, false));
+    [2, 3, 4, 5].forEach((i) => showEl("step" + i, false));
+
+    // QRIS button listeners
+    document.getElementById("btnQrisBack")?.addEventListener("click", () => {
+      clearQrisTimer();
+      goToStep(4);
+    });
+    document.getElementById("btnQrisConfirm")?.addEventListener("click", () => {
+      confirmQrisPayment();
+    });
 
     const urlParams = new URLSearchParams(window.location.search);
     const urlFilm = urlParams.get("film");
@@ -1827,6 +1824,172 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     }
   }
+
+  // ─── QRIS PAYMENT ────────────────────────────────────────────────────────
+  let qrisTimerInterval = null;
+  let qrisPendingTicket = null;
+
+  function clearQrisTimer() {
+    if (qrisTimerInterval) {
+      clearInterval(qrisTimerInterval);
+      qrisTimerInterval = null;
+    }
+  }
+
+  function generateQRSVG(seed) {
+    const SIZE = 29;
+    const MOD = 7;
+    const MARGIN = 14;
+    const total = SIZE * MOD + MARGIN * 2;
+    const grid = Array.from({ length: SIZE }, () => Array(SIZE).fill(0));
+
+    // Finder pattern helper (7×7 with white interior ring, 3×3 dark center)
+    function addFinder(r, c) {
+      for (let i = 0; i < 7; i++) {
+        grid[r + i][c] = 1; grid[r + i][c + 6] = 1;
+        grid[r][c + i] = 1; grid[r + 6][c + i] = 1;
+      }
+      for (let i = 1; i < 6; i++) for (let j = 1; j < 6; j++) grid[r + i][c + j] = 0;
+      for (let i = 2; i < 5; i++) for (let j = 2; j < 5; j++) grid[r + i][c + j] = 1;
+    }
+    addFinder(0, 0);
+    addFinder(0, SIZE - 7);
+    addFinder(SIZE - 7, 0);
+
+    // Timing patterns
+    for (let i = 8; i < SIZE - 8; i++) {
+      grid[6][i] = i % 2 === 0 ? 1 : 0;
+      grid[i][6] = i % 2 === 0 ? 1 : 0;
+    }
+
+    // Mark reserved zones
+    const reserved = new Set();
+    for (let i = 0; i < 9; i++) for (let j = 0; j < 9; j++) {
+      reserved.add(i + "," + j);
+      reserved.add(i + "," + (SIZE - 1 - j + 1));
+      reserved.add((SIZE - 1 - i + 1) + "," + j);
+    }
+    for (let i = 8; i < SIZE - 8; i++) {
+      reserved.add("6," + i); reserved.add(i + ",6");
+    }
+
+    // Seeded pseudo-random data modules
+    let s = seed >>> 0;
+    function rng() {
+      s ^= s << 13; s ^= s >> 17; s ^= s << 5;
+      return (s >>> 0) / 4294967296;
+    }
+    for (let r = 0; r < SIZE; r++) {
+      for (let c = 0; c < SIZE; c++) {
+        if (!reserved.has(r + "," + c)) {
+          grid[r][c] = rng() < 0.48 ? 1 : 0;
+        }
+      }
+    }
+
+    let rects = "";
+    for (let r = 0; r < SIZE; r++) {
+      for (let c = 0; c < SIZE; c++) {
+        if (grid[r][c]) {
+          const x = MARGIN + c * MOD;
+          const y = MARGIN + r * MOD;
+          rects += `<rect x="${x}" y="${y}" width="${MOD}" height="${MOD}" fill="#1a0a00"/>`;
+        }
+      }
+    }
+
+    // White center patch for logo overlay
+    const cx = Math.floor(total / 2), cy = Math.floor(total / 2), ps = 26;
+    rects += `<rect x="${cx - ps / 2}" y="${cy - ps / 2}" width="${ps}" height="${ps}" fill="#fff" rx="4"/>`;
+    rects += `<text x="${cx}" y="${cy + 5}" text-anchor="middle" font-size="9" font-weight="700" fill="#ea580c" font-family="Inter,sans-serif">QR</text>`;
+
+    return `<svg viewBox="0 0 ${total} ${total}" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;max-width:220px;border-radius:10px;background:#fff">${rects}</svg>`;
+  }
+
+  function goToQrisStep(ticketData) {
+    qrisPendingTicket = ticketData;
+
+    // Populate summary strip
+    const data = FILMS[selFilm];
+    const qsPoster = document.getElementById("qsStripPoster");
+    if (qsPoster) {
+      qsPoster.src = data.poster;
+      qsPoster.onerror = function () { this.src = "https://placehold.co/42x58/120a02/fb923c?text=Film"; };
+    }
+    setText("qsStripFilm", selFilm + " — " + selCinema.nama);
+    setText("qsStripMeta",
+      `${HARI_FULL[selTanggal.hari]}, ${selTanggal.tgl} ${BLN_FULL[selTanggal.bln]} ${selTanggal.tanggal.split("-")[0]} • ${selJam}`
+    );
+    setText("qsStripSeats", selSeats.join(", "));
+    setText("qsStripPrice", `${selSeats.length} kursi × ${formatRp(selCinema.harga)}`);
+
+    // Order ID & total & nama
+    const orderId = "CG" + String(ticketData.id).slice(-8).toUpperCase();
+    setText("qrisOrderId", orderId);
+    setText("qrisNama", ticketData.nama);
+    setText("qrisTotalAmt", formatRp(ticketData.total));
+
+    // Generate QR Code SVG
+    const qrFrame = document.getElementById("qrisQrFrame");
+    if (qrFrame) {
+      let seed = 0;
+      for (let i = 0; i < orderId.length; i++) seed = (seed * 31 + orderId.charCodeAt(i)) >>> 0;
+      qrFrame.innerHTML = generateQRSVG(seed);
+    }
+
+    // Start 15-minute timer
+    startQrisTimer(15 * 60);
+    goToStep(5);
+  }
+
+  function startQrisTimer(seconds) {
+    clearQrisTimer();
+    let remaining = seconds;
+
+    function tick() {
+      const timerEl = document.getElementById("qrisTimer");
+      if (!timerEl) { clearQrisTimer(); return; }
+      const m = Math.floor(remaining / 60);
+      const s = remaining % 60;
+      timerEl.textContent = `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+      timerEl.classList.toggle("qris-timer-urgent", remaining <= 60);
+      if (remaining <= 0) {
+        clearQrisTimer();
+        timerEl.textContent = "00:00";
+        handleQrisExpired();
+        return;
+      }
+      remaining--;
+    }
+
+    tick();
+    qrisTimerInterval = setInterval(tick, 1000);
+  }
+
+  function handleQrisExpired() {
+    showToast("⏰ Waktu pembayaran habis. Silakan mulai ulang.", "#b45309");
+    qrisPendingTicket = null;
+    setTimeout(() => goToStep(1), 2500);
+  }
+
+  function confirmQrisPayment() {
+    if (!qrisPendingTicket) return;
+    clearQrisTimer();
+
+    const semua = JSON.parse(localStorage.getItem("cinego_tiket") || "[]");
+    semua.push(qrisPendingTicket);
+    localStorage.setItem("cinego_tiket", JSON.stringify(semua));
+    qrisPendingTicket = null;
+
+    [1, 2, 3, 4, 5].forEach((i) => {
+      const si = document.getElementById("si" + i);
+      if (si) { si.classList.remove("active"); si.classList.add("done"); }
+    });
+
+    showToast("🎉 Pembayaran berhasil! Tiket sedang diproses...", "#15803d");
+    setTimeout(() => { window.location.href = "MyTicket.html"; }, 2000);
+  }
+  // ─── END QRIS ────────────────────────────────────────────────────────────
 
   if (document.readyState === "loading")
     document.addEventListener("DOMContentLoaded", initBooking);
