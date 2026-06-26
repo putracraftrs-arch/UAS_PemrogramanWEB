@@ -2918,6 +2918,53 @@ document.addEventListener("DOMContentLoaded", () => {
     closeModal();
   });
 
+
+  function showEticket(tiket) {
+    const kode = "CGO-" + String(tiket.id).padStart(6, "0");
+    const kursiStr = Array.isArray(tiket.kursi)
+      ? tiket.kursi.join(", ")
+      : tiket.kursi || "-";
+    const jumlah = tiket.jumlah || (Array.isArray(tiket.kursi) ? tiket.kursi.length : 1);
+    const cinemaStr = tiket.cinema || tiket.studio || "-";
+
+    document.getElementById("etCode").textContent = kode;
+    document.getElementById("etBody").innerHTML = `
+      <div class="et-row"><span class="et-label">Nama</span><span class="et-value">${escHtmlMT(tiket.nama)}</span></div>
+      <div class="et-row"><span class="et-label">Film</span><span class="et-value et-film">${escHtmlMT(tiket.film)}</span></div>
+      <div class="et-row"><span class="et-label">Tanggal</span><span class="et-value">${formatTglMT(tiket.tanggal)}</span></div>
+      <div class="et-row"><span class="et-label">Jam</span><span class="et-value">${escHtmlMT(tiket.jam)}</span></div>
+      <div class="et-row"><span class="et-label">Bioskop</span><span class="et-value">${escHtmlMT(cinemaStr)}</span></div>
+      <div class="et-row"><span class="et-label">Kursi</span><span class="et-value et-kursi">${escHtmlMT(kursiStr)}</span></div>
+      <div class="et-row"><span class="et-label">Tipe</span><span class="et-value"><span class="badge ${badgeClass(tiket.tipe || "Regular")}">${escHtmlMT(tiket.tipe || "Regular")}</span></span></div>
+      <div class="et-row"><span class="et-label">Jumlah</span><span class="et-value">${jumlah} tiket</span></div>
+      <div class="et-row et-total-row"><span class="et-label">Total</span><span class="et-value et-total">${formatRpMT(tiket.total || 0)}</span></div>
+    `;
+    // generate simple barcode visual from booking code
+    const bars = document.getElementById("etBars");
+    bars.innerHTML = "";
+    const seed = kode.split("").reduce((a, c) => a + c.charCodeAt(0), 0);
+    for (let i = 0; i < 48; i++) {
+      const b = document.createElement("div");
+      const w = ((seed * (i + 7) * 13) % 3) + 1;
+      b.className = "et-bar";
+      b.style.width = w + "px";
+      bars.appendChild(b);
+    }
+    document.getElementById("etBarcode2") && (document.getElementById("etBarcode2").textContent = kode);
+    const etCode2 = document.getElementById("etCode2");
+    if (etCode2) etCode2.textContent = kode;
+    document.getElementById("eticketOverlay").classList.add("show");
+  }
+
+  function closeEticket() {
+    document.getElementById("eticketOverlay").classList.remove("show");
+  }
+
+  document.getElementById("btnCloseEticket").addEventListener("click", closeEticket);
+  document.getElementById("eticketOverlay").addEventListener("click", (e) => {
+    if (e.target === e.currentTarget) closeEticket();
+  });
+
   let currentFilter = "";
 
   function renderTable() {
@@ -2973,23 +3020,15 @@ document.addEventListener("DOMContentLoaded", () => {
         <td><span class="badge ${badgeClass(tipe)}">${escHtmlMT(tipe)}</span></td>
         <td style="text-align:center">${jumlah}</td>
         <td class="harga-cell">${formatRpMT(t.total || 0)}</td>
-        <td><button class="btn-hapus" data-id="${t.id}">Hapus</button></td>
+        <td><button class="btn-eticket" data-id="${t.id}">🎫 E-Ticket</button></td>
       `;
       body.appendChild(tr);
     });
-    body.querySelectorAll(".btn-hapus").forEach((btn) => {
+    body.querySelectorAll(".btn-eticket").forEach((btn) => {
       btn.addEventListener("click", () => {
         const id = parseInt(btn.dataset.id);
         const tiket = getData().find((t) => t.id === id);
-        showModal(
-          "Hapus Tiket?",
-          `Hapus tiket "${tiket ? tiket.film : ""}" atas nama ${tiket ? tiket.nama : ""}?`,
-          () => {
-            saveData(getAllData().filter((t) => t.id !== id));
-            renderTable();
-            showToastMT("🗑️ Tiket berhasil dihapus.");
-          },
-        );
+        if (tiket) showEticket(tiket);
       });
     });
   }
