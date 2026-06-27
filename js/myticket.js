@@ -248,11 +248,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document
     .getElementById("btnCloseEticket")
     ?.addEventListener("click", closeEticket);
-  document
-    .getElementById("eticketOverlay")
-    ?.addEventListener("click", (e) => {
-      if (e.target === e.currentTarget) closeEticket();
-    });
+  document.getElementById("eticketOverlay")?.addEventListener("click", (e) => {
+    if (e.target === e.currentTarget) closeEticket();
+  });
 
   document
     .getElementById("btnCancelModal")
@@ -320,7 +318,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <td><span class="badge ${badgeClass(tipe)}">${escHtmlMT(tipe)}</span></td>
         <td style="text-align:center">${jumlah}</td>
         <td class="harga-cell">${formatRpMT(t.total || 0)}</td>
-        <td><button class="btn-lihat" data-id="${t.id}">Lihat</button><button class="btn-hapus" data-id="${t.id}">Hapus</button></td>
+        <td><button class="btn-lihat" data-id="${t.id}">Lihat</button></td>
       `;
       body.appendChild(tr);
     });
@@ -331,42 +329,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (tiket) openEticket(tiket);
       });
     });
-    body.querySelectorAll(".btn-hapus").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const id = parseInt(btn.dataset.id);
-        const tiket = getData().find((t) => t.id === id);
-        showModal(
-          "Hapus Tiket?",
-          `Hapus tiket "${tiket ? tiket.film : ""}" atas nama ${tiket ? tiket.nama : ""}?`,
-          () => {
-            saveData(getAllData().filter((t) => t.id !== id));
-            renderTable();
-            showToastMT("🗑️ Tiket berhasil dihapus.");
-          },
-        );
-      });
-    });
   }
-
-  document.getElementById("btnHapusSemua").addEventListener("click", () => {
-    const semua = getData();
-    if (semua.length === 0) {
-      showToastMT("Belum ada tiket untuk dihapus.");
-      return;
-    }
-    showModal(
-      "Hapus Semua Tiket?",
-      `Semua ${semua.length} pesanan akan dihapus permanen.`,
-      () => {
-        const email = getUserEmail();
-        saveData(
-          getAllData().filter((t) => (t.email || "").toLowerCase() !== email),
-        );
-        renderTable();
-        showToastMT("🗑️ Semua tiket telah dihapus.");
-      },
-    );
-  });
 
   document.getElementById("searchInput").addEventListener("input", (e) => {
     currentFilter = e.target.value;
