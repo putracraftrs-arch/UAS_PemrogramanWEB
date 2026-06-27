@@ -1050,10 +1050,12 @@
           jumlah: selSeats.length,
           hargaPerKursi: selCinema.harga,
           total: selSeats.length * selCinema.harga,
+          status: "Menunggu Pembayaran",
         };
         // Proceed to QRIS payment step
         goToQrisStep(tiket);
       });
+
 
     document
       .getElementById("btnCloseAuthRequired")
@@ -1211,9 +1213,9 @@
     [2, 3, 4, 5].forEach((i) => showEl("step" + i, false));
 
     // QRIS button listeners
-    document.getElementById("btnQrisBack")?.addEventListener("click", () => {
+    document.getElementById("btnQrisClose")?.addEventListener("click", () => {
       clearQrisTimer();
-      goToStep(4);
+      window.location.href = "MyTicket.html";
     });
     document.getElementById("btnQrisConfirm")?.addEventListener("click", () => {
       confirmQrisPayment();
@@ -1357,6 +1359,11 @@
   function goToQrisStep(ticketData) {
     qrisPendingTicket = ticketData;
 
+    // === Soal 7: simpan data ke MyTicket SEGERA setelah step 4, sebelum tampil QRIS ===
+    const semuaTiket = JSON.parse(localStorage.getItem("cinego_tiket") || "[]");
+    semuaTiket.push(ticketData);
+    localStorage.setItem("cinego_tiket", JSON.stringify(semuaTiket));
+
     // Populate summary strip
     const data = FILMS[selFilm];
     const qsPoster = document.getElementById("qsStripPoster");
@@ -1416,6 +1423,14 @@
 
   function handleQrisExpired() {
     showToast("⏰ Waktu pembayaran habis. Silakan mulai ulang.", "#b45309");
+
+    // Hapus tiket yang belum dibayar (sudah tersimpan sejak masuk step 5)
+    if (qrisPendingTicket) {
+      const semua = JSON.parse(localStorage.getItem("cinego_tiket") || "[]");
+      const filtered = semua.filter((t) => t.id !== qrisPendingTicket.id);
+      localStorage.setItem("cinego_tiket", JSON.stringify(filtered));
+    }
+
     qrisPendingTicket = null;
     setTimeout(() => goToStep(1), 2500);
   }
@@ -1424,8 +1439,13 @@
     if (!qrisPendingTicket) return;
     clearQrisTimer();
 
+    // Data tiket sudah disimpan saat masuk step 5 (lihat goToQrisStep).
+    // Di sini kita cukup update statusnya jadi "Lunas" / sudah dibayar.
     const semua = JSON.parse(localStorage.getItem("cinego_tiket") || "[]");
-    semua.push(qrisPendingTicket);
+    const idx = semua.findIndex((t) => t.id === qrisPendingTicket.id);
+    if (idx !== -1) {
+      semua[idx].status = "Lunas";
+    }
     localStorage.setItem("cinego_tiket", JSON.stringify(semua));
     qrisPendingTicket = null;
 

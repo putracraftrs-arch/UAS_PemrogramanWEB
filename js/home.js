@@ -96,3 +96,74 @@ document.addEventListener("DOMContentLoaded", () => {
 
   init();
 });
+
+// ==========================================
+// DETAIL FILM MODAL
+// ==========================================
+
+function openMovieModal(judul, genre, durasi, poster, sinopsis) {
+
+    const modal = document.getElementById("filmModalOverlay");
+
+    modal.classList.add("show");
+    modal.setAttribute("aria-hidden", "false");
+
+    document.getElementById("mPoster").src = poster;
+    document.getElementById("mPoster").alt = judul;
+
+    document.getElementById("mTitle").textContent = judul;
+
+    document.getElementById("mRating").innerHTML = "";
+
+    document.getElementById("mPills").innerHTML = `
+        <span>${genre}</span>
+        <span>${durasi}</span>
+    `;
+
+    document.getElementById("mSinopsis").textContent = sinopsis;
+
+    document.getElementById("mInfoGrid").innerHTML = `
+        <div><strong>Genre</strong><br>${genre}</div>
+        <div><strong>Durasi</strong><br>${durasi}</div>
+    `;
+
+    document.getElementById("mVoteNum").textContent = "-";
+    document.getElementById("mVoteSub").textContent = "Informasi Film";
+
+    document.getElementById("btnModalBook").href =
+        "Booking.html?film=" + encodeURIComponent(judul);
+}
+
+// ==========================================
+// TUTUP MODAL
+// ==========================================
+
+function closeMovieModal() {
+
+    const modal = document.getElementById("filmModalOverlay");
+
+    modal.classList.remove("show");
+    modal.setAttribute("aria-hidden", "true");
+
+}
+
+// Tombol X
+document.addEventListener("DOMContentLoaded", function () {
+
+    const btnClose = document.getElementById("btnModalClose");
+
+    if (btnClose) {
+        btnClose.addEventListener("click", closeMovieModal);
+    }
+
+    const overlay = document.getElementById("filmModalOverlay");
+
+    if (overlay) {
+        overlay.addEventListener("click", function (e) {
+            if (e.target === overlay) {
+                closeMovieModal();
+            }
+        });
+    }
+
+});
