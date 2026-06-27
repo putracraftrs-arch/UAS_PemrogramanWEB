@@ -211,9 +211,7 @@
               id="searchInput"
               placeholder="Cari film atau nama..."
             />
-            <button class="btn-hapus-semua" id="btnHapusSemua" type="button">
-              Hapus Semua
-            </button>
+
             <a href="Booking.html" class="btn-tambah">+ Pesan Tiket</a>
           </div>
         </div>
@@ -289,16 +287,21 @@
     <footer>
       <p>&copy; 2026 CineGo. All rights reserved</p>
       <p>
-        <a href="Home.html">Home</a> |
-        <a href="About-Us.html">About Us</a> |
+        <a href="Home.html">Home</a> | <a href="About-Us.html">About Us</a> |
         <a href="Contact-Us.html">Contact Us</a>
       </p>
       <div class="arrow"><a href="#">^</a></div>
     </footer>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  
-    <div class="eticket-overlay" id="eticketOverlay" role="dialog" aria-modal="true" aria-label="E-Ticket">
+
+    <div
+      class="eticket-overlay"
+      id="eticketOverlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="E-Ticket"
+    >
       <div class="eticket-card">
         <div class="eticket-header">
           <div class="et-brand">🎬 CineGo</div>
@@ -323,11 +326,12 @@
           <div class="et-bars" id="etBars"></div>
           <div class="et-barcode-num" id="etCode2"></div>
         </div>
-        <button class="btn-close-eticket" id="btnCloseEticket" type="button">✕ Tutup</button>
+        <button class="btn-close-eticket" id="btnCloseEticket" type="button">
+          ✕ Tutup
+        </button>
       </div>
     </div>
 
-  
     <script src="js/auth.js"></script>
     <script src="js/myticket.js"></script>
   </body>
