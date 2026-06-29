@@ -1222,6 +1222,76 @@
     });
 
     const urlParams = new URLSearchParams(window.location.search);
+
+    // ── Resume Payment: dari MyTicket tombol Bayar → langsung step 5 QRIS ──
+    if (urlParams.get("resumepayment") === "1") {
+      const raw = sessionStorage.getItem("cinego_resume_payment");
+      if (raw) {
+        sessionStorage.removeItem("cinego_resume_payment");
+        const tiket = JSON.parse(raw);
+
+        // Isi state minimum agar goToQrisStep bisa populate summary strip
+        selFilm   = tiket.film;
+        selCinema = {
+          id:     tiket.cinemaId || "cgv-sun",
+          nama:   tiket.cinema  || tiket.studio || tiket.film,
+          harga:  tiket.hargaPerKursi || Math.round((tiket.total || 0) / Math.max(tiket.jumlah || 1, 1)),
+          tipe:   tiket.tipe || "Regular",
+        };
+        selTanggal = {
+          tanggal: tiket.tanggal,
+          tgl: tiket.tanggal ? tiket.tanggal.split("-")[2] : "-",
+          bln: tiket.tanggal ? (["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"][parseInt(tiket.tanggal.split("-")[1]) - 1]) : "-",
+          hari: 0,
+        };
+        selJam   = tiket.jam;
+        selSeats = Array.isArray(tiket.kursi) ? [...tiket.kursi] : [tiket.kursi || "-"];
+
+        // Pastikan tiket ini ada di localStorage (mungkin sudah ada, skip duplikat)
+        const semuaTiket = JSON.parse(localStorage.getItem("cinego_tiket") || "[]");
+        const alreadyExists = semuaTiket.some((t) => t.id === tiket.id);
+        if (!alreadyExists) {
+          semuaTiket.push(tiket);
+          localStorage.setItem("cinego_tiket", JSON.stringify(semuaTiket));
+        }
+
+        // Populate summary strip manual karena FILMS[selFilm] mungkin tidak cocok persis
+        const qsPoster = document.getElementById("qsStripPoster");
+        if (qsPoster) {
+          const filmData = FILMS[tiket.film];
+          qsPoster.src = filmData ? filmData.poster : "https://placehold.co/42x58/120a02/fb923c?text=Film";
+          qsPoster.onerror = function () { this.src = "https://placehold.co/42x58/120a02/fb923c?text=Film"; };
+        }
+        setText("qsStripFilm", tiket.film + " — " + (tiket.cinema || tiket.studio || ""));
+        const tgl = tiket.tanggal || "";
+        const [ty, tm, td] = tgl.split("-");
+        const blnFull = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+        setText("qsStripMeta", td && tm ? `${td} ${blnFull[parseInt(tm)-1]} ${ty} • ${tiket.jam}` : tiket.jam);
+        setText("qsStripSeats", selSeats.join(", "));
+        setText("qsStripPrice", `${selSeats.length} kursi × ${formatRp(selCinema.harga)}`);
+
+        // Order ID & total & nama
+        const orderId = "CG" + String(tiket.id).slice(-8).toUpperCase();
+        setText("qrisOrderId", orderId);
+        setText("qrisNama", tiket.nama);
+        setText("qrisTotalAmt", formatRp(tiket.total || 0));
+
+        // Generate QR
+        const qrFrame = document.getElementById("qrisQrFrame");
+        if (qrFrame) {
+          let seed = 0;
+          for (let i = 0; i < orderId.length; i++) seed = (seed * 31 + orderId.charCodeAt(i)) >>> 0;
+          qrFrame.innerHTML = generateQRSVG(seed);
+        }
+
+        // Simpan sebagai pending agar confirmQrisPayment bisa update status
+        qrisPendingTicket = tiket;
+        startQrisTimer(15 * 60);
+        goToStep(5);
+        return;
+      }
+    }
+
     const urlFilm = urlParams.get("film");
     const urlTanggal = urlParams.get("tanggal");
     const urlJam = urlParams.get("jam");

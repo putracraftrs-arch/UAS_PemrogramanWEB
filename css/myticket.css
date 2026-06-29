@@ -1,6 +1,20 @@
+/* ===== Sticky footer (MyTicket.html only) ===== */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+body > main {
+  flex: 1 0 auto;
+}
+body > footer {
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
 .ticket-section {
   padding: 40px 24px 60px;
-  max-width: 1100px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -84,7 +98,7 @@
 }
 
 .table-wrapper {
-  overflow-x: auto;
+  overflow-x: visible;
   border-radius: 12px;
   border: 1px solid #2a1a06;
 }
@@ -92,8 +106,8 @@
 table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.875rem;
-  min-width: 720px;
+  font-size: 0.82rem;
+  table-layout: auto;
 }
 
 thead tr {
@@ -102,11 +116,11 @@ thead tr {
 
 thead th {
   text-align: left;
-  padding: 14px 16px;
+  padding: 12px 10px;
   color: #d4845a;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   border-bottom: 1px solid #2a1a06;
   white-space: nowrap;
@@ -125,7 +139,7 @@ tbody tr:last-child {
 }
 
 tbody td {
-  padding: 14px 16px;
+  padding: 12px 10px;
   color: #e2cbb4;
   vertical-align: middle;
 }
@@ -256,6 +270,7 @@ tbody td .email-txt {
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 24px 22px;
   transform: scale(0.93) translateY(16px);
   transition: transform 0.3s;
@@ -263,6 +278,17 @@ tbody td .email-txt {
 }
 .eticket-overlay.show .eticket-card {
   transform: scale(1) translateY(0);
+}
+
+.eticket-card::-webkit-scrollbar {
+  width: 5px;
+}
+.eticket-card::-webkit-scrollbar-track {
+  background: #0f0602;
+}
+.eticket-card::-webkit-scrollbar-thumb {
+  background-color: #2a1a06;
+  border-radius: 3px;
 }
 
 .eticket-header {
@@ -398,4 +424,88 @@ tbody td .email-txt {
 }
 .btn-close-eticket:hover {
   background-color: #1a0e04;
+}
+/* ===================== STATUS BADGE ===================== */
+.mt-status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+.mt-status-lunas {
+  color: #4ade80;
+  background-color: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.28);
+}
+
+.mt-status-pending {
+  color: #facc15;
+  background-color: rgba(250, 204, 21, 0.1);
+  border: 1px solid rgba(250, 204, 21, 0.28);
+}
+
+/* ===================== AKSI BUTTONS ===================== */
+.mt-aksi-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: stretch;
+  min-width: 88px;
+}
+
+.btn-eticket {
+  background: transparent;
+  border: 1px solid rgba(74, 222, 128, 0.4);
+  color: #4ade80;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.btn-eticket:hover {
+  background-color: rgba(74, 222, 128, 0.1);
+  border-color: #4ade80;
+}
+
+.btn-cancel-ticket {
+  background: transparent;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #ef4444;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.btn-cancel-ticket:hover {
+  background-color: rgba(239, 68, 68, 0.08);
+  border-color: #ef4444;
+}
+
+.btn-bayar {
+  background: linear-gradient(135deg, #ea580c, #d97706);
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  transition: filter 0.2s, transform 0.15s;
+}
+.btn-bayar:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
 }

@@ -461,6 +461,37 @@
   color: #fb923c;
 }
 
+.input-wrap {
+  position: relative;
+}
+.input-wrap input {
+  padding-right: 60px;
+}
+.toggle-pw {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: 1px solid #2a1a06;
+  border-radius: 6px;
+  color: #a87050;
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    border-color 0.2s;
+}
+.toggle-pw:hover {
+  background-color: #1a0e04;
+  color: #f1f5f9;
+  border-color: #3a2010;
+}
+
 .toast {
   position: fixed;
   bottom: 28px;

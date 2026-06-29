@@ -296,7 +296,7 @@ document.addEventListener("DOMContentLoaded", () => {
     empty.style.display = "none";
     stats.style.display = "flex";
     if (filtered.length === 0) {
-      body.innerHTML = `<tr><td colspan="11" style="text-align:center;color:#5a3a20;padding:32px">Tidak ada hasil untuk "<strong style="color:#a87050">${escHtmlMT(currentFilter)}</strong>"</td></tr>`;
+      body.innerHTML = `<tr><td colspan="12" style="text-align:center;color:#5a3a20;padding:32px">Tidak ada hasil untuk "<strong style="color:#a87050">${escHtmlMT(currentFilter)}</strong>"</td></tr>`;
       return;
     }
     filtered.forEach((t, idx) => {
@@ -306,6 +306,30 @@ document.addEventListener("DOMContentLoaded", () => {
         ? t.kursi.join(", ")
         : t.kursi || "-";
       const jumlah = t.jumlah || (Array.isArray(t.kursi) ? t.kursi.length : 1);
+
+      // Status badge
+      const status = t.status || "Menunggu Pembayaran";
+      const isLunas = status === "Lunas";
+      const statusBadge = isLunas
+        ? `<span class="mt-status-badge mt-status-lunas">Lunas</span>`
+        : `<span class="mt-status-badge mt-status-pending">Belum Lunas</span>`;
+
+      // Aksi buttons
+      const aksiHtml = isLunas
+        ? `<button class="btn-eticket" data-id="${t.id}">🎫 E-Ticket</button>`
+        : `<div class="mt-aksi-stack">
+             <button class="btn-cancel-ticket" data-id="${t.id}">✕ Cancel</button>
+             <button class="btn-bayar"
+               data-id="${t.id}"
+               data-film="${escHtmlMT(t.film)}"
+               data-tanggal="${escHtmlMT(t.tanggal)}"
+               data-jam="${escHtmlMT(t.jam)}"
+               data-cinema-id="${escHtmlMT(t.cinemaId || "")}"
+               data-total="${t.total || 0}"
+               data-nama="${escHtmlMT(t.nama)}"
+               data-email="${escHtmlMT(t.email || "")}">💳 Bayar</button>
+           </div>`;
+
       const tr = document.createElement("tr");
       tr.innerHTML = `
         <td style="color:#5a3a20;font-size:.8rem">${idx + 1}</td>
@@ -318,15 +342,48 @@ document.addEventListener("DOMContentLoaded", () => {
         <td><span class="badge ${badgeClass(tipe)}">${escHtmlMT(tipe)}</span></td>
         <td style="text-align:center">${jumlah}</td>
         <td class="harga-cell">${formatRpMT(t.total || 0)}</td>
-        <td><button class="btn-lihat" data-id="${t.id}">Lihat</button></td>
+        <td>${statusBadge}</td>
+        <td>${aksiHtml}</td>
       `;
       body.appendChild(tr);
     });
-    body.querySelectorAll(".btn-lihat").forEach((btn) => {
+
+    // E-Ticket button
+    body.querySelectorAll(".btn-eticket").forEach((btn) => {
       btn.addEventListener("click", () => {
         const id = parseInt(btn.dataset.id);
         const tiket = getData().find((t) => t.id === id);
         if (tiket) openEticket(tiket);
+      });
+    });
+
+    // Cancel button
+    body.querySelectorAll(".btn-cancel-ticket").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = parseInt(btn.dataset.id);
+        const tiket = getData().find((t) => t.id === id);
+        if (!tiket) return;
+        showModal(
+          "Batalkan Tiket?",
+          `Yakin membatalkan tiket "${tiket.film}"? Tindakan ini tidak dapat dibatalkan.`,
+          () => {
+            saveData(getAllData().filter((t) => t.id !== id));
+            showToastMT("Tiket berhasil dibatalkan.");
+            renderTable();
+          }
+        );
+      });
+    });
+
+    // Bayar button → kirim data tiket via sessionStorage, redirect ke Booking.html langsung step 5
+    body.querySelectorAll(".btn-bayar").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = parseInt(btn.dataset.id);
+        const tiket = getData().find((t) => t.id === id);
+        if (!tiket) return;
+        // Simpan seluruh data tiket ke sessionStorage agar booking.js bisa langsung QRIS
+        sessionStorage.setItem("cinego_resume_payment", JSON.stringify(tiket));
+        window.location.href = "Booking.html?resumepayment=1";
       });
     });
   }

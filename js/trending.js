@@ -198,9 +198,9 @@ document.addEventListener("DOMContentLoaded", () => {
         wled = inWishlist(f.id);
       const encImg = encodeURIComponent(f.film.slice(0, 14));
       const card = document.createElement("div");
-      card.className = "trend-card";
+      card.className = "trend-card" + (f.comingSoon ? " presale-card" : "");
       card.innerHTML = `
-        <div class="rank-badge ${rankBadgeClass(rank)}">${f.comingSoon ? "🔔 Segera" : rankLabel(rank)}</div>
+        <div class="rank-badge ${f.comingSoon ? "rank-segera" : rankBadgeClass(rank)}">${f.comingSoon ? "🔔 Segera" : rankLabel(rank)}</div>
         <button class="wl-card-btn${wled ? " wled" : ""}" data-id="${f.id}" title="${wled ? "Hapus dari wishlist" : "Simpan ke wishlist"}">${wled ? "❤️" : "🤍"}</button>
         <div class="poster-wrap" data-id="${f.id}">
   <img src="${f.poster}" alt="${escHtmlTR(f.film)}" onerror="this.src='https://placehold.co/300x400/120a02/fb923c?text=${encImg}'"/>
@@ -218,7 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
 ${f.comingSoon
   ? `
     <div class="vote-row comingsoon-info">
-      <span>🎬 Segera Hadir</span>
+      <span class="comingsoon-label">🎬 Segera Hadir</span>
     </div>
   `
   : `
@@ -296,7 +296,7 @@ item.dataset.id = f.id;
       </div>
     ` : `
       <div class="comingsoon-info">
-        🎬 Segera Hadir
+        <span class="comingsoon-label">🎬 Segera Hadir</span>
       </div>
 
       <div class="list-btn-row">

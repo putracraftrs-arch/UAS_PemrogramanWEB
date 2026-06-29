@@ -1,3 +1,9 @@
+.trending-section {
+  padding: 40px 24px 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
 .trend-controls {
   display: flex;
   flex-direction: column;
@@ -412,6 +418,61 @@
   color: #a87050;
   border-color: #3a2010;
   cursor: default;
+}
+
+/* Override border & hover for pre-sale cards */
+.trend-card.presale-card {
+  border-color: #3b1f6a;
+  background: linear-gradient(160deg, #120a02 70%, #1a0a2e 100%);
+}
+.trend-card.presale-card:hover {
+  border-color: #a855f7;
+  box-shadow: 0 8px 32px rgba(168, 85, 247, 0.18);
+}
+
+/* "🔔 Segera" rank badge for pre-sale */
+.rank-badge.rank-segera {
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  color: #fff;
+}
+
+/* "🎬 Segera Hadir" label in card body */
+.comingsoon-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.comingsoon-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #c084fc;
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 999px;
+  padding: 4px 12px;
+  letter-spacing: 0.02em;
+}
+
+/* Pre-sale button — purple gradient */
+.btn-card-presale {
+  background: linear-gradient(135deg, #7c3aed, #a855f7) !important;
+  box-shadow: 0 2px 12px rgba(168, 85, 247, 0.25);
+}
+.btn-card-presale:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 4px 18px rgba(168, 85, 247, 0.4);
+}
+
+/* List view pre-sale button */
+.btn-list-presale {
+  background: linear-gradient(135deg, #7c3aed, #a855f7) !important;
+  color: #fff !important;
+}
+.btn-list-presale:hover {
+  filter: brightness(1.15) !important;
 }
 
 .btn-card-book {

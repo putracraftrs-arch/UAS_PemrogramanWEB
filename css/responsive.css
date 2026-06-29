@@ -54,6 +54,9 @@
   .stats-grid {
     flex-direction: column;
   }
+  .table-wrapper {
+    overflow-x: auto;
+  }
 }
 
 @media (max-width: 600px) {
@@ -71,8 +74,15 @@
     flex-direction: column;
     align-items: flex-start;
   }
+  .ticket-topbar .right {
+    width: 100%;
+  }
   .search-input {
     width: 100%;
+  }
+  .ticket-topbar .btn-tambah {
+    width: 100%;
+    text-align: center;
   }
   .contact-grid {
     grid-template-columns: 1fr;

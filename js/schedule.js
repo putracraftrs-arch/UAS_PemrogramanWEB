@@ -147,6 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
     gridAT.setAttribute("aria-label", "Daftar film akan tayang");
 
     AKAN_TAYANG.forEach((j) => {
+      const presaleParams = new URLSearchParams({ film: j.film });
       const card = document.createElement("div");
       card.className = "schedule-card schedule-card-cs";
       card.innerHTML = `
@@ -158,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="schedule-details">
             <span class="btn-date">🗓️ Rilis ${j.rilisLabel}</span>
           </div>
-          <span class="btn-booking btn-booking-cs">🔔 Pre-Sale Segera</span>
+          <a href="Booking.html?${presaleParams.toString()}" class="btn-booking btn-booking-cs">🔔 Pre-Sale Segera</a>
         </div>
       `;
       gridAT.appendChild(card);
