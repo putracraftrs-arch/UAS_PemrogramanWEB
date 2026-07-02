@@ -96,6 +96,11 @@
   .form-card {
     padding: 20px 16px;
   }
+  .schedule-info h3 {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  }
 }
 
 @media (max-width: 480px) {
@@ -114,6 +119,19 @@
     bottom: 20px;
     right: 20px;
   }
+  .schedule-card {
+  flex-direction: column;
+  align-items: flex-start;
+  }
+  .schedule-card img {
+  width: 100%;
+  max-width: 160px;
+  height: auto;
+  }
+  .schedule-section {
+  padding: 20px 12px;
+  }
+
 }
 
 .nav-menu li a.nav-logged-in {
@@ -142,4 +160,3 @@
   color: #ef4444;
   border-color: #ef4444;
 }
-
